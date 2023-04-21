@@ -1,0 +1,17 @@
+body{
+	font-family: Hack, monospace;
+	
+
+}
+
+
+
+.footer {
+  position: relative;
+  left: 2%;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: grey;
+  text-align: left;
+}
