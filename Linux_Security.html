@@ -272,9 +272,103 @@
 
 
 
+                <h4 style="color:#32CD32;text-align:center;">Tcp_Wrappers</h4><br>
+                
+                <p style="color:green;">TCP Wrapper is a host-based networking ACL system, used to filter network access to Internet Protocol servers on operating systems such as Linux or BSD. It allows host or subnetwork IP addresses, names and/or ident query replies, to be used as tokens on which to filter for access control purposes</p>
+                <p style="color:green;">Understanding <strong>hosts.allow</strong> and <strong>hosts.deny</strong></p>
+
+                <p style="color:green;"> When a network request reaches your server, TCP wrappers uses hosts.allow and hosts.deny (in that order) to determine if the client should be allowed to use a given service.
+                    
+                    By default, these files are empty, all commented out, or do not exist. Thus, everything is allowed through the TCP wrappers layer and your system is left to rely on the firewall for full protection. Since this is not desired, due to the reason we stated in the introduction, make sure both files exist:</p>
+               </p><br><br>
+         
+                <p style="color:#32CD32;">ls -l /etc/hosts.allow /etc/hosts.deny</p><br><br>
 
 
-		</div>
+                <p style="color:green;">The syntax of both files is the same:
+
+                    services : clients : option1 : option2 : ...</p>
+
+
+                <p style="color:green;">services is a comma-separated list of services the current rule should be applied to. clients represent the list of comma-separated hostnames or IP addresses affected by the rule. The following wildcards are accepted: ALL matches everything. Applies both to clients and services. LOCAL matches hosts without a period in their FQDN, such as localhost. KNOWN indicate a situation where the hostname, host address, or user are known. UNKNOWN is the opposite of KNOWN. PARANOID causes a connection to be dropped if reverse DNS lookups (first on IP address to determine host name, then on host name to obtain the IP addresses) return a different address in each case. Finally, an optional list of colon-separated actions indicate what should happen when a given rule is triggered.</p>
+
+
+                <p style="color:green;">You may want to keep in mind that a rule allowing access to a given service in /etc/hosts.allow takes precedence over a rule in /etc/hosts.deny prohibiting it. Additionally, if two rules apply to the same service, only the first one will be taken into account.
+
+                    Unfortunately, not all network services support the use of TCP wrappers. To determine if a given service supports them, do:</p><br><br>
+		
+        
+                <p style="color:#32CD32;">ldd /path/to/binary | grep libwrap</p><br><br>
+                
+                
+                <strong style="color:green;">How to Use TCP Wrappers to Restrict Access to Services</strong>
+                <p style="color:green;"> As you edit /etc/hosts.allow and /etc/hosts.deny, make sure you add a newline by pressing Enter after the last non-empty line.</p>
+                <p style="color:green;"> To allow <strong>SSH</strong> and <strong>FTP</strong> access only to 192.168.0.102 and localhost and deny all others, add these two lines in <strong>/etc/hosts.deny: </strong></p> <br><br>    
+                <p style="color:#32CD32;">sshd,vsftpd : ALL</p> 
+                <p style="color:#32CD32;">    ALL : ALL</p><br><br>
+                
+                <p style="color:green;">and the following line in /etc/hosts.allow:</p>
+            
+
+                <p style="color:#32CD32;">sshd,vsftpd : 192.168.0.102,LOCAL</p>
+
+                <p style="color:#32CD32;" ># hosts.deny    This file contains access rules which are used to </p>
+                <p style="color:#32CD32;" ># deny connections to network services that either use </p>
+                <p style="color:#32CD32;" ># the tcp_wrappers library or that have been </p>
+                <p style="color:#32CD32;" ># started through a tcp_wrappers-enabled xinetd. </p>
+                <p style="color:#32CD32;" ># The rules in this file can also be set up in </p>
+                <p style="color:#32CD32;" ># /etc/hosts.allow with a 'deny' option instead. </p>
+                <p style="color:#32CD32;" ># See 'man 5 hosts_options' and 'man 5 hosts_access' </p>
+                <p style="color:#32CD32;" ># for information on rule syntax. </p>
+            
+                <p style="color:#32CD32;" > # See 'man tcpd' for information on tcp_wrappers </p>
+            
+                <p style="color:#32CD32;" >sshd,vsftpd : ALL </p>
+            
+                <p style="color:#32CD32;" >ALL : ALL </p><br><br>
+
+
+
+                <p style="color:green;"> These changes take place immediately without the need for a restart.</p>
+                
+                
+                <p style="color:green;"> In the following image you can see the effect of removing the word LOCAL from the last line: the FTP server will become unavailable for localhost. After we add the wildcard back, the service becomes available again.</p>
+            
+                <p style="color:green;">To allow all services to hosts where the name contains example.com, add this line in hosts.allow:
+                </p>
+
+
+                <p style="color:#32CD32;" >ALL : .example.com</p> <br><br>
+
+                <p style="color:green;">  and to deny access to vsftpd to machines on 10.0.1.0/24, add this line in hosts.deny:</p>
+
+                <p style="color:#32CD32;" >vsftpd : 10.0.1.</p><br><br>
+                <p style="color:green;">Enable and Start</p>
+
+                <p style="color:#32CD32;" >sudo systemctl enable hapee-2.6-lb</p>
+                <p style="color:#32CD32;" >sudo systemctl start hapee-2.6-lb</p> <br><br>
+                <p style="color:green;">Install additional modules</p>
+                <p style="color:green;">For Fedora</p>
+                <p style="color:#32CD32;" >dnf search hapee-2.6r1</p>
+                <p style="color:#32CD32;" >dnf search hapee-extras</p><br><br>
+                <p style="color:green;">For openSUSE</p>
+                <p style="color:#32CD32;" >zypper search hapee-2.6r1</p>
+                <p style="color:#32CD32;" >zypper search hapee-extras</p><br><br>
+                
+                <p style="color:green;">For openSUSE</p>
+                <p style="color:#32CD32;" >sudo zypper install hapee-2.6r1-lb-update</p><br><br>
+                <p style="color:green;">For Fedora</p>
+                <p style="color:#32CD32;" >sudo dnf install hapee-2.6r1-lb-update</p><br><br>
+
+
+            
+            
+                
+                
+            
+            
+            
+            </div>
 
 
 
