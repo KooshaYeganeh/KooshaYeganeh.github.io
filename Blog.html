@@ -2,134 +2,188 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-	<link rel="stylesheet" href="./static/style.css">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
-	<title>KYGnus ( Koosha Yeganeh Gnu Linux Softwares)</title>
-	<link rel="icon" type="image/x-icon" href="./static/kygnus+.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>KYGnus</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: #32CD32;
+            font-family: 'Hack', monospace;
+        }
+
+        .navbar {
+            background-color: black;
+            border: none;
+            color: green;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #32CD32;
+        }
+
+        p,
+        b {
+            color: #32CD32;
+        }
+
+        a {
+            color: #32CD32;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #228B22;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .text-box {
+            border: 1px solid #32CD32;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #000;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: black;
+            color: #32CD32;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-links {
+            margin: 10px 0;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            color: #32CD32;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #228B22;
+        }
+    </style>
 </head>
 
-<body style="background-color:black;">
+<body>
 
-	<div class="containter">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-bottom">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#">KYGnus</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="Download.html">Downloads</a></li>
+                    <li class="nav-item"><a class="nav-link" href="virus.html">Virus</a></li>
+					<li class="nav-item active"><a class="nav-link" href="Blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Manifesto.html">Manifesto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-box">
+                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">Zeek</h3>
+                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; Zeek is an Open-Source Network
+                        Intrusion Detection System and a network traffic analyzer that uses a domain-specific scripting
+                        language. With Zeek you can detect suspicious signatures and anomalies, track DNS, HTTP, and FTP
+                        activity. This tool is capable of automatically downloading suspicious files it spots on the
+                        network, sending them for analysis, notifying relevant parties if anything is uncovered, blacklisting
+                        the source and shutting down the device that downloaded it. In this path, you will learn how to
+                        utilize Zeek in your environment to detect intrusions and anomalies.</p>
+                    <a href="./Documents/KYGnus_Blog_Zeek.pdf" style="color: red; text-align: center; text-decoration: none;">
+                        <p style="color:greenyellow;">Download PDF</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-box">
+                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">Zypper</h3>
+                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; openSUSE Package Manager. "Zypper
+                        commands to Manage openSUSE"</p>
+                    <a href="./Documents/KYGnus_Blog_Zypper.pdf"
+                        style="color: red; text-align: center; text-decoration: none;">
+                        <p style="color:greenyellow;">Download PDF</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-box">
+                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">SUSE</h3>
+                    <h4 style="color: #32CD32; text-align: left; line-height: 2;">&gt; Package Manager with New Style For
+                        openSUSE.</h4>
+                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; There is no claim that this package
+                        manager is better or more optimal than the others The goal is to improve platforms or make things
+                        easier I wrote this package manager for my daily tasks I am in this philosophy that I try to write
+                        everything I need myself and I wanted to make it available to others. and support and accompany us to
+                        make the conditions better for ourselves. </p>
+                    <a href="./Documents/SUSE.pdf" style="color: red; text-align: center; text-decoration: none;">
+                        <p style="color:greenyellow;">Download PDF</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
 		<div class="row">
-			<div class="col-md-12" style="text-align: center;margin-top: 30px;">
-
-
-
-				<p style="background-color: black;color:#32CD32;text-decoration: none; white-space: pre;">	
-&NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&block;&block;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;			
-				</p>
-                                                     
-
-					
-
-					
-			<h3 ><span style="color:#32CD32;">K</span>oosha<span style="color:#32CD32;">Y</span>eganeh<span style="color:#32CD32;">Gnu</span>Linux<span style="color:#32CD32;">S</span>oftwares</h3>
-					<p >|<[][]$#/-\ `/[-(_+[-|\|[-# (_+|\||_| |_!|\||_|)( $[]|='|'\|//-\/2[-$</h4>
-			</div>
-
-		</div>
-
-
-
-
-
-
-		<div class="row" style="margin-top:50px;margin-left: 80px; margin-right: 80px;">
-            <h2 style="color:#32CD32;text-align:center;">KYGnus Blog</h2><br><br>
-
-
-            <div class="container">
-
-                    <h4 style="color:#32CD32;line-height: 2;">
-                        > In order for the documents to be available and shareable in environments without internet, we will try to prepare some files in PDF format and put them on the site and the rest of the links related to KYGnus.
-                        It is hoped that free access to information will be available for everyone.
-                        If you are interested in these documents, you can donate to children with cancer or any other charity anywhere in the world.</h4>
-
-            </div>
-
-
-            <div class="container">
-                <h3 style="color:#32CD32;text-align:left;line-height: 2">Zeek<h3>
-
-
-                   <h4 style="color:#32CD32;text-align:left;line-height: 2">>  Zeek is an Open-Source Network Intrusion Detection System and a network traffic analyzer that uses a domain-specific scripting language. With Zeek you can detect suspicious signatures and anomalies, track DNS, HTTP, and FTP activity. This tool is capable of automatically downloading suspicious files it spots on the network, sending them for analysis, notifying relevant parties if anything is uncovered, blacklisting the source and shutting down the device that downloaded it. In this path, you will learn how to utilize Zeek in your environment to detect intrusions and anomalies.
-                </h4>
-                <div class="col-md-12">
-                    <a href="./Documents/KYGnus_Blog_Zeek.pdf"  style="color:red; text-align: center;text-decoration: none;"> <h4>PDF</h4></a>
+            <div class="col-md-12">
+                <div class="text-box">
+                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">V</h3>
+                    <h4 style="color: #32CD32; text-align: left; line-height: 2;">&gt; Vlang Document</h4>
+                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; There is no claim that this package </p>
+					<p>Small and easy to build compiler</p>
+					<p>Flexible memory management</p>
+					<p>C translation</p>
+					<p>Hot code reloading</p>
+					<p>A powerful graphics library</p>
+					<p>Light and fast cross-platform GUI library</p>
+					<p>Easy cross compilation</p>
+					<p>Painless deployments and dependency management</p>
+					<p>and More ...</p>
+                    <a href="https://gitlab.com/KooshaYeganeh/vlang" style="color: red; text-align: center; text-decoration: none;">
+                        <p style="color:greenyellow;">online Document</p>
+                    </a>
                 </div>
             </div>
+        </div>
+    </div>
 
-
-
-            <div class="container">
-                <h3 style="color:#32CD32;text-align:left;line-height: 2">Zypper<h3>
-
-
-                   <h4 style="color:#32CD32;text-align:left;line-height: 2">>  openSUSE Package Manager. " Zypper commands to Manage openSUSE " 
-                </h4>
-                <div class="col-md-12">
-                    <a href="./Documents/KYGnus_Blog_Zypper.pdf"  style="color:red; text-align: center;text-decoration: none;"> <h4>PDF</h4></a>
-                </div>
-            </div>
-
-
-			<div class="container">
-                <h3 style="color:#32CD32;text-align:left;line-height: 2">SUSE<h3>
-
-
-                   <h4 style="color:#32CD32;text-align:left;line-height: 2">>  Package Manager with New Style For openSUSE.
-                </h4>
-
-				<h4 style="color:#32CD32;text-align:left;line-height: 2">> There is no claim that this package manager is better or more optimal than the others The goal is to improve platforms or make things easier I wrote this package manager for my daily tasks I am in this philosophy that I try to write everything I need myself and I wanted to make it available to others. and support and accompany us to make the conditions better for ourselves. </h4>
-
-
-                <div class="col-md-12">
-                    <a href="./Documents/SUSE.pdf"  style="color:red; text-align: center;text-decoration: none;"> <h4>PDF</h4></a>
-                </div>
-            </div>
-            
-            </div>
-
-
-
-
-
-		<!-- Footer -->
-		<div class="row" style="margin-top:50px;margin-left:40px;">
-			<div class="footer">
-				<div class="col-md-12">
-                    <p style="color:green;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃   </p>
-						<a href="https://github.com/KooshaYeganeh" style=" text-decoration: none;color:#32CD32;">GitHub </a>
-						<a href="https://gitlab.com/KooshaYeganeh" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">GitLab </a>
-						<a href="https://hub.docker.com/u/kooshakooshadv" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">DockerHub</a>
-
-						<a href="http://kooshayeganeh.gitbook.io" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">GitBook </a>
-						<a href="https://t.me/KYGnus" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">Telegram</a>	
-						<a href="https://twitter.com/kooshakooshadv" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">Twitter</a>
-
-						
-						
-						<h5 style=" color:#32CD32;"> ➜ Gmail : kooshakooshadv@gmail.com</h5>
-
-
-
-						<h5 style=" color:#32CD32;"> ➜ ProtonMail : kooshakooshadv@protonmail.com</h5>
-                        <p style="color:green;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃   </p>
-				</div>
-				
-
-			</div>
-			</div>
-		</div>
+<br><br><br><br>
 
 </body>
 
-
-
-</html>l
+</html>

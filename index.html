@@ -2,563 +2,172 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-	<link rel="stylesheet" href="./static/style.css">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
-	<title>KYGnus ( Koosha Yeganeh Gnu Linux Softwares)</title>
-	<link rel="icon" type="image/x-icon" href="./static/kygnus+.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>KYGnus</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: #32CD32;
+            font-family: 'Hack', monospace;
+            
+        }
+
+        .navbar {
+            background-color: black;
+            border: none;
+            color: green;
+        }
+
+        h1,
+        h2,
+        h5 {
+            color: #32CD32;
+        }
+
+        p,
+        b {
+            color: #32CD32;
+        }
+
+        a {
+            color: #32CD32;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #228B22;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        img {
+            filter: invert(1);
+        }
+
+        footer {
+            background-color: black;
+            color: #32CD32;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-links {
+            margin: 10px 0;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            color: #32CD32;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #228B22;
+        }
+
+        /* Box styling */
+        .text-box {
+            border: 1px solid #32CD32;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #000;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 
-<body style="background-color:black;">
-
-	<div class="containter">
-		<div class="row">
-			<div class="col-md-12" style="text-align: center;margin-top: 30px;">
-
-
-
-				<p style="background-color: black;color:#32CD32;text-decoration: none; white-space: pre;">	
-&NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&block;&block;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;			
-				</p>
-                                                     
-
-					
-
-					
-			<h3 ><span style="color:#32CD32;">K</span>oosha<span style="color:#32CD32;">Y</span>eganeh<span style="color:#32CD32;">Gnu</span>Linux<span style="color:#32CD32;">S</span>oftwares</h3>
-					<p >|<[][]$#/-\ `/[-(_+[-|\|[-# (_+|\||_| |_!|\||_|)( $[]|='|'\|//-\/2[-$</h4>
-			</div>
-
-		</div>
-
-		<div class="row" style="margin-top:50px;margin-left: 80px; margin-right: 80px;">
-
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h3 style="color:green;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃ </h3>
-					<h5 style="color:green;font-family: Hack, monospace;margin-top: 20px;">➜  koosha @ KYGnus Linux has been and is one of the biggest measures in the direction of freedom.<br>
-						 The thinking behind Linux and free software should spread to all fields of knowledge to witness the improvement of society and the world.<br>
-						 We all owe a debt of gratitude to people like Linus Torvalds and Richard Stallman. Because the movement started by these people can be said to change the direction of the IT field. If we all use software in this field and every bug and problem of this system is discovered and solved very quickly, it is the result of the thinking and hard work of these people.</h5>
-					<h3 style="color:green;margin-top: 20px;"> ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃ </h3>
-
-
-			</div>
-		</div>
-
-		<div class="row" style="margin-top:30px;text-align: center;">
-			<div class="col-md-2">
-				<a href="virus.html" style="color:green; text-align: center;text-decoration: none;"> Virus</a>
-			</div>
-			<div class="col-md-2">
-				<a href="Linux_Security.html"  style="color:green; text-align: center;text-decoration: none;"> Security</a>
-			</div>
-
-			<div class="col-md-2">
-				<a href="#" style="color:green; text-align: center;text-decoration: none;"> Devops</a>
-			</div>
-			<div class="col-md-2">
-				<a href="Manifesto.html" style="color:green; text-align: center;text-decoration: none;"> Manifesto</a>
-			</div>
-
-			<div class="col-md-2">
-				<a href="Blog.html" style="color:green; text-align: center;text-decoration: none;"> Blog</a>
-			</div>
-		</div>
-
-
-
-
-		<div class="row" style="margin-top:50px;">
-
-			<div class="col-md-12">
-				
-				<h3 style="color:#32CD32;margin-top: 100px; text-align: center;">KYGnus Guard Community</h3></br>
-					<h4 style="color:green;text-align: left;margin-left: 100px;">Linux Version and open Source Antivirus KYGnus with web GUI</h4>
-					<h4 style="color:green;text-align: left;margin-left: 100px;"> The philosophy of this antivirus is to be more accurate in analyzing malicious files, either by comparing the file with the database or checking the structure of the files.
-					<h4  style="color:green;text-align: left;margin-left: 100px;"> The task of checking activities and has been postponed to another software. (KYGnus LMD) </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;"> For more information, refer to the GitHub page of the Software </h4>
-					<a href="https://github.com/KooshaYeganeh/KYGnus-Guard-community/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/KYGnus-Guard-community/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 157f95715261e56b704c3d0d20ba61f7e81bb74519cd7e5b8b518b42d0f73f11</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip : 7ba1301fc3ca0190988fcc4c3e188372</p>
-			</div>
-		</div>
-
-
-		<div class="row" style="margin-top:50px;">
-
-			<div class="col-md-12">
-				<h3 style="color:#32CD32; text-align: center;">KYGnus Guard Enterprise</h3>
-				<h4 style="color:red;text-align: left;margin-left: 100px;"> " closed Source and non Free "</h4>
-					<h4 style="color:green;text-align: left;margin-left: 100px;"> ✔ Scan Files  </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Scan Ports  </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Scan Vulneratbility  </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Scan url  </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Scan with two Engines </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Services Status </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ scan shell Scripts </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Bigger Database than Community Version </h4>
-
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a> <br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum kyguard : 4560df438c0108a169da55e5467f4ea286d0d9ad0674e33f5fc952ddc6b172e3 </p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum kyguard : 8e0542ccae98f0ab050b5dc46897b80f</p>
-					
-			</div>
-		</div>
-
-		<div class="row" style="margin-top:50px;">
-				<div class="col-md-12">
-					<h3 style="color:#32CD32;text-align: center;">KYGnus AMD (Android Malware Detect) </h3></br>
-					<h4 style="color:green;text-align: left;margin-left: 100px;"> Scan Android Device with Your Linux</h4>
-									<h4 style="color:green;text-align: left;margin-left: 100px;"> </h4>
-									<h4 style="color:green;text-align: left;margin-left: 100px;"> Helping specialists to improve the security of Android devices</h4>
-									<h4 style="color:green;text-align: left;margin-left: 100px;"> Following the main philosophy: We produce everything we need ourselves and are not dependent on companies</h4>
-				<a href="https://github.com/KooshaYeganeh/AMD/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/AMD/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-				<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : d942632bd75f996e7dac9b5ad624e7f40b62b0522bc966459d51897d1a46383e</p>
-				<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip : 1dc4c3e0827e125abdde3e55f5b40a51 </p>
-				</div>
-
-		</div>
-		<div class="row" style="margin-top:50px;">
-				<div class="col-md-12">
-					<h3 style="color:#32CD32;text-align: center;">openSUSE JalaliDate</h3>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">Jalali Date for openSUSE</h4>
-								<a href="https://github.com/KooshaYeganeh/SUSE-JalaliDate/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/AMD/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : b829d8f1129c54e49a2f41bb6fdf533ece6201bda714a1fdc9aa07820465c39a</p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  74c9010f2df14cdf5c3b383b093569d8</p>
-				</div>
-
-		</div>
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-					<h3 style="color:#32CD32;text-align: center;">SUSE PackageManager</h3><br><br>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">A script for easy installation of software on openSUSE and a little more features</h4>
-								<a href="https://github.com/KooshaYeganeh/AMD/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/AMD/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : d18b8186f23516d64515df079ff2502db162e4f13d4fb8cebd55afd6e3d48a10 </p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip : 278bdeaa51869f556f9137582140e547 </p>
-				
-				</div>
-		</div>
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-					<h3 style="color:#32CD32;text-align: center;">KYGnus Guard MsWindows community</h3><br>
-					<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source"</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Familiarity of Windows users with Linux environment and Linux thinking</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Freedom of action in changes to the Software</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Being Portable</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Simplicity of setting and use</h4>
-								<a href="https://gitlab.com/KooshaYeganeh/kygnus-guard-mswindows/-/archive/main/kygnus-guard-mswindows-main.zip" style="color:red; text-align:left;margin-left: 100px;;">Download</a>  <a href="https://gitlab.com/KooshaYeganeh/kygnus-guard-mswindows/-/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum kygnus-guard-mswindows-main.zip : 4b71c0278d2fe11deb906322577eeb8c239e5121491df54d47a0657599ec26aa</p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum kygnus-guard-mswindows-main.zip :  ef3a9947393538d5ebf3c5b6c9be4fe2</p>
-				</div>
-		</div>
-		</div>
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-					<h3 style="color:#32CD32;text-align: center;">KYGnus Guard MsWindows Enterprise</h3><br>
-					<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source and non Free "</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Familiarity of Windows users with Linux environment and Linux thinking</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Freedom of action in changes to the Software</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Being Portable</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Simplicity of setting and use</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Scan Shell codes</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Scan URLs</h4>
-								<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Bigger Database</h4>
-								<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a><br><br>
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum MSwindows7-32bit : 442e0b20db4d231ab6fc99c1983199980be6a4d906da23fa68c6675e1d5c7b88</p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum MSwindows7-32bit : dd6ad479765ce0462fd83c39ab38b0d3 </p>
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum MSwindows7-64bit : ef4a5033922b0f0ce263491a25477754ec85b175fca71c2a3dc6b5e187111315</p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum MSwindows7-64bit :66ad1e0bbbe8efcffcd271663d6b5845  </p>
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum MSwindows10 : ce962e921fac1c9300ad53268e969d92fa07222aa0dd153994a193160c61a0b0</p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum MSwindows10 :  d337d0ed59fba0765a26a9bd13884433</p>
-								
-								<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum MSwindows11 : 13e30f14bdcca76a4a2ff53326f77fc7115bb842ccd9e175074dca487fb71dbd</p>
-								<p style="color:green;text-align: left;margin-left: 100px;">md5sum MSwindows11 : bcfaaa23157cc8f9b7be8fb90b189a80 </p>
-
-							</div>
-		</div>
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">LV (Linux Verfication)</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Check the Security of the Downloaded Linux iso File</h4>
-					<a href="https://github.com/KooshaYeganeh/Linux_Verification/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/Linux_Verification/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 48a006e09536d85e303601c744121b33097f44af015aaf2a1433407f00a93b93</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  28fb4c7250770bc28a86a9a1d4408b3e</p>
-			</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">WHkernel</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">what's Going on in Linux Kernel</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">A program that shows you what each kernel module </h4>
-					<a href="https://github.com/KooshaYeganeh/whKernel/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/whKernel/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : f5a9a829a7ee3797814b65bad6214ff26ac10e52f6d85ad416a6e8832463890a</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  2de58080d7a8f09a40cfeaafb5ca5508</p>
-				</div>
-		</div>
-
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">Clone Disk</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Make a clone of your hard drives very easily</h4>
-					<a href="https://github.com/KooshaYeganeh/clone-disk/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/clone-disk/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 8752bc846a9b4fbdbb9e841560bed37f3c05fc2b505c87c756b4eb43a45baccb</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  47a215787837a4ea6123aee03b21c428</p>
-				</div>
-		</div>
-
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">Perm Check</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">This app check permissions of system create database of Files</h4>
-					<a href="https://github.com/KooshaYeganeh/perm_check/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/perm_check/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : f9f4e8cc90eac89e8f3bb2e4b04dcf0ae6c739ef9423c6f18610b4560079bc2e</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  6275870dbac3e52c543d6f7d68d863a8</p>
-			
-				</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">Exif Remover</h3>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Scripts for Find Exif Data in images and Try to remove them</h4>
-					<a href="https://github.com/KooshaYeganeh/exif_remover/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/exif_remover/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 2a31e7c3797e901bf3117cadb9115817c7cf78305c4223c46ff17eea9d3c7a76</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip : 4cf556131041684ea4ad5bae75505542 </p>
-			
-				</div>
-		</div>
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">KYGnus Backup</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">This app Create Backup in Certain Times and Comapre with Previous Version</h4>
-					<a href="https://github.com/KooshaYeganeh/KYGnus-Backup/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/KYGnus-Backup/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 16824e1ffa443202c99e158e52cdb32c8b1505a92aafaf7a5a6e7dc5cae1af12</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  94b5adb19509904cbcbeb2d74e3c0223</p>
-			
-				</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">KYGnus Map</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">A web application for working with geographic maps</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Upload Excel and receive a geographic map.
-						Analyze your files</h4>
-						<h4 style="color:green;text-align: left;margin-left: 100px;">And</h4>
-						<h4 style="color:green;text-align: left;margin-left: 100px;"> little more features...</h4>
-					<a href="https://github.com/KooshaYeganeh/KYGnus_Map/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/KYGnus_Map/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 6f3485305d375e3e5bf03e31d6b4d16b5f3d044b7741fbfb2e14848366319100</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  92be85ef68ad23196935c4afd1b1028e</p>
-			
-				</div>
-		</div>
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">FS</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Easily Sort Files with their Formats</h4>
-					<a href="https://github.com/KooshaYeganeh/FS/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/FS/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : e27acc3a65f6d9958519f9f72e810968b741e286a4e3a65e806f95c575b3fa38</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  0fba9bbecb2b61b1eb9957d0b458c21e</p>
-			
-				</div>
-
-
-		</div>
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">AntiDeface</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Mini Solution for AntiDeface website</h4>
-					<a href="https://github.com/KooshaYeganeh/AntiDeface/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/AntiDeface/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 18043f0bb06afb9c8161c85a35da65747a31357c9d30ac7316fc2352dedc3c15</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  948c86ff14cb5a7aa8467d890e732dd7</p>
-				</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">DDos Detector</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Detect DDOS and block attacker</h4>
-					<a href="https://github.com/KooshaYeganeh/DDOS_Detector/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/DDOS_Detector/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-			
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 90cd16c6c79a7936c16db384a70e3b48d037972c2aeca22bf152e5f814d51717</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  ad6d6ac0e3e6ea58dc73db597a3c0c8c</p>
-				</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">Smart Archive</h3></br>
-			<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source and non Free "</h4>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Automatic Archive Software</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Sorting files by type and setting up a separate directory for each type of file</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Check file security</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Recognizing the information in the file name and transferring the information to the database</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Receive the Excel file of registered information</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Preparation of the final report of the work process</h4>
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum SmartArchive : 9f7de539aca1b5c02e3eccf063592ad00355830b09ab64249cc6f880653bcc84</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum SmartArchive : f9fc1d909d9425ba0e77a54b2a1ddbb9 </p>
-			
-				</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">KYGnus Package Manager</h3><br><br>
-			<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source and non Free "</h4>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">This is KYGnus Package manager for install KYGnus Apps</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">kyg Package Manager</h4>
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a><br><br>
-			
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum kyg : ee5fcda83f8b4b60ec679840e4d40988355b9da4580efc8e4f10a3152b60e13e </p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum repo-main.zip : cbb5b30f2267944c4bf0791569a524f5 </p>
-				</div>
-
-
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">KYGnus Guard LMD ( Linux Malware Detect )</h3></br>
-			<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source and non Free " </h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">This Script Help Admins to Find Malicious Files and Malicious Activity From system.</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ check Permissions of User Gives Directory</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ check Hash (sha256sum ) Files from Given Directory</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ check Malicious Files</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ check Known Malwares And Trojans with Signatures</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ Find Some Malwares Fingerprints</h4>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">✔ show Some information Abiut Some Malwares</h4>
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum KYGnus_Guard_LMD : 695b4cce8a149f37d812e93957c18cf25731d74868686712b871838f47f6ba2e </p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum KYGnus_Guard_LMD : ba150c982b7bfd0be11d38394a49ea1e  </p>
-				</div>
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">LFAAV</h3>
-			<h3 style="color:green;text-align: left;margin-left: 100px;">Linux For Andriod App Verfication</h3>
-					<h4  style="color:green;text-align: left;margin-left: 100px;">The use of this software is to detect healthy and original Android applications. To use this software, it is enough to enter the digital signature of the software so that your software can be checked</h4>
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a> <br><br>
-
-				</div>
-				<div class="col-md-12">
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum lfaav : 5aebc37cdbbe7b065751c6b3f94e241e8ea47571e44ae6f24f99c001c7317c2a </p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum lfaav : e9ef03db73dc991c24f1a024bf793236 </p>
-				</div>
-		</div>
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">SmartArchive</h3><br><br>
-			<h4  style="color:green;text-align: left;margin-left: 100px;">You don't need an employee to archive your information.( Run and just watch )</h4>
-			<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source and non Free " </h4>
-			<h4 style="color:green;text-align: left;margin-left: 100px;">1- check Files Type </h4>
-				<h4 style="color:green;text-align: left;margin-left: 100px;">2- Sort and Create Directory For Each Type </h4>
-					<h4 style="color:green;text-align: left;margin-left: 100px;">3- Read File Name </h4>
-						<h4 style="color:green;text-align: left;margin-left: 100px;">
-							4- Save Files Name and Data into MariaDB Database </h4>
-							<h4 style="color:green;text-align: left;margin-left: 100px;">
-								 5- zip Created Directories </h4>
-
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum SmartArchive : 9f7de539aca1b5c02e3eccf063592ad00355830b09ab64249cc6f880653bcc84 </p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum SmartArchive : f9fc1d909d9425ba0e77a54b2a1ddbb9 </p>
-			</div>
-		</div>
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">Limiter</h3><br><br>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">Permission Limiter for Some Commands & Compliers in Linux Servers</h4>
-					<a href="https://github.com/KooshaYeganeh/Limiter/archive/refs/heads/main.zip" style="color:red;text-align: left;margin-left: 100px;">Download</a> <a href="https://github.com/KooshaYeganeh/Limiter/blob/main/README.md" style="color:red;margin-left:20px;">Document</a><br><br>
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum main.zip : 316ff35ccc767b678389b490b42b8aae7367c7561abb2d379c43efc1a32ec30e </p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum main.zip :  5d41cdd7a0c88f86b5671b84b075f2fd</p>
-			
-				</div>
-		</div>
-
-
-		<div class="row" style="margin-top:50px;">
-			<div class="col-md-12">
-			<h3 style="color:#32CD32;text-align: center;">Nas Scanner</h3><br><br>
-			<h4 style="color:red;text-align: left;margin-left: 100px;">" closed Source and non Free "</h4>
-
-					<h4  style="color:green;text-align: left;margin-left: 100px;">This Script Helps Linux Admin To Find Malicious Files at Share Folder with windows Users
-this Script check Files Signature and Content For Malicious Contents</h4>
-					<a href="./Download.html" style="color:red;text-align: left;margin-left: 100px;">Download</a><br><br>
-			
-					<p style="color:green;text-align: left;margin-left: 100px;" >sha256sum ms-windows-scanner-main.zip :  5815a3208f2c04553f44466af949eae386a9809af07c78787be40b8cfb61cec4</p>
-					<p style="color:green;text-align: left;margin-left: 100px;">md5sum ms-windows-scanner-main.zip :  a8769499c96640503d851b8ad765418e</p>
-				</div>
-
-
-		</div>
-
-		<div class="row" style="margin-top:50px;">
-			<p style="color:green;text-align: left;margin-left: 100px;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</p>
-			<h3 style="color:#32CD32;text-align: center;">HandBooks </h3>
-			<a href="https://kooshayeganeh.gitbook.io/kygnus-linux-handbook/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714; Lpic1</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/linux-lpic2-202/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;"> &#x2714 Lpic2</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/iptables/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 iptables</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/firewalld/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 FirewallD</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/vim/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Vim</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/tmux/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Tmux</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/git/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Git</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/linux-network/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Linux Network</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/mariadb-handbooks/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 MariaDB</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/docker/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Docker</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/selinux/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 SeLinux</p></a>
-			<a href="https://kooshayeganeh.gitbook.io/zypper-suse-package-manager/" target="_blank"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Zypper (suse package Manager)</p></a>
-			
-
-			
-
-
-		</div>
-			
-		<div class="row" style="margin-top:50px;">
-			<p style="color:green;text-align: left;margin-left: 100px;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</p>
-			<h3 style="color:#32CD32;text-align: center;">Documents </h3>
-			<a href="https://github.com/KooshaYeganeh/OpenSuse4Developers"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 openSUSE For Developers</p></a>
-			<a href="https://github.com/KooshaYeganeh/Antivirus_WebSites"> <p style="color:green;text-align: left;margin-left: 100px;">&#x2714 Antivirus websites</p></a>
-			
-
-		</div>
-
-
-
-		<div class="row" style="margin-top:50px;">
-			<p style="color:green;text-align: left;margin-left: 100px;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</p>
-			<h3 style="color:#32CD32;text-align: center;">Recomended Linuxes </h3><br>
-			<a href="https://www.fedoraproject.org/workstation/download/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Fedora</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">Linux Fedora is the most popular Linux that I tested. I can mention several reasons for this:
-				1- The first point, when you are both a developer and a system administrator, in this case, many serious servers in the world are rpm, and when you work with Fedora every day, it is as if you are sitting behind a cemtos or rocky server.
-				2- Fedora is very smooth and stable
-				3- Interesting projects are implemented on Fedora. For example, the Fedora spins project.
-				4- You can find a lot of information about Fedora on the Internet.
-				As someone who is both a developer and a system administrator, the best Linux I have tested is Fedora.</p><br>
-			<a href="https://get.opensuse.org/leap/15.4/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">openSUSE</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">If Fedora is the Lamborghini of Linuxes, then the slogan that most of those who use SUSE is Mercedes-Benz Linux is completely correct.suse linux is a very stable and fast linux.
-				When I tested it, it was installed by default in the installation process with the btrfs file system. This means it is faster than the others.
-				Many people who are developers, when they compare Ubuntu with Suse, they vote for Ubuntu, but my opinion is completely different.
-				I tested open suse with kde and xfce desktops and they work very stable and smooth.
-				In my opinion, one of the strengths of SUSE Linux is the company and the community that is behind this operating system. SUSE has one of the largest contributions to the Linux kernel and large projects such as Open Stack, and this is clearly visible in the quality of work with SUSE. to be
-				My only problem with suse at first is the manager package and adding the PDP repositories when installing the software. (I also solved this problem by writing a package manager like in SUSE 15.4)
-				suse is one of the most popular</p><br>
-			<a href="https://www.bunsenlabs.org/installation.html"><p style="color:#32CD32;text-align: left;margin-left: 100px;">BunsenLabs</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;"> The only thing I want to say about bunsenlabs is: minimal, fast and easy to use
-				The only problem I had is that, like Ubuntu, you cannot count on supporting all packages and solving problems</p><br>
-			
-			<a 	href="https://cutefish-ubuntu.github.io/download/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">CuteFish</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;"> It was one of the most beautiful Linuxes I tested. If you like Ubuntu and want a different Ubuntu, I recommend cutefish.
-				Only one big problem that happened to me was its strange slowness, which was really painful after a while</p><br>
-			<a 	href="https://rockylinux.org/download/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Rocky</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">A worthy successor to centos</p><br>
-			<a 	href="https://lubuntu.me/downloads/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Lubuntu</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">In my opinion, if you want to use Ubuntu, you should use Lubuntu instead.
-				Even I prefer lubuntu because of its simplicity and ease of use.</p><br>
-			<a 	href="https://www.debian.org/download"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Debian</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;"> The best alternative for versions like centos and...
-				I tested Debian both on a server and on a personal laptop.
-				I used Gnome desktop on my personal laptop.
-				In my opinion, it is the best non-rpm Linux</p><br>
-			<a 	href="https://manjaro.org/download/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Manjaro</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">It is not a suitable option for someone who is a developer and system administrator, but the experience was completely different </p><br>
-			<a 	href="https://www.kali.org/get-kali/#kali-platforms"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Kali</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">In short, the best Linux for penetration testing </p><br>
-			<a 	href="https://sourceforge.net/projects/linuxkodachi/files/latest/download"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Kodachi</p> </a><br>
-			<p style="color:green;text-align: left;margin-left: 100px;">It was one of the strangest and most interesting Linuxes that I tested. First of all, I can say that it can be used as an operating system for normal tasks, and there are no special problems in this regard.
-				It is really safe and for someone who cares about his safety and his work, I think it is one of the best options. There are similar options, but none of them are as good as Kodachi. </p><br>
-			<a 	href="https://puppylinux-woof-ce.github.io/"><p style="color:#32CD32;text-align: left;margin-left: 100px;">Puppy</p> </a>
-			<p style="color:green;text-align: left;margin-left: 100px;">I tested puppy compatible with ubuntu.
-				There is a different experience in using Linux. In my opinion, everyone who likes Linux should try puppy </p><br>
-
-		</div>
-
-
-
-		<!-- Footer -->
-		<div class="row" style="margin-top:50px;margin-left:40px;">
-			<div class="footer">
-				<div class="col-md-12">
-					<p style="color:green;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</p>
-						<a href="https://github.com/KooshaYeganeh" style=" text-decoration: none;color:#32CD32;">GitHub </a>
-						<a href="https://gitlab.com/KooshaYeganeh" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">GitLab </a>
-						<a href="https://hub.docker.com/u/kooshakooshadv" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">DockerHub</a>
-
-						<a href="http://kooshayeganeh.gitbook.io" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">GitBooks </a>
-						<a href="https://t.me/KYGnus" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">Telegram</a>	
-						<a href="https://twitter.com/kooshakooshadv" style=" text-decoration: none;color:#32CD32;margin-left: 40px;">Twitter</a>
-
-						
-						
-						<h5 style=" color:#32CD32;"> ➜ Gmail : kooshakooshadv@gmail.com</h5>
-
-
-
-						<h5 style=" color:#32CD32;"> ➜ ProtonMail : kooshakooshadv@protonmail.com</h5>
-						<p style="color:green;">▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃</p>
-				</div>
-				
-
-			</div>
-			</div>
-		</div>
-	</div>
-
-
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-bottom">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">KYGnus</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="Download.html">Downloads</a></li>
+                    <li class="nav-item"><a class="nav-link" href="virus.html">Virus</a></li>
+					<li class="nav-item"><a class="nav-link" href="Blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Manifesto.html">Manifesto</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content-->
+    <section>
+        <div class="container px-4 px-lg-10">
+            <div class="row">
+                <div class="col-md-12 center-text">
+                    <p style="background-color: black; color: #32CD32; text-decoration: none; white-space: pre;">
+                        &NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&block;&block;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;
+                    </p>
+
+                    <h3>
+                        <span style="color: #32CD32;">K</span>oosha<span style="color: #32CD32;">Y</span>eganeh<span style="color: #32CD32;">Gnu</span>Linux<span style="color: #32CD32;">S</span>oftwares
+                    </h3>
+                    <p>|<[][]$#/-\ `/[-(_+[-|\|[-# (_+|\||_| |_!|\||_|)( $[]|='|'\|//-\/2[-$</p>
+                </div>
+            </div>
+        </div>
+        <div class="container px-4 px-lg-10">
+            <div class="row gx-4 gx-lg-10">
+                <div class="col-lg-10">
+                    <div class="text-box">
+                        <p>
+                            koosha @ KYGnus Linux has been and is one of the biggest measures in the direction of freedom.<br>
+                            The thinking behind Linux and free software should spread to all fields of knowledge to witness the improvement of society and the world.<br>
+                            We all owe a debt of gratitude to people like Linus Torvalds and Richard Stallman. Because the movement started by these people can be said to change the direction of the IT field. If we all use software in this field and every bug and problem of this system is discovered and solved very quickly, it is the result of the thinking and hard work of these people.
+                        </p>
+                        <p>
+                            All the developed medical software on opensuse-medical was done by me and the project will continue on the right path with powerful new software.
+                        </p>
+                        <p>
+                            In this application, it has been tried that you can use the tools you need as quickly as possible. Like the 90s :)
+                        </p>
+        </div>
+            </div>
+                </div>
+                    </div>
+
+
+        <div class="container px-4 px-lg-10">
+            <div class="row gx-4 gx-lg-10">
+                <div class="col-lg-10">
+                    <div class="text-box">
+                    <p>GitHub: <a href="https://github.com/KooshaYeganeh" target="_blank">https://github.com/KooshaYeganeh</a></p>
+                    <p>GitLab: <a href="https://gitlab.com/KooshaYeganeh" target="_blank">https://gitlab.com/KooshaYeganeh</a></p>
+                    <p>GitBook: <a href="https://kooshayeganeh.gitbook.io" target="_blank">https://kooshayeganeh.gitbook.io</a></p>
+                    <p>DockerHub: <a href="https://hub.docker.com/u/kooshakooshadv" target="_blank">https://hub.docker.com/u/kooshakooshadv</a></p>
+        </div>
+            </div>
+                </div>
+                    </div>
+        <br><br><br>
+    </section>
+
+    <br><br>
+    <!-- Footer -->
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../static/js/scripts.js"></script>
 </body>
-
-
 
 </html>

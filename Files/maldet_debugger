@@ -1,0 +1,199 @@
+#!/bin/bash
+
+# 1 - check malware detect path
+# 2 - check malware detect config
+
+
+
+red="\e[1;31m"
+reset="\e[0m"
+green="\033[0;32m"
+
+echo "----------------------------------------------------------"
+echo -e "LMD Debugger From KYGnus(Koosha Yeganeh Gnu Linux Softwares) on$green openSUSE $reset"
+echo "Linux Malware Detect Debugger to Debug Main File and Configurations ..."
+echo "malware Detect Version : 1.6.5 "
+sleep 2
+
+
+
+
+check_config(){
+
+	email_alert=`cat /usr/local/maldetect/conf.maldet | grep 'email_alert="1"'`
+
+	autoupdate_sig=`cat /usr/local/maldetect/conf.maldet | grep 'autoupdate_signatures="1"'`
+
+
+	cron=`cat /usr/local/maldetect/conf.maldet | grep 'cron_daily_scan="1"'`
+
+	user_access=`cat /usr/local/maldetect/conf.maldet | grep 'scan_user_access="1"'`
+	
+	quarantine_hits=`cat /usr/local/maldetect/conf.maldet | grep 'quarantine_hits="1"'`
+	
+	quarantine_suspend_user=`cat /usr/local/maldetect/conf.maldet | grep 'quarantine_suspend_user="1"'`
+	
+	quarantine_suspend_user_minuid=`cat /usr/local/maldetect/conf.maldet | grep 'quarantine_suspend_user_minuid="500"'`
+
+	
+	clamscan=`cat /usr/local/maldetect/conf.maldet | grep 'scan_clamscan="1"'`
+	
+	scan_ignore_root=`cat /usr/local/maldetect/conf.maldet | grep 'scan_ignore_root="0"'`
+
+	
+	if [ "$email_alert" == 'email_alert="1"' ];then
+		true
+	else
+
+		echo "email_addr : Specify the email address on which you want to receive an email notification."
+		echo -e "> $red Email Alert [ WARNING ] $reset"
+		echo -e "> $red Add email_alert=\"1\" to config File => /usr/local/maldetect/conf.maldet $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+	
+	if [ "$autoupdate_sig" == 'autoupdate_signatures="1"' ];then
+		true
+	else
+		
+		echo "autoupdate_version : Enable the automatic updates of the LMD installation."
+		echo -e "> $red Autoupdate Signature [ Warning ] $reset"
+		echo -e "> $red Add autoupdate_signatures=\"1\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+
+
+	
+	if [ "$cron" == 'cron_daily_scan="1"' ];then
+		true
+	else
+		
+		echo "cron_daily_scan : Enable the daily automatic scanning."
+		echo -e "> $red cron dail Scan [ WARNING ] $reset"
+		echo -e "> $red Add cron_daily_scan=\"1\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+	
+	if [ "$user_access" == 'scan_user_access="1"' ];then
+		true
+	else
+		
+		echo "scan_user_access : Allows non-root users to perform Scans"
+		echo -e "> $red Scan User Access [ WARNING ] $reset"
+		echo -e "> $red Add scan_user_access=\"1\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+	
+
+	if [ "$quarantine_hits" == 'quarantine_hits="1"' ];then
+		true
+	else
+		
+		echo "quarantine_hits : Move hits to quarantine & alert"
+		echo -e "> $red Scan User Access [ WARNING ] $reset"
+		echo -e "> $red Add quarantine_hits=\"1\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+
+
+	
+	if [ "$quarantine_clean" == 'quarantine_clean="0"' ];then
+		true
+	else
+		echo "quarantine_clean : Clean string based malware injections."
+		echo -e "> $red Scan User Access [ WARNING ] $reset"
+		echo -e "> $red Add quarantine_clean=\"0\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+
+	if [ "$quarantine_suspend_user" == 'quarantine_suspend_user="1"' ];then
+		true
+	else
+		echo "quarantine_suspend_user : Suspend user if malware found."
+		echo -e "> $red quarantine_suspend_user [ WARNING ] $reset"
+		echo -e "> $red Add quarantine_suspend_user=\"1\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+
+
+
+	if [ "$quarantine_suspend_user_minuid" == 'quarantine_suspend_user_minuid="500"' ];then
+		true
+	else
+		echo "quarantine_suspend_user_minuid : Minimum userid value that be suspended"
+		echo -e "> $red quarantine_suspend_user [ WARNING ] $reset"
+		echo -e "> $red Add quarantine_suspend_user_minuid=\"500\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+
+
+	if [ "$scan_clamscan" == 'scan_clamscan="1"' ];then
+		true
+	else
+		echo "scan_clamscan : Use with ClamAV"
+		echo -e "> $red scan_clamscan [ WARNING ] $reset"
+		echo -e "> $red Add scan_clamscan=\"1\" to config File $reset"
+		echo "----------------------------------------------------------"
+
+	fi
+	
+	
+	if [ "$scan_ignore_root" == 'scan_ignore_root="0"' ];then
+		true
+	else
+		echo "scan_ignore_root : Enable scanning for root-owned files. Set 1 to disable."
+		echo -e "> $red scan_ignore_root [ WARNING ] $reset"
+		echo -e "> $red Add scan_ignore_root=\"0\" to config File $reset"
+		echo "----------------------------------------------------------"
+	fi
+	
+}
+
+
+
+check_hash(){
+
+
+	hash=`sha256sum /usr/local/sbin/maldet | cut -d" " -f1`
+	if [ "$hash" == "8cee6d7c438c61020bef55cc54b39cab27c6f1fe06d687ab341fd6d942c92adb" ];then
+		echo -e "> maldet hash for Version 1.6.5 is $green [ OK ] $reset"
+		echo "----------------------------------------------------------"
+	else
+		echo "> maldet Hash is Not True $red[ DANGER ]$reset"
+		echo "----------------------------------------------------------"
+	fi
+}
+
+check_dir(){
+
+	if [ -f /usr/local/sbin/maldet ];then
+		
+		echo "----------------------------------------------------------"
+		echo "Start check LMD path in system "
+		sleep 1
+		echo -e "> Malware Detect path is $green [ OK ] $reset "
+		check_hash
+		check_config
+	else
+		echo "Can Not Detect Maldet Path $red [ WARNING ] $reset "
+		echo "> More Info : ERROR Maldet Not Installed or Path Error"
+		echo "> check Maldet Installation then check maldet path"
+		echo "> maldet path is : /usr/local/sbin/maldet"
+		exit 1
+	
+	fi
+
+
+}
+
+
+
+
+check_dir
+
+echo -e "Linux Malware Detect was$green DEBUGGED $reset"
