@@ -86,6 +86,19 @@
         .footer-links a:hover {
             color: #228B22;
         }
+
+
+            /* CSS to remove all borders and separators */
+    table {
+        border-collapse: collapse; /* collapse borders into a single border */
+        width: 100%; /* optional: adjust table width as needed */
+        border: none; /* remove border */
+    }
+    th, td {
+        border: none; /* remove border for cells */
+        padding: 8px; /* add padding for readability */
+        text-align: left; /* align text to the left */
+    }
     </style>
 </head>
 
@@ -132,11 +145,14 @@
                   
                     <div class="text-box">
                         <div class="card-body">
-                            <h4 class="card-title">Install</h4>
+                            <h4 class="card-title">Install</h4> <br><br>
+                            <p>1 - First Install termux on Andriod Device</p>
                             <p style="color:orangered;">Note1 : First Install wget </p>
                             <p style="color:orangered;">Note2 : If you download and use this software from sanctioned countries, be sure to change your IP address before starting the installation process.</p><br>
-                            <p>➜ pkg install update && pkg upgrade</p><br>
-                            <p>➜ pkg install wget -y</p><br>
+                            <p>2 - Then Install Basic Tools</p>
+                            <code style="color: #32CD32;">➜ pkg install update && pkg upgrade</code><br>
+                            <code style="color: #32CD32;">➜ pkg install wget -y</code><br><br>
+                            <p>3 - Then Install Loa</p>
                             <code style="color: #32CD32;">➜ wget https://kooshayeganeh.github.io/Files/loa.zip && unzip loa.zip && cd loa && ./install</code><br><br>
                         </div>
                 
@@ -148,6 +164,58 @@
                         <p style="color:greenyellow;">Document-Fr </p>
                     </a>
                 </div>
+
+
+            <div class="text-box">
+                <div class="card-body">
+                    <h4 class="card-title">Tested Devices</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Device Name</th>
+                                <th>Model</th>
+                                <th>OS Version</th>
+                                <th>Termux Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Xiaomi</td>
+                                <td>Redme 12</td>
+                                <td>13</td>
+                                <td>1.42.4</td>
+                            </tr>
+                            <tr>
+                                <td>Samsung</td>
+                                <td>A04S</td>
+                                <td>14 </td>
+                                <td>3.0.7</td>
+                            </tr>
+
+                            <tr>
+                                <td>Samsung</td>
+                                <td>A52S</td>
+                                <td>14 </td>
+                                <td>3.0.7</td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td>Xiaomi</td>
+                                <td>Redme Note 12</td>
+                                <td>13</td>
+                                <td>1.42.4</td>
+                            </tr>
+
+                            
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+                
+
             </div>
         </div>
         </div>
