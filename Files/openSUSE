@@ -1,0 +1,220 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Check if proot-distro is installed
+if ! pkg list-installed | grep -q proot-distro; then
+    echo "proot-distro is not installed. Installing proot-distro..."
+    pkg install proot-distro -y
+else
+    echo "proot-distro is already installed."
+fi
+
+# Check if OpenSUSE distribution is installed
+if ! proot-distro list | grep -q opensuse; then
+    echo "OpenSUSE is not installed. Installing OpenSUSE..."
+    proot-distro install opensuse
+else
+    echo "OpenSUSE is already installed."
+fi
+
+# Create a custom script to automate the login with the mount
+echo "Creating custom login script for OpenSUSE..."
+cat << 'EOF' > login-opensuse.sh
+#!/data/data/com.termux/files/usr/bin/sh
+
+# Login to OpenSUSE with storage mounted
+proot-distro login opensuse --bind /data/data/com.termux/files/home/storage/shared:/mnt/shared
+EOF
+
+# Make the script executable
+chmod +x login-opensuse.sh
+
+# Enter OpenSUSE environment and configure
+echo "Entering OpenSUSE environment..."
+./login-opensuse.sh << 'EOS'
+  # Update and upgrade OpenSUSE packages
+  echo "Updating and upgrading OpenSUSE packages..."
+  zypper refresh
+  zypper update -y
+
+  # Install KDE Plasma, VNC server, OpenSSH server, ClamAV, Maldet, Fail2Ban, Firewalld, and additional tools
+  echo "Installing KDE Plasma, VNC server, OpenSSH server, ClamAV, Maldet, Fail2Ban, Firewalld, and additional tools..."
+  zypper install -y \
+    patterns-kde-kde_plasma \
+    x11vnc \
+    xorg-x11-server-xvfb \
+    openssh \
+    clamav \
+    fail2ban \
+    firewalld \
+    vim \
+    git \
+    tmux \
+    htop \
+    lshw \
+    neofetch \
+    gcc \
+    make \
+    cmake \
+    python3 \
+    python3-devel
+
+  # Install the weather application
+  echo "Installing weather application..."
+  wget https://github.com/KooshaYeganeh/weather/archive/refs/heads/main.zip
+  unzip main.zip
+  cd weather-main
+  sudo rpm -ivh weather-0.0.1-1.noarch.rpm
+  cd ..
+
+  # Set up VNC server configuration
+  echo "Setting up VNC server..."
+  mkdir -p ~/.vnc
+  x11vnc -storepasswd
+
+  # Start VNC server (you might need to run this manually later)
+  echo "Starting VNC server (use the VNC client to connect to localhost:5900)..."
+  x11vnc -forever -usepw -create &
+
+  # Create standard desktop directories
+  echo "Creating standard desktop directories..."
+  mkdir -p ~/Desktop ~/Documents ~/Downloads ~/Pictures ~/Music ~/Videos
+
+  # Create a sample file on the desktop
+  echo "Creating a sample file on the desktop..."
+  echo "Welcome to your OpenSUSE Desktop!" > ~/Desktop/welcome.txt
+
+  # Set up OpenSSH server configuration
+  echo "Setting up OpenSSH server..."
+  sudo systemctl enable sshd
+  sudo systemctl start sshd
+
+  # Enhance SSH security
+  echo "Enhancing SSH security..."
+  sudo bash -c 'cat <<EOF >> /etc/ssh/sshd_config
+PermitRootLogin no
+PasswordAuthentication no
+AllowUsers your_username
+EOF'
+  sudo systemctl restart sshd
+
+  # Set up ClamAV
+  echo "Setting up ClamAV..."
+  sudo freshclam
+  sudo systemctl enable clamd
+  sudo systemctl start clamd
+
+  # Install and set up Maldet
+  echo "Installing and setting up Maldet..."
+  cd /tmp
+  wget http://www.rfxn.com/downloads/maldetect-current.tar.gz
+  tar -xzf maldetect-current.tar.gz
+  cd maldetect-*
+  sudo ./install.sh
+  sudo maldet --update
+
+  # Run a scan on the shared storage
+  echo "Running a scan on the shared storage with Maldet..."
+  sudo maldet --scan-all /mnt/shared
+
+  # Install and configure Fail2Ban
+  echo "Installing and configuring Fail2Ban..."
+  sudo systemctl enable fail2ban
+  sudo systemctl start fail2ban
+
+  # Create Fail2Ban SSH jail configuration
+  echo "Creating Fail2Ban SSH jail configuration..."
+  sudo bash -c 'cat <<EOF > /etc/fail2ban/jail.local
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 5
+EOF'
+
+  # Restart Fail2Ban to apply changes
+  sudo systemctl restart fail2ban
+
+  # Install ohmyzsh
+  echo "Installing Oh My Zsh..."
+  sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+  echo "exec zsh" >> ~/.bashrc
+
+  # Configure Vim
+  echo "Configuring Vim..."
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  cat << 'EOF' > ~/.vimrc
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+"
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'chriskempson/base16-vim'
+Plugin 'wuelnerdotexe/vim-enfocado'
+" add all your plugins here (note older versions of Vundle
+" used Bundle instead of Plugin)
+"
+" ...
+"
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+set encoding=utf-8
+
+au BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set textwidth=79
+    \set expandtab
+    \set autoindent
+    \set fileformat=unix
+
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+highlight BadWhitespace ctermbg=red guibg=darkred
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let python_highlight_all=1
+syntax on
+
+colorscheme desert
+
+set number
+set showmatch
+set history=1000
+set undolevels=1000
+set wildignore=*.swp,*.bak,*.pyc
+set visualbell
+set noerrorbells
+EOF
+
+  # Set up Firewalld
+  echo "Setting up Firewalld..."
+  sudo systemctl enable firewalld
+  sudo systemctl start firewalld
+  sudo firewall-cmd --permanent --add-service=ssh
+  sudo firewall-cmd --permanent --add-service=vnc-server
+  sudo firewall-cmd --permanent --set-default-zone=trusted
+  sudo firewall-cmd --reload
+
+  # End of OpenSUSE environment setup
+  echo "OpenSUSE environment setup complete. You can now use a VNC client to access your desktop environment."
+EOS
+
+# Print final message
+echo "Setup complete! Use a VNC viewer to connect to your OpenSUSE desktop environment. Connect to localhost:5900."
+
