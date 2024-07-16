@@ -10,108 +10,98 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../static/css/styles.css" rel="stylesheet" />
-    <link href="../static/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: black;
-            color: #32CD32;
-            font-family: 'Hack', monospace;
-        }
 
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
         .container {
-            background-color: black;
-            border: none;
-            color: green;
-        }
-
-        h1,
-        h2,
-        h5 {
-            color: #32CD32;
-        }
-
-        p,
-        b {
-            color: #32CD32;
-        }
-
-        a {
-            color: #32CD32;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #228B22;
-        }
-
-        .container {
-            margin-top: 30px;
-        }
-
-        img {
-            filter: invert(1);
-        }
-
-        footer {
-            background-color: black;
-            color: #32CD32;
-            text-align: center;
-            padding: 20px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .footer-links {
-            margin: 10px 0;
-        }
-
-        .footer-links a {
-            margin: 0 15px;
-            color: #32CD32;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: #228B22;
-        }
-
-        /* Box styling */
-        .text-box {
-            border: 1px solid #32CD32;
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
-            margin-bottom: 20px;
-            background-color: #000;
+            background: #fff;
             border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-size: 1.1em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .example-output {
+            background-color: #eef;
+            border-left: 3px solid #3a87ab;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+        }
+        .footer-links a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer-links p {
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
-
-
-
     <!-- Page Content-->
     <section>
         <div class="container px-4 px-lg-10">
             <div class="row">
                 <div class="col-md-12 center-text">
-                    <p style="background-color: black; color: #32CD32; text-decoration: none; white-space: pre;">
-                        &NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&block;&block;&block;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&block;&block;&#x20;&block;&block;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&NewLine;&block;&block;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&#x20;&#x20;&#x20;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&#x20;&#x20;&block;&block;&block;&block;&block;&block;&block;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&NewLine;
-                    </p>
+                    <div class="container">
+                        <h1 style="text-align:center;">KYGnus</h1>
+                        <h2 style="text-align:center;">Koosha Yeganeh Gnu Linux Softwares</h2>
+                        <div class="row" style="text-align:center;">
+                        <img src="./static/Gnu.png" height="100" width="100">
+                        <img src="./static/Linux.png" height="100" width="100">
+                        <img src="./static/fsf.png" height="100" width="100">
 
-                    <h3>
-                        <span style="color: #32CD32;">K</span>oosha<span style="color: #32CD32;">Y</span>eganeh<span style="color: #32CD32;">Gnu</span>Linux<span style="color: #32CD32;">S</span>oftwares
-                    </h3>
-                    <p>|<[][]$#/-\ /[-(_+[-|\|[-# (_+|\||_| |_!|\||_|)( $[]|='|'\|//-\/2[-$</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="container px-4 px-lg-10">
             <div class="row gx-4 gx-lg-10">
                 <div class="col-lg-10">
-                    <div class="text-box">
+                    <div class="text-box" style="margin: 20px;">
                         <p>
                             koosha @ KYGnus Linux has been and is one of the biggest measures in the direction of freedom.<br>
                             The thinking behind Linux and free software should spread to all fields of knowledge to witness the improvement of society and the world.<br>
@@ -123,47 +113,39 @@
                         <p>
                             In this application, it has been tried that you can use the tools you need as quickly as possible. Like the 90s :)
                         </p>
-        </div>
-            </div>
-                </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
 
         <div class="container px-4 px-lg-10">
             <div class="row gx-4 gx-lg-10">
                 <div class="col-lg-10">
-                    <div class="text-box">
-                    <p>GitHub: <a href="https://github.com/KooshaYeganeh" target="_blank">https://github.com/KooshaYeganeh</a></p>
-                    <p>GitLab: <a href="https://gitlab.com/KooshaYeganeh" target="_blank">https://gitlab.com/KooshaYeganeh</a></p>
-                    <p>GitBook: <a href="https://kooshayeganeh.gitbook.io" target="_blank">https://kooshayeganeh.gitbook.io</a></p>
-                    <p>DockerHub: <a href="https://hub.docker.com/u/kooshakooshadv" target="_blank">https://hub.docker.com/u/kooshakooshadv</a></p>
-        </div>
-            </div>
-                </div>
+                    <div class="text-box" style="margin: 20px;">
+                        <p>GitHub: <a href="https://github.com/KooshaYeganeh" target="_blank">https://github.com/KooshaYeganeh</a></p>
+                        <p>GitLab: <a href="https://gitlab.com/KooshaYeganeh" target="_blank">https://gitlab.com/KooshaYeganeh</a></p>
+                        <p>GitBook: <a href="https://kooshayeganeh.gitbook.io" target="_blank">https://kooshayeganeh.gitbook.io</a></p>
+                        <p>DockerHub: <a href="https://hub.docker.com/u/kooshakooshadv" target="_blank">https://hub.docker.com/u/kooshakooshadv</a></p>
                     </div>
+                </div>
+            </div>
+        </div>
 
+        <footer style="text-align:center;">
+            <div class="footer-links">
+                <a href="index.html">Home</a> |
+                <a href="Download.html">Downloads</a> |
+                <a href="virus.html">Virus</a> |
+                <a href="Blog.html">Documents</a> |
+                <a href="projects.html">Projects</a> |
+                <a href="Manifesto.html">Manifesto</a>
+            </div>
+        </footer>
 
-                    <footer>
-                        <div class="footer-links">
-                            <a href="index.html">Home</a> |
-                            <a href="Download.html">Downloads</a> |
-                            <a href="virus.html">Virus</a> |
-                            <a href="Blog.html">Blog</a> |
-                            <a href="projects.html">Projects</a> |
-                            <a href="Manifesto.html">Manifesto</a>
-                        </div>
-
-                    </footer>
-        <br><br><br>
     </section>
-
     <br><br>
-    <!-- Footer -->
 
-    <!-- Bootstrap core JS-->
-    <script src="static/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="../static/js/scripts.js"></script>
+
 </body>
 
 </html>

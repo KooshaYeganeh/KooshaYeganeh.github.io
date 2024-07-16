@@ -4,387 +4,259 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="KYGnus Project - AMD and tools for Android" />
+    <meta name="author" content="Koosha Yeganeh" />
     <title>KYGnus</title>
-    <!-- Favicon-->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../static/css/styles.css" rel="stylesheet" />
-    <link href="static/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: black;
-            color: #32CD32;
-            font-family: 'Hack', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-
-        .navbar {
-            background-color: black;
-            border: none;
-            color: green;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-            color: #32CD32;
-        }
-
-        p,
-        b {
-            color: #32CD32;
-        }
-
-        a {
-            color: #32CD32;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #228B22;
-        }
-
         .container {
-            margin-top: 30px;
-        }
-
-        .text-box {
-            border: 1px solid #32CD32;
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
-            margin-bottom: 20px;
-            background-color: black; /* Set background color to white */
+            background: #fff;
             border-radius: 8px;
-            word-wrap: break-word;
-            color: #32CD32; /* Ensure text is visible against the white background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-
-
-        footer {
-            background-color: black;
-            color: #32CD32;
-            text-align: center;
-            padding: 20px 0;
-            position: fixed;
-            bottom: 0;
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-size: 1.1em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .example-output {
+            background-color: #eef;
+            border-left: 3px solid #3a87ab;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .text-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 15px;
+        }
+        table {
             width: 100%;
+            border-collapse: collapse;
         }
-
-        .footer-links {
-            margin: 10px 0;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
-
+        th {
+            background-color: #f4f4f4;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+        }
         .footer-links a {
-            margin: 0 15px;
-            color: #32CD32;
+            color: black;
             text-decoration: none;
+            margin: 0 10px;
         }
-
-        .footer-links a:hover {
-            color: #228B22;
+        .footer-links p {
+            margin: 0;
         }
-
-
-            /* CSS to remove all borders and separators */
-    table {
-        border-collapse: collapse; /* collapse borders into a single border */
-        width: 100%; /* optional: adjust table width as needed */
-        border: none; /* remove border */
-    }
-    th, td {
-        border: none; /* remove border for cells */
-        padding: 8px; /* add padding for readability */
-        text-align: left; /* align text to the left */
-    }
     </style>
 </head>
 
 <body>
-
-
-
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="text-align: left; line-height: 2;">Loa > Scanner</h3>
-                    <p style="text-align: left; line-height: 2;">&gt; Linux on Android > Scan Android Like Linux</p>
-                    <p style="text-align: left; line-height: 2;">This project is a part of the LoA project. The LoA project is based on simulating and working with GNU Linux on the Android shell, in which tools and methods have been tried to provide a development system for desktop developers, as well as to inform ordinary users about the Android system and tools and The work that can be done in the usual way has been started.
-                        In this regard, we are trying to use tools to optimize and improve the performance and performance of your system and files in Android.
-                        The first phase is the AMD project, whose task is to detect corrupted files on your storage system using powerful Linux tools.
-                        Statements developed to scan your system or posted on Android include:
-                    </p>
-                    <p style="text-align: left; line-height: 2;">ClamAV - YARA - AMD </p>
-                    <p>1- You have an enterprise antivirus on your mobile.</p>
-                    <p>2- Due to the use of open source systems, antivirus bugs will always be fixed as quickly as possible.</p>
-                    <p>3- This antivirus has the ability to personalize. If needed, the software can be customized based on the needs of the organization or the individual.</p>
-                    <p>4- The fact that the antivirus has three engines assures users that it has the ability to provide maximum data security.</p>
-                    <p>5- In the third developed engine, the software uses several methods to check the files.</p>
-                    <p>6- In this antivirus, it is possible for any person or organization to develop their own database or change the existing database based on their files.</p>
-                    <p>For example, you don't want a file called App.apk. in your device. It is enough for you to calculate sha256sum files or md5sum files and place them in the database. From now on, this file will be malicious for your system.</p>
+        <h1 style="text-align:center;">KYGnus</h1>
+         <h2 style="text-align:center;">Downloads</h2>
 
-                  
-                    <div class="text-box">
-                        <div class="card-body">
-                            <h4 class="card-title">Install</h4> <br><br>
-			    <p>1 - First Install termux on Andriod Device From PlayStore or <a href='https://f-droid.org/en/packages/com.termux/' style='text-decoration=none;'>Fdroid</a></p>
-                            <p style="color:orangered;">Note1 : First Install wget </p>
-                            <p style="color:orangered;">Note2 : If you download and use this software from sanctioned countries, be sure to change your IP address before starting the installation process.</p><br>
-                            <p>2 - Then Install Basic Tools</p>
-                            <code style="color: #32CD32;">➜ pkg update && pkg upgrade</code><br>
-                            <code style="color: #32CD32;">➜ pkg install wget -y</code><br><br>
-                            <p>3 - Then Install Loa</p>
-                            <code style="color: #32CD32;">➜ wget https://kooshayeganeh.github.io/Files/loa.tar.gz && tar xvf loa.tar.gz && cd loa && ./install</code><br><br>
-                        </div>
-                
-
-                    <a href="Files/loa.tar.gz" style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download </p>
-                    </a>
-                    <a href="https://codeload.github.com/MalwareSamples/Android-Malware-Samples/zip/refs/heads/main" style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download Malware Database</p>
-                    </a>
-                    <a href="Documents/LoA.pdf" style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Document-En </p>
-                    </a>
-                    <a href="Documents/LoA-Fr.pdf" style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Document-Fr </p>
-                    </a>
-                </div>
-
-
-                <div class="text-box">
-                    <div class="card-body">
-                        <h4 class="card-title">Install openSUSE</h4> <br><br>
-                        <p>1 - First Install termux on Andriod Device</p>
-                        <p style="color:orangered;">Note1 : First Install wget </p>
-                        <code style="color: #32CD32;">➜ zypper -n install wget</code><br><br>
-                        <p>Then Download openSUSE Script then Runs openSUSE command</p>
-                        <code style="color: #32CD32;">➜ wget https://kooshayeganeh.github.io/Files/openSUSE && ./openSUSE</code><br><br>
-                    </div>
-            
-
-                <a href="Files/openSUSE" style="color: red; text-align: center; text-decoration: none;">
-                    <p style="color:greenyellow;">Download </p>
-                </a>
-            </div>
-
-
-
-            <div class="text-box">
-                <div class="card-body">
-                    <h4 class="card-title">Tested Devices</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Device Name</th>
-                                <th>Model</th>
-                                <th>OS Version</th>
-                                <th>Termux Version</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Xiaomi</td>
-                                <td>Redme 12</td>
-                                <td>13</td>
-                                <td>1.42.4</td>
-                            </tr>
-                            <tr>
-                                <td>Samsung</td>
-                                <td>A04S</td>
-                                <td>14 </td>
-                                <td>3.0.7</td>
-                            </tr>
-
-                            <tr>
-                                <td>Samsung</td>
-                                <td>A52S</td>
-                                <td>14 </td>
-                                <td>3.0.7</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td>Xiaomi</td>
-                                <td>Redme Note 12</td>
-                                <td>13</td>
-                                <td>1.42.4</td>
-                            </tr>
-
-                            
-
-                            
-                            <!-- Add more rows as needed -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                
-
-            </div>
-        </div>
-        </div>
-    
-
-
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-box">
-                        <h3 style="color: #32CD32; text-align: left; line-height: 2;">KYGnus Guard Community</h3>
-                        <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; Desktop AV for MSwindows - Comminuty Version</p>
-                        <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; Linux Version is in GitHub</p>
-                        <a href="Files/malware_url.csv"
-                            style="color: red; text-align: center; text-decoration: none;">
-                            <p style="color:greenyellow;">Download_Database</p>
-                        </a>
-                        <a href="Files/KYGnus-Guard.exe"
-                        style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Windows 10</p>
-                    </a>
-
-                    <a href="./Files/KYGnus_Guard_Comminity_MsWindows7_64bit.exe"
-                    style="color: red; text-align: center; text-decoration: none;">
-                    <p style="color:greenyellow;">Windows 7 64bit</p>
-                </a>
-
-                <a href="./Files/KYGnus_Guard_Comminity_MsWindows7_32bit.exe"
-                style="color: red; text-align: center; text-decoration: none;">
-                <p style="color:greenyellow;">Windows 7 32bit</p>
-            </a>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">SUSE Package Manager</h3>
-                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; Simplified Package Manager for openSUSE
-
-						that can Make Everyday Tasks Easier for Developers and System Administrators.</p>
-						<a href="https://github.com/KooshaYeganeh/suse" style="color: orangered;">Document</a>
-						
-                    <a href="./Files/suse-0.0.2.noarch.rpm"
-                        style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download</p>
-                    </a>
-                </div>
-            </div>
+        <div class="text-box">
+            <h3>Loa - AMD</h3>
+            <p> Linux on Android > Scan Android Like Linux</p>
+            <p>This project is part of the LoA project, which aims to simulate and work with GNU/Linux on the Android shell. Tools and methods have been developed to provide a development system for desktop developers and inform users about Android system tools. The first phase, the AMD project, focuses on detecting corrupted files on your storage system using powerful Linux tools:</p>
+            <ul>
+                <li>ClamAV</li>
+                <li>YARA</li>
+                <li>AMD</li>
+            </ul>
+            <p>The antivirus provides enterprise-level protection on mobile devices, quick fixes for bugs, customizable features, and robust security with three engines for comprehensive file checking.</p>
+            <p>For example, you can add a file called App.apk to your database by calculating its sha256sum or md5sum, marking it as malicious for your system.</p>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">Maldet Debugger</h3>
-                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; A script to check the correctness of LMD installation and configuration</p>
-                    <a href="Files/maldet_debugger" style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download</p>
-                    </a>
-                </div>
-            </div>
+        <div class="text-box">
+            <h4 class="card-title">Install</h4>
+            <p>1. Install Termux on your Android device from the Play Store or <a href="https://f-droid.org/en/packages/com.termux/" target="_blank" rel="noopener noreferrer">Fdroid</a>.</p>
+            <p>Note: If you download and use this software from sanctioned countries, be sure to change your IP address before starting the installation process.</p>
+            <p>2. Install basic tools:</p>
+            <pre><code>pkg update && pkg upgrade</code></pre>
+            <pre><code>pkg install wget -y</code></pre>
+            <p>3. Install Loa:</p>
+            <pre><code>wget https://kooshayeganeh.github.io/Files/loa.tar.gz && tar xvf loa.tar.gz && cd loa && ./install</code></pre>
+            <a href="Files/loa.tar.gz" class="btn btn-primary d-block text-center">Download Loa</a>
+            <a href="https://codeload.github.com/MalwareSamples/Android-Malware-Samples/zip/refs/heads/main" class="btn btn-primary d-block text-center">Download Malware Database</a>
+            <a href="Documents/LoA.pdf" class="btn btn-primary d-block text-center">Document - English</a>
+            <a href="Documents/LoA-Fr.pdf" class="btn btn-primary d-block text-center">Document - Persian</a>
         </div>
 
-
-		<div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">Weather in Terminal</h3>
-                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; simple Use : weather dubai</p>
-                    <a href="Files/weather-0.0.1-1.noarch.rpm"
-                        style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download</p>
-                    </a>
-                </div>
-            </div>
+        <div class="text-box">
+            <h4 class="card-title">Install openSUSE</h4>
+            <p>1. Install Termux on your Android device.</p>
+            <p>Note: Install wget:</p>
+            <pre><code>zypper -n install wget</code></pre>
+            <p>2. Download and run the openSUSE script:</p>
+            <pre><code>wget https://kooshayeganeh.github.io/Files/openSUSE && ./openSUSE</code></pre>
+            <a href="Files/openSUSE" class="btn btn-primary d-block text-center">Download openSUSE</a>
         </div>
 
-
-
-
-		<div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">TurboEHR</h3>
-                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; A small and fast EHR software with a different approach
-						There is a minmal software for openSUSE Linux that can automatically perform the storage process according to the algorithm determined for the information storage system.</p>
-                    <a href="Files/turboEHR-0.0.1.noarch.rpm"
-                        style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download</p>
-                    </a>
-                </div>
-            </div>
+        <div class="text-box">
+            <h4 class="card-title">Tested Devices</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Device Name</th>
+                        <th>Model</th>
+                        <th>OS Version</th>
+                        <th>Termux Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Xiaomi</td>
+                        <td>Redmi 12</td>
+                        <td>13</td>
+                        <td>1.42.4</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung</td>
+                        <td>A04S</td>
+                        <td>14</td>
+                        <td>3.0.7</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung</td>
+                        <td>A52S</td>
+                        <td>14</td>
+                        <td>3.0.7</td>
+                    </tr>
+                    <tr>
+                        <td>Xiaomi</td>
+                        <td>Redmi Note 12</td>
+                        <td>13</td>
+                        <td>1.42.4</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-
-		<div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">SA</h3>
-                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; Scan with Common Security Tools with one Command on openSUSE</p>
-					<h4>Tools</h4>
-					<br>
-					<p>clamAV - Maldet - Rkhunter - chkrootkit</p>
-
-					<h4>USE</h4>
-					<p>sa --scan</p> <p>sa --update</p>
-                    <a href="Files/sa-1.0.0.noarch.rpm"
-                        style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download</p>
-                    </a>
-
-
-                </div>
-            </div>
+        <div class="text-box">
+            <h3>SUSE Package Manager</h3>
+            <p> Simplified Package Manager for openSUSE that makes everyday tasks easier for developers and system administrators.</p>
+            <a href="https://github.com/KooshaYeganeh/suse" class="btn btn-danger d-block text-center">Documentation</a>
+            <a href="./Files/suse-0.0.2.noarch.rpm" class="btn btn-danger d-block text-center">Download</a>
         </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-box">
-                    <h3 style="color: #32CD32; text-align: left; line-height: 2;">SUSE JalaliDate</h3>
-                    <p style="color: #32CD32; text-align: left; line-height: 2;">&gt; Jalali Date For openSUSE</p>
-
-					<h4>USE</h4>
-					<p>susejcal </p> & <p>susejcal --digit</p>
-                    <a href="Files/susejcal"
-                        style="color: red; text-align: center; text-decoration: none;">
-                        <p style="color:greenyellow;">Download</p>
-                    </a>
-
-
-                </div>
-            </div>
+        <div class="text-box">
+            <h3>Maldet Debugger</h3>
+            <p> A script to check the correctness of LMD installation and configuration.</p>
+            <a href="Files/maldet_debugger" class="btn btn-danger d-block text-center">Download</a>
         </div>
+        
+
+                <div class="text-box">
+                    <h3>Weather in Terminal</h3>
+                    <p>Simple Use: <pre><code> weather dubai</pre></code>
+                    <a href="Files/weather-0.0.1-1.noarch.rpm"  text-decoration: none;">
+                        <p>Download</p>
+                    </a>
+                </div>
 
 
 
-        <footer>
+                <div class="text-box">
+                    <h3>TurboEHR</h3>
+                    <p>A small and fast EHR software with a different approach. It is minimal software for openSUSE Linux that can automatically perform the storage process according to the algorithm determined for the information storage system.</p>
+                    <a href="Files/turboEHR-0.0.1.noarch.rpm"  text-decoration: none;">
+                        <p>Download</p>
+                    </a>
+                </div>
+
+
+
+                <div class="text-box">
+                    <h3>SA</h3>
+                    <p>Scan with common security tools with one command on openSUSE.</p>
+                    <h4>Tools</h4>
+                    <p>clamAV - Maldet - Rkhunter - chkrootkit</p>
+                    <h4>Usage</h4>
+                    <pre><code>sa --scan</code></pre> <br> <code><pre>sa --update</code></pre>
+                    <a href="Files/sa-1.0.0.noarch.rpm"  text-decoration: none;">
+                        <p>Download</p>
+                    </a>
+                </div>
+
+
+                <div class="text-box">
+                    <h3>SUSE JalaliDate</h3>
+                    <p>Jalali Date for openSUSE</p>
+                    <h4>Usage</h4>
+                    <pre><code>susejcal</pre></code> <br><pre><code>susejcal --digit</pre></code>
+                    <a href="Files/susejcal"  text-decoration: none;">
+                        <p>Download</p>
+                    </a>
+                </div>
+
+        <footer style="text-align:center;">
             <div class="footer-links">
                 <a href="index.html">Home</a> |
                 <a href="Download.html">Downloads</a> |
                 <a href="virus.html">Virus</a> |
-                <a href="Blog.html">Blog</a> |
+                <a href="Blog.html">Documents</a> |
                 <a href="projects.html">Projects</a> |
                 <a href="Manifesto.html">Manifesto</a>
             </div>
-
         </footer>
+
+
     </div>
 
-
-
-
-<br><br><br><br>
+    <!-- Bootstrap JS and dependencies -->
 
 </body>
 
