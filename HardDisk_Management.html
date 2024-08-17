@@ -1,0 +1,2209 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HardDisk Management</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+<style>
+  body {
+      font-family: 'Roboto', sans-serif;
+      font-size: large;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+  }
+  header {
+      background: #007bff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+  }
+  header h1 {
+      margin: 0;
+      font-size: 2rem;
+  }
+  .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+  }
+  article {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+  }
+  h2 {
+      color: #007bff;
+      font-size: 1.5rem;
+      margin-top: 0;
+  }
+  code {
+      background: #e9ecef;
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-size: 90%;
+      color: #333;
+  }
+  pre {
+      background: #e9ecef;
+      padding: 10px;
+      border-radius: 4px;
+      overflow: auto;
+      white-space: pre-wrap;
+      margin: 0;
+  }
+  .command {
+      border-left: 5px solid #007bff;
+      padding: 10px;
+      margin-bottom: 20px;
+      background: #f8f9fa;
+  }
+  footer {
+      text-align: center;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+  }
+</style>
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="harddisk-management">HardDisk Management</h1>
+      <p>Managing and repairing hard disks and filesystems in Linux involves a range of tools and commands. Here’s a comprehensive guide covering tools, commands, and tricks:</p>
+      <h3 id="tools-and-commands">Tools and Commands</h3>
+      <h4 id="disk-utilities">Disk Utilities</h4>
+      <ol>
+      <li>
+      <p><strong><code>fdisk</code></strong> - Partition table manipulator for Linux.</p>
+      <ul>
+      <li>List partitions: <code>sudo fdisk -l</code></li>
+      <li>Edit partitions: <code>sudo fdisk /dev/sdX</code> (replace <code>sdX</code> with your disk identifier)</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>parted</code></strong> - A more advanced partitioning tool.</p>
+      <ul>
+      <li>List partitions: <code>sudo parted -l</code></li>
+      <li>Start parted: <code>sudo parted /dev/sdX</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>lsblk</code></strong> - Lists information about block devices.</p>
+      <ul>
+      <li>List devices: <code>lsblk</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>blkid</code></strong> - Locate/print block device attributes.</p>
+      <ul>
+      <li>List block devices with UUIDs: <code>sudo blkid</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>mkfs</code></strong> - Create a filesystem.</p>
+      <ul>
+      <li>Ext4: <code>sudo mkfs.ext4 /dev/sdX1</code></li>
+      <li>XFS: <code>sudo mkfs.xfs /dev/sdX1</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>fsck</code></strong> - File system consistency check and repair.</p>
+      <ul>
+      <li>Check and repair filesystem: <code>sudo fsck /dev/sdX1</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>tune2fs</code></strong> - Adjust tunable filesystem parameters on ext2/ext3/ext4 filesystems.</p>
+      <ul>
+      <li>View filesystem info: <code>sudo tune2fs -l /dev/sdX1</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>e2fsck</code></strong> - Check a Linux ext2/ext3/ext4 filesystem.</p>
+      <ul>
+      <li>Check filesystem: <code>sudo e2fsck /dev/sdX1</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>xfs_repair</code></strong> - Repair XFS filesystems.</p>
+      <ul>
+      <li>Repair filesystem: <code>sudo xfs_repair /dev/sdX1</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>resize2fs</code></strong> - Resize ext2/ext3/ext4 filesystems.</p>
+      <ul>
+      <li>Resize filesystem: <code>sudo resize2fs /dev/sdX1</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>btrfs</code></strong> - Commands for managing Btrfs filesystems.</p>
+      <ul>
+      <li>Check filesystem: <code>sudo btrfs check /dev/sdX1</code></li>
+      <li>Balance filesystem: <code>sudo btrfs balance start /mount/point</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>smartctl</code></strong> - Control and monitor storage systems using S.M.A.R.T.</p>
+      <ul>
+      <li>Check S.M.A.R.T. status: <code>sudo smartctl -a /dev/sdX</code></li>
+      <li>Run a test: <code>sudo smartctl -t short /dev/sdX</code></li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="disk-usage-and-monitoring">Disk Usage and Monitoring</h4>
+      <ol>
+      <li>
+      <p><strong><code>df</code></strong> - Report file system disk space usage.</p>
+      <ul>
+      <li>Disk usage: <code>df -h</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>du</code></strong> - Estimate file space usage.</p>
+      <ul>
+      <li>Usage for a directory: <code>du -sh /path/to/directory</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>iotop</code></strong> - Display I/O usage by processes.</p>
+      <ul>
+      <li>Monitor I/O: <code>sudo iotop</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>dstat</code></strong> - Versatile resource statistics.</p>
+      <ul>
+      <li>Monitor resources: <code>dstat</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong><code>blktrace</code></strong> - Trace block I/O operations.</p>
+      <ul>
+      <li>Trace I/O: <code>sudo blktrace -d /dev/sdX</code></li>
+      </ul>
+      </li>
+      </ol>
+      <h3 id="tricks">Tricks</h3>
+      <ol>
+      <li>
+      <p><strong>Mounting Filesystems</strong>:</p>
+      <ul>
+      <li>Mount a filesystem: <code>sudo mount /dev/sdX1 /mnt</code></li>
+      <li>Mount with options: <code>sudo mount -o defaults,noatime /dev/sdX1 /mnt</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Creating Partitions</strong>:</p>
+      <ul>
+      <li>Use <code>fdisk</code> or <code>parted</code> to create and format partitions.</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Automount</strong>:</p>
+      <ul>
+      <li>Add entries to <code>/etc/fstab</code> for automatic mounting on boot.</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Check Disk Usage Over Time</strong>:</p>
+      <ul>
+      <li>Use <code>dstat</code> or <code>iostat</code> to monitor disk performance trends.</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Disk Health Monitoring</strong>:</p>
+      <ul>
+      <li>Set up regular <code>smartctl</code> checks using cron jobs.</li>
+      </ul>
+      </li>
+      </ol>
+      <h3 id="enterprise-information-and-commands">Enterprise Information and Commands</h3>
+      <ol>
+      <li>
+      <p><strong><code>LVM</code> (Logical Volume Manager)</strong>:</p>
+      <ul>
+      <li>Create a physical volume: <code>sudo pvcreate /dev/sdX</code></li>
+      <li>Create a volume group: <code>sudo vgcreate vgname /dev/sdX</code></li>
+      <li>Create a logical volume: <code>sudo lvcreate -n lvname -L size vgname</code></li>
+      <li>Resize a logical volume: <code>sudo lvresize -L +10G /dev/vgname/lvname</code></li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>RAID</strong>:</p>
+      <ul>
+      <li><strong><code>mdadm</code></strong> - Manage Linux software RAID.
+      <ul>
+      <li>Create a RAID array: <code>sudo mdadm --create --verbose /dev/md0 --level=5 --raid-devices=2 /dev/sdX /dev/sdY</code></li>
+      <li>Check RAID status: <code>sudo mdadm --detail /dev/md0</code></li>
+      </ul>
+      </li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Backup Solutions</strong>:</p>
+      <ul>
+      <li><strong><code>rsync</code></strong> - Sync files and directories.
+      <ul>
+      <li>Basic sync: <code>rsync -av /source /destination</code></li>
+      </ul>
+      </li>
+      <li><strong><code>dd</code></strong> - Create disk images or clone disks.
+      <ul>
+      <li>Create image: <code>sudo dd if=/dev/sdX of=/path/to/image.img</code></li>
+      <li>Restore image: <code>sudo dd if=/path/to/image.img of=/dev/sdX</code></li>
+      </ul>
+      </li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Enterprise Monitoring Tools</strong>:</p>
+      <ul>
+      <li><strong>Nagios</strong> - Monitoring of network services, host resources.</li>
+      <li><strong>Zabbix</strong> - Enterprise-level monitoring.</li>
+      <li><strong>Prometheus</strong> - Monitoring and alerting toolkit.</li>
+      </ul>
+      </li>
+      </ol>
+      <h2 id="fdisk">Fdisk</h2>
+      <p><code>fdisk</code> is a powerful command-line utility used to manipulate disk partitions in Linux. It allows you to create, delete, and manage disk partitions. Here’s a comprehensive guide to using <code>fdisk</code>.</p>
+      <h4 id="checking-disk-partitions"><strong>1. Checking Disk Partitions</strong></h4>
+      <p>Before making changes, you should list the current partitions on your disk.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> -l
+      </code></pre>
+      <ul>
+      <li><code>-l</code> (list): Lists all partitions on all disks.</li>
+      </ul>
+      <h4 id="starting-fdisk"><strong>2. Starting <code>fdisk</code></strong></h4>
+      <p>To start <code>fdisk</code> for a specific disk, use:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      <p>Replace <code>/dev/sdX</code> with the identifier of your disk (e.g., <code>/dev/sda</code>).</p>
+      <h4 id="navigating-the-fdisk-menu"><strong>3. Navigating the <code>fdisk</code> Menu</strong></h4>
+      <p>When you start <code>fdisk</code>, you’ll be presented with a prompt where you can enter commands. Here’s a summary of the available commands:</p>
+      <ul>
+      <li><strong><code>m</code></strong>: Print the help menu.</li>
+      <li><strong><code>p</code></strong>: Print the partition table.</li>
+      <li><strong><code>n</code></strong>: Add a new partition.</li>
+      <li><strong><code>d</code></strong>: Delete a partition.</li>
+      <li><strong><code>t</code></strong>: Change a partition’s type.</li>
+      <li><strong><code>a</code></strong>: Toggle a bootable flag on a partition.</li>
+      <li><strong><code>w</code></strong>: Write changes to the disk and exit.</li>
+      <li><strong><code>q</code></strong>: Quit without saving changes.</li>
+      <li><strong><code>x</code></strong>: Expert mode (advanced options).</li>
+      </ul>
+      <h4 id="creating-a-new-partition"><strong>4. Creating a New Partition</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Enter <code>n</code></strong> (new partition) and follow the prompts:</p>
+      <ul>
+      <li><strong><code>p</code></strong>: Primary partition</li>
+      <li><strong><code>e</code></strong>: Extended partition (for creating logical partitions)</li>
+      <li><strong>Partition number</strong>: Choose 1-4 for primary or logical partition numbers</li>
+      <li><strong>First sector</strong>: Press Enter to use the default</li>
+      <li><strong>Last sector</strong>: Press Enter to use the default or specify the size</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Example</strong>:</p>
+      <ul>
+      <li>To create a new primary partition on <code>/dev/sda</code>, choose <code>n</code>, then <code>p</code>, and follow the prompts to create the partition.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="deleting-a-partition"><strong>5. Deleting a Partition</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Enter <code>d</code></strong> (delete partition) and specify the partition number to delete.</p>
+      </li>
+      <li>
+      <p><strong>Example</strong>:</p>
+      <ul>
+      <li>To delete partition 1, type <code>d</code> and then <code>1</code>.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="changing-a-partitions-type"><strong>6. Changing a Partition’s Type</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Enter <code>t</code></strong> (change partition type) and specify the partition number.</p>
+      </li>
+      <li>
+      <p><strong>Specify the type</strong> (e.g., <code>83</code> for Linux, <code>82</code> for swap).</p>
+      </li>
+      <li>
+      <p><strong>Example</strong>:</p>
+      <ul>
+      <li>To change the type of partition 1 to Linux, type <code>t</code>, then <code>1</code>, and enter <code>83</code>.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="setting-a-bootable-flag"><strong>7. Setting a Bootable Flag</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Enter <code>a</code></strong> (toggle bootable flag) and specify the partition number.</p>
+      </li>
+      <li>
+      <p><strong>Example</strong>:</p>
+      <ul>
+      <li>To set the bootable flag on partition 1, type <code>a</code> and then <code>1</code>.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="writing-changes-to-disk"><strong>8. Writing Changes to Disk</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Make your changes</strong> (create, delete, modify partitions).</p>
+      </li>
+      <li>
+      <p><strong>Enter <code>w</code></strong> (write) to save changes and exit.</p>
+      </li>
+      <li>
+      <p><strong>Example</strong>:</p>
+      <ul>
+      <li>After making changes, type <code>w</code> to write them to disk.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="quitting-without-saving-changes"><strong>9. Quitting Without Saving Changes</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Make your changes</strong> (if any).</p>
+      </li>
+      <li>
+      <p><strong>Enter <code>q</code></strong> (quit) to exit without saving changes.</p>
+      </li>
+      <li>
+      <p><strong>Example</strong>:</p>
+      <ul>
+      <li>Type <code>q</code> to quit without saving.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="expert-mode"><strong>10. Expert Mode</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>fdisk</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Enter <code>x</code></strong> (expert mode) for advanced options.</p>
+      </li>
+      <li>
+      <p><strong>Explore options carefully</strong> as expert mode can be risky.</p>
+      </li>
+      </ol>
+      <h4 id="updating-the-partition-table"><strong>11. Updating the Partition Table</strong></h4>
+      <p>After modifying partitions with <code>fdisk</code>, you may need to reboot or run the following command to update the partition table:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> partprobe /dev/sdX
+      </code></pre>
+      <p>This command notifies the OS of partition table changes without rebooting.</p>
+      <h3 id="example-workflow"><strong>Example Workflow</strong></h3>
+      <p>Here’s an example of creating and formatting a new partition:</p>
+      <ol>
+      <li>
+      <p><strong>List current partitions</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> -l
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Start <code>fdisk</code> on the disk</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fdisk</span> /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Create a new partition</strong>:</p>
+      <ul>
+      <li>Type <code>n</code> for a new partition.</li>
+      <li>Choose <code>p</code> for a primary partition.</li>
+      <li>Specify the partition number (e.g., <code>1</code>).</li>
+      <li>Accept default values for the first and last sectors.</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Write changes</strong>:</p>
+      <ul>
+      <li>Type <code>w</code> to write changes and exit.</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Format the new partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext4 /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Mount the new partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt
+      </code></pre>
+      </li>
+      </ol>
+      <p>This guide covers the basics of using <code>fdisk</code> to manage disk partitions. For more complex tasks, refer to the <code>fdisk</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> <span class="token function">fdisk</span>
+      </code></pre>
+      <h2 id="parted">Parted</h2>
+      <p><code>parted</code> is a command-line tool for managing disk partitions, supporting both MBR (Master Boot Record) and GPT (GUID Partition Table) partitioning schemes. It provides more advanced partitioning features than <code>fdisk</code>.</p>
+      <h4 id="installing-parted"><strong>1. Installing <code>parted</code></strong></h4>
+      <p>On Debian-based systems (e.g., Ubuntu):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> parted
+      </code></pre>
+      <p>On Red Hat-based systems (e.g., CentOS):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> parted
+      </code></pre>
+      <p>On Fedora:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> dnf <span class="token function">install</span> parted
+      </code></pre>
+      <h4 id="starting-parted"><strong>2. Starting <code>parted</code></strong></h4>
+      <p>To start <code>parted</code> for a specific disk, use:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      <p>Replace <code>/dev/sdX</code> with your disk identifier (e.g., <code>/dev/sda</code>).</p>
+      <h4 id="understanding-the-parted-commands"><strong>3. Understanding the <code>parted</code> Commands</strong></h4>
+      <p>Once you start <code>parted</code>, you’ll enter its interactive mode. Here are some useful commands:</p>
+      <ul>
+      <li><strong><code>print</code></strong>: Displays the partition table.</li>
+      <li><strong><code>mklabel</code></strong>: Creates a new partition table (MBR or GPT).</li>
+      <li><strong><code>mkpart</code></strong>: Creates a new partition.</li>
+      <li><strong><code>rm</code></strong>: Removes a partition.</li>
+      <li><strong><code>resize</code></strong>: Resizes a partition.</li>
+      <li><strong><code>move</code></strong>: Moves a partition.</li>
+      <li><strong><code>name</code></strong>: Sets a partition name.</li>
+      <li><strong><code>set</code></strong>: Sets partition flags.</li>
+      <li><strong><code>quit</code></strong>: Exits <code>parted</code>.</li>
+      </ul>
+      <h4 id="viewing-the-partition-table"><strong>4. Viewing the Partition Table</strong></h4>
+      <p>To view the partition table of a disk, use the <code>print</code> command:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> print
+      </code></pre>
+      <p>This command displays details about the partitions, including their sizes, file systems, and partition types.</p>
+      <h4 id="creating-a-new-partition-table"><strong>5. Creating a New Partition Table</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Create a new partition table</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> mklabel gpt
+      </code></pre>
+      <p>or</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> mklabel msdos
+      </code></pre>
+      <ul>
+      <li><strong><code>gpt</code></strong>: Creates a GPT partition table (recommended for disks larger than 2TB).</li>
+      <li><strong><code>msdos</code></strong>: Creates an MBR partition table.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="creating-a-new-partition-1"><strong>6. Creating a New Partition</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Create a new partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> mkpart primary ext4 1MiB 100%
+      </code></pre>
+      <ul>
+      <li><strong><code>primary</code></strong>: Type of partition (can be <code>primary</code>, <code>logical</code>, or <code>primary</code> depending on the partition table type).</li>
+      <li><strong><code>ext4</code></strong>: File system type (optional).</li>
+      <li><strong><code>1MiB</code></strong>: Start position of the partition.</li>
+      <li><strong><code>100%</code></strong>: End position of the partition (can be specified in MiB, GiB, or as a percentage).</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="removing-a-partition"><strong>7. Removing a Partition</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>List partitions</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> print
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Remove a partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> <span class="token function">rm</span> PARTITION_NUMBER
+      </code></pre>
+      <p>Replace <code>PARTITION_NUMBER</code> with the number of the partition you want to remove.</p>
+      </li>
+      </ol>
+      <h4 id="resizing-a-partition"><strong>8. Resizing a Partition</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Resize a partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> resizepart PARTITION_NUMBER END
+      </code></pre>
+      <ul>
+      <li><strong><code>PARTITION_NUMBER</code></strong>: Number of the partition to resize.</li>
+      <li><strong><code>END</code></strong>: New end position of the partition (e.g., <code>100GiB</code>).</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="moving-a-partition"><strong>9. Moving a Partition</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Move a partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> move PARTITION_NUMBER START END
+      </code></pre>
+      <ul>
+      <li><strong><code>PARTITION_NUMBER</code></strong>: Number of the partition to move.</li>
+      <li><strong><code>START</code></strong>: New start position.</li>
+      <li><strong><code>END</code></strong>: New end position.</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="setting-a-partition-flag"><strong>10. Setting a Partition Flag</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sdX
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Set a partition flag</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> <span class="token keyword">set</span> PARTITION_NUMBER boot on
+      </code></pre>
+      <ul>
+      <li><strong><code>PARTITION_NUMBER</code></strong>: Number of the partition.</li>
+      <li><strong><code>boot</code></strong>: Flag to set (other flags include <code>lba</code>, <code>raid</code>, etc.).</li>
+      </ul>
+      </li>
+      </ol>
+      <h4 id="quitting-parted"><strong>11. Quitting <code>parted</code></strong></h4>
+      <p>To exit <code>parted</code>, use the <code>quit</code> command:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> quit
+      </code></pre>
+      <h3 id="example-workflow-1"><strong>Example Workflow</strong></h3>
+      <p>Here’s an example workflow for creating a new GPT partition table and a new ext4 partition:</p>
+      <ol>
+      <li>
+      <p><strong>Start <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> parted /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Create a new GPT partition table</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> mklabel gpt
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Create a new partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> mkpart primary ext4 1MiB 100%
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Verify the partition</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> print
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Quit <code>parted</code></strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token punctuation">(</span>parted<span class="token punctuation">)</span> quit
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="additional-notes"><strong>Additional Notes</strong></h3>
+      <ul>
+      <li><strong><code>parted</code></strong> can handle large disks and multiple partition schemes (GPT or MBR) more flexibly than <code>fdisk</code>.</li>
+      <li>Always ensure you have backups before modifying partitions to prevent data loss.</li>
+      <li>After modifying partitions, you may need to format them with a filesystem (e.g., <code>mkfs.ext4</code>) and mount them as needed.</li>
+      </ul>
+      <p>Refer to the <code>parted</code> man page for more detailed information and options:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> parted
+      </code></pre>
+      <h2 id="lsblk">lsblk</h2>
+      <p><code>lsblk</code> is a command-line utility used to list information about all available block devices in a Linux system. It provides a clear view of the storage devices, their partitions, and their mount points.</p>
+      <h4 id="basic-usage"><strong>1. Basic Usage</strong></h4>
+      <p>To list all block devices:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk
+      </code></pre>
+      <p>This command provides a tree-like view of block devices, showing their names, sizes, types, and mount points.</p>
+      <h4 id="common-options"><strong>2. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-a</code></strong>: Show all devices, including empty ones.</li>
+      <li><strong><code>-f</code></strong>: Show filesystem information, including labels and UUIDs.</li>
+      <li><strong><code>-l</code></strong>: List in a simple, one-line-per-device format.</li>
+      <li><strong><code>-o</code></strong>: Specify columns to display.</li>
+      <li><strong><code>-n</code></strong>: Suppress the header row.</li>
+      </ul>
+      <h4 id="detailed-examples"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Basic Listing</strong></p>
+      <p>To display a simple list of all block devices:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+      sda      8:0    0  100G  0 disk 
+      ├─sda1   8:1    0  512M  0 part /boot
+      ├─sda2   8:2    0   50G  0 part /
+      └─sda3   8:3    0   49G  0 part /home
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>List with Filesystem Information</strong></p>
+      <p>To show filesystem information (like UUID, type, and label):</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk -f
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+      sda
+      ├─sda1 ext4         1234-5678-90AB-CDEF                 /boot
+      ├─sda2 ext4         ABCD-1234-5678-90EF                 /
+      └─sda3 ext4         FEDC-BA98-7654-3210                 /home
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>List in Simple Format</strong></p>
+      <p>To display block devices in a simple format without tree structure:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk -l
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+      sda      8:0    0  100G  0 disk 
+      sda1     8:1    0  512M  0 part /boot
+      sda2     8:2    0   50G  0 part /
+      sda3     8:3    0   49G  0 part /home
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Custom Columns</strong></p>
+      <p>To display specific columns, use the <code>-o</code> option:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>NAME   SIZE TYPE MOUNTPOINT
+      sda   100G  disk 
+      sda1  512M  part /boot
+      sda2   50G  part /
+      sda3   49G  part /home
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Show Only Specific Devices</strong></p>
+      <p>To list specific devices, you can use grep:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk <span class="token operator">|</span> <span class="token function">grep</span> sda
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>sda      8:0    0  100G  0 disk 
+      ├─sda1   8:1    0  512M  0 part /boot
+      ├─sda2   8:2    0   50G  0 part /
+      └─sda3   8:3    0   49G  0 part /home
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>List Devices with Partitions Only</strong></p>
+      <p>To list only devices with partitions:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk -p -o NAME,TYPE <span class="token operator">|</span> <span class="token function">grep</span> part
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>/dev/sda1  part
+      /dev/sda2  part
+      /dev/sda3  part
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses"><strong>7. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Checking Disk Layout</strong>: Use <code>lsblk</code> to view how disks are partitioned and where filesystems are mounted.</li>
+      <li><strong>Disk Usage Analysis</strong>: Combine <code>lsblk</code> with other tools like <code>df</code> to monitor disk usage.</li>
+      <li><strong>Mounting New Devices</strong>: Identify the device names and partitions before mounting new storage.</li>
+      </ul>
+      <h3 id="example-workflow-2"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for checking disk partitions and filesystems:</p>
+      <ol>
+      <li>
+      <p><strong>List all devices</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Show detailed filesystem info</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk -f
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Display specific columns</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check if a new disk is recognized</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">lsblk
+      </code></pre>
+      <p>Look for new devices or partitions that match your expectations.</p>
+      </li>
+      </ol>
+      <h3 id="man-page"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>lsblk</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> lsblk
+      </code></pre>
+      <p>This guide should help you effectively use <code>lsblk</code> to manage and monitor your block devices and their partitions in Linux.</p>
+      <h2 id="blkid">blkid</h2>
+      <p><code>blkid</code> is a command-line utility used to locate and display information about block devices. It provides details about device labels, UUIDs (Universally Unique Identifiers), filesystem types, and more.</p>
+      <h4 id="basic-usage-1"><strong>1. Basic Usage</strong></h4>
+      <p>To list all block devices and their attributes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid
+      </code></pre>
+      <p>This command will display information about all detected block devices, including their UUIDs, labels, and filesystems.</p>
+      <h4 id="common-options-1"><strong>2. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-o</code></strong>: Output format (e.g., <code>value</code>, <code>list</code>, <code>full</code>).</li>
+      <li><strong><code>-s</code></strong>: Specific attribute to query (e.g., <code>UUID</code>, <code>LABEL</code>).</li>
+      <li><strong><code>-l</code></strong>: List all devices, including those without filesystems.</li>
+      <li><strong><code>-c</code></strong>: Specify the cache file to use.</li>
+      <li><strong><code>-t</code></strong>: Display specific attributes.</li>
+      <li><strong><code>-p</code></strong>: Print device names and attributes, including devices that are not mounted.</li>
+      </ul>
+      <h4 id="detailed-examples-1"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Basic Listing</strong></p>
+      <p>To display information about all block devices:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>/dev/sda1: UUID="1234-5678-90AB-CDEF" TYPE="ext4" PARTUUID="abcd1234-01"
+      /dev/sda2: UUID="ABCD-1234-5678-90EF" TYPE="swap" PARTUUID="abcd1234-02"
+      /dev/sdb1: LABEL="MyData" UUID="FEDC-BA98-7654-3210" TYPE="ntfs"
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Display Specific Attributes</strong></p>
+      <p>To show a specific attribute like UUID for a device:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid -o value -s UUID /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>1234-5678-90AB-CDEF
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>List Attributes for All Devices</strong></p>
+      <p>To display a list of all available attributes for all devices:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid -o list
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>device         UUID                                 TYPE
+      /dev/sda1      1234-5678-90AB-CDEF                 ext4
+      /dev/sda2      ABCD-1234-5678-90EF                 swap
+      /dev/sdb1      FEDC-BA98-7654-3210                 ntfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Display Specific Attribute for All Devices</strong></p>
+      <p>To show only UUIDs for all devices:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid -s UUID
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>/dev/sda1: UUID="1234-5678-90AB-CDEF"
+      /dev/sda2: UUID="ABCD-1234-5678-90EF"
+      /dev/sdb1: UUID="FEDC-BA98-7654-3210"
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Find Devices with Specific Label</strong></p>
+      <p>To find devices with a specific label:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid -t LABEL<span class="token operator">=</span><span class="token string">"MyData"</span>
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>/dev/sdb1: LABEL="MyData" UUID="FEDC-BA98-7654-3210" TYPE="ntfs"
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses-1"><strong>4. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Identifying Devices</strong>: Use <code>blkid</code> to obtain UUIDs and labels of disks and partitions for mounting or configuration in <code>/etc/fstab</code>.</li>
+      <li><strong>Verification</strong>: Verify the filesystem type and UUIDs when configuring or troubleshooting disk partitions.</li>
+      <li><strong>Scripting</strong>: Useful in scripts to dynamically identify and mount filesystems based on UUIDs or labels.</li>
+      </ul>
+      <h3 id="example-workflow-3"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for using <code>blkid</code>:</p>
+      <ol>
+      <li>
+      <p><strong>List all block devices with detailed attributes</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Find the UUID of a specific device</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid -o value -s UUID /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check devices with a specific label</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid -t LABEL<span class="token operator">=</span><span class="token string">"MyData"</span>
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-1"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>blkid</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> blkid
+      </code></pre>
+      <p>This guide should help you effectively use <code>blkid</code> to manage and retrieve information about your block devices.</p>
+      <h2 id="mkfs">mkfs</h2>
+      <p><code>mkfs</code> (short for “make filesystem”) is a command-line utility used to create a filesystem on a block device or partition. It supports various filesystem types, such as ext4, xfs, and btrfs.</p>
+      <h4 id="basic-usage-2"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>mkfs</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash">mkfs <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> DEVICE
+      </code></pre>
+      <ul>
+      <li><strong><code>DEVICE</code></strong>: The block device or partition where the filesystem will be created (e.g., <code>/dev/sda1</code>).</li>
+      </ul>
+      <h4 id="common-filesystem-types-and-commands"><strong>2. Common Filesystem Types and Commands</strong></h4>
+      <p>Here are some common <code>mkfs</code> commands for different filesystems:</p>
+      <ul>
+      <li>
+      <p><strong>ext2</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext2 /dev/sdXn
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>ext3</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext3 /dev/sdXn
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>ext4</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext4 /dev/sdXn
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>xfs</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.xfs /dev/sdXn
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>btrfs</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.btrfs /dev/sdXn
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>vfat</strong> (FAT32):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.vfat /dev/sdXn
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>ntfs</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ntfs /dev/sdXn
+      </code></pre>
+      </li>
+      </ul>
+      <h4 id="detailed-examples-2"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Creating an ext4 Filesystem</strong></p>
+      <p>To create an ext4 filesystem on <code>/dev/sda1</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext4 /dev/sda1
+      </code></pre>
+      <p><strong>Options</strong>:</p>
+      <ul>
+      <li><code>-L</code>: Set a volume label.</li>
+      <li><code>-m</code>: Specify the reserved block percentage (default is 5%).</li>
+      </ul>
+      <p><strong>Example with Options</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext4 -L mydata -m 2 /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Creating an xfs Filesystem</strong></p>
+      <p>To create an xfs filesystem on <code>/dev/sdb1</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.xfs /dev/sdb1
+      </code></pre>
+      <p><strong>Options</strong>:</p>
+      <ul>
+      <li><code>-L</code>: Set a volume label.</li>
+      <li><code>-d size=</code>: Specify the size of the data section.</li>
+      </ul>
+      <p><strong>Example with Options</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.xfs -L mydata /dev/sdb1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Creating a FAT32 Filesystem</strong></p>
+      <p>To create a FAT32 filesystem on <code>/dev/sdc1</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.vfat /dev/sdc1
+      </code></pre>
+      <p><strong>Options</strong>:</p>
+      <ul>
+      <li><code>-n</code>: Set a volume label.</li>
+      <li><code>-F</code>: Specify the FAT type (12, 16, or 32).</li>
+      </ul>
+      <p><strong>Example with Options</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.vfat -n MYFAT32 /dev/sdc1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Creating a NTFS Filesystem</strong></p>
+      <p>To create an NTFS filesystem on <code>/dev/sdd1</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ntfs /dev/sdd1
+      </code></pre>
+      <p><strong>Options</strong>:</p>
+      <ul>
+      <li><code>-L</code>: Set a volume label.</li>
+      <li><code>-q</code>: Perform a quick format.</li>
+      </ul>
+      <p><strong>Example with Options</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ntfs -L myntfs -q /dev/sdd1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Creating a Btrfs Filesystem</strong></p>
+      <p>To create a Btrfs filesystem on <code>/dev/sde1</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.btrfs /dev/sde1
+      </code></pre>
+      <p><strong>Options</strong>:</p>
+      <ul>
+      <li><code>-L</code>: Set a volume label.</li>
+      <li><code>-d</code>: Specify the data RAID level (e.g., <code>raid0</code>, <code>raid1</code>).</li>
+      </ul>
+      <p><strong>Example with Options</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.btrfs -L mybtrfs /dev/sde1
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses-2"><strong>4. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Formatting Partitions</strong>: Use <code>mkfs</code> to format a partition before mounting it.</li>
+      <li><strong>Creating Filesystems for Different Uses</strong>: Choose the appropriate filesystem type based on performance needs and use cases.</li>
+      <li><strong>Setting Volume Labels</strong>: Helps in identifying and managing filesystems more easily.</li>
+      </ul>
+      <h3 id="example-workflow-4"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for creating a new ext4 filesystem:</p>
+      <ol>
+      <li>
+      <p><strong>Check Existing Filesystems</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> lsblk -f
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Create a Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.ext4 /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Verify Creation</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> blkid /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Mount the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check Mount Point</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">df</span> -h
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-2"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>mkfs</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> mkfs
+      </code></pre>
+      <p>This guide should help you effectively use <code>mkfs</code> to create and manage filesystems on your block devices.</p>
+      <h2 id="fsck">fsck</h2>
+      <p><code>fsck</code> (File System Check) is a command-line utility used to check and repair inconsistencies in filesystems. It ensures that the filesystem’s structure is intact and can fix any errors it finds.</p>
+      <h4 id="basic-usage-3"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>fsck</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">fsck</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>FILESYSTEM<span class="token punctuation">]</span>
+      </code></pre>
+      <ul>
+      <li><strong><code>FILESYSTEM</code></strong>: The device or partition to check (e.g., <code>/dev/sda1</code>).</li>
+      </ul>
+      <h4 id="common-filesystem-types"><strong>2. Common Filesystem Types</strong></h4>
+      <p><code>fsck</code> can be used with different filesystem types, including:</p>
+      <ul>
+      <li><strong>ext2/ext3/ext4</strong>: Common Linux filesystems.</li>
+      <li><strong>xfs</strong>: A high-performance filesystem.</li>
+      <li><strong>btrfs</strong>: A modern filesystem with advanced features.</li>
+      <li><strong>vfat</strong>: FAT16/FAT32 filesystems.</li>
+      </ul>
+      <h4 id="common-options-2"><strong>3. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-a</code></strong>: Automatically repair filesystem without prompting (use with caution).</li>
+      <li><strong><code>-f</code></strong>: Force check, even if the filesystem seems clean.</li>
+      <li><strong><code>-n</code></strong>: No modifications; just check and report errors.</li>
+      <li><strong><code>-y</code></strong>: Assume “yes” to all prompts (automatically repair without asking).</li>
+      <li><strong><code>-c</code></strong>: Check for bad sectors (requires <code>e2fsck</code>).</li>
+      <li><strong><code>-t</code></strong>: Print timing stats.</li>
+      <li><strong><code>-l</code></strong>: Log file to write the fsck output.</li>
+      </ul>
+      <h4 id="detailed-examples-3"><strong>4. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Check Filesystem</strong></p>
+      <p>To check a filesystem on <code>/dev/sda1</code> without making changes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> -n /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>fsck from util-linux 2.36.1
+      /dev/sda1: clean, 12345/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Force Check and Repair</strong></p>
+      <p>To force a check and automatically repair errors:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> -a /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>fsck from util-linux 2.36.1
+      /dev/sda1: recovering journal
+      /dev/sda1: clean, 12345/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Interactive Check and Repair</strong></p>
+      <p>To check the filesystem and interactively repair errors:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> /dev/sda1
+      </code></pre>
+      <p>You’ll be prompted to confirm each repair.</p>
+      </li>
+      <li>
+      <p><strong>Check and Repair All Filesystems in <code>/etc/fstab</code></strong></p>
+      <p>To check and repair all filesystems listed in <code>/etc/fstab</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> -A
+      </code></pre>
+      <p><strong>Options</strong>:</p>
+      <ul>
+      <li><code>-A</code>: Check all filesystems listed in <code>/etc/fstab</code>.</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Check for Bad Sectors</strong></p>
+      <p>To check for bad sectors (requires <code>e2fsck</code>):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> -c /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>fsck from util-linux 2.36.1
+      /dev/sda1: 1/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Force a Check on Boot</strong></p>
+      <p>To force a filesystem check on the next boot, create a file named <code>/forcefsck</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">touch</span> /forcefsck
+      </code></pre>
+      <p>The system will perform a filesystem check during the next boot.</p>
+      </li>
+      </ol>
+      <h4 id="practical-uses-3"><strong>5. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Filesystem Maintenance</strong>: Regularly use <code>fsck</code> to check and repair filesystems.</li>
+      <li><strong>Data Recovery</strong>: Use <code>fsck</code> to repair corrupted filesystems and recover data.</li>
+      <li><strong>Pre-Boot Checks</strong>: Force a check on boot to ensure filesystem integrity.</li>
+      </ul>
+      <h3 id="example-workflow-5"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for using <code>fsck</code>:</p>
+      <ol>
+      <li>
+      <p><strong>Unmount the Filesystem</strong> (if necessary):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">umount</span> /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Review and Repair Errors</strong>:</p>
+      <p>Follow the prompts to repair any detected errors.</p>
+      </li>
+      <li>
+      <p><strong>Remount the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-3"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>fsck</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> <span class="token function">fsck</span>
+      </code></pre>
+      <h2 id="tune2fs">tune2fs</h2>
+      <p><code>tune2fs</code> is a command-line utility used to adjust filesystem parameters on ext2, ext3, and ext4 filesystems. It allows you to modify filesystem features, change labels, adjust reserved blocks, and more.</p>
+      <h4 id="basic-usage-4"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>tune2fs</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> DEVICE
+      </code></pre>
+      <ul>
+      <li><strong><code>DEVICE</code></strong>: The block device or partition where the ext2/ext3/ext4 filesystem is located (e.g., <code>/dev/sda1</code>).</li>
+      </ul>
+      <h4 id="common-options-3"><strong>2. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-L</code></strong>: Set or change the volume label.</li>
+      <li><strong><code>-m</code></strong>: Set the percentage of reserved blocks.</li>
+      <li><strong><code>-o</code></strong>: Set filesystem options (e.g., <code>journal_data</code>).</li>
+      <li><strong><code>-i</code></strong>: Set the interval between filesystem checks.</li>
+      <li><strong><code>-c</code></strong>: Set the maximum number of mounts before a check.</li>
+      <li><strong><code>-j</code></strong>: Add or remove a journal (ext3/ext4 only).</li>
+      <li><strong><code>-E</code></strong>: Extended options (e.g., changing inode size).</li>
+      </ul>
+      <h4 id="detailed-examples-4"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Change the Volume Label</strong></p>
+      <p>To change the volume label of a filesystem on <code>/dev/sda1</code> to <code>MYDISK</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -L MYDISK /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Label changed to "MYDISK"
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Set Reserved Blocks Percentage</strong></p>
+      <p>To set the percentage of reserved blocks to 3%:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -m 3 /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Reserved block percentage changed to 3%
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Adjust Filesystem Check Interval</strong></p>
+      <p>To set the interval between filesystem checks to 30 days:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -i 30d /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Check interval changed to 30 days
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Set Maximum Mount Count</strong></p>
+      <p>To set the maximum number of mounts before a filesystem check to 20:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -c 20 /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Mount count limit changed to 20
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Add or Remove a Journal (ext3/ext4 Only)</strong></p>
+      <p>To add a journal to an ext2 filesystem (converting it to ext3/ext4):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -j /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Adding journal to /dev/sda1
+      </code></pre>
+      <p>To remove a journal (if it exists):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -O ^has_journal /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Removing journal from /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Change Inode Size</strong></p>
+      <p>To change the inode size to 256 bytes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -E inode_size<span class="token operator">=</span>256 /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>tune2fs: Inode size changed to 256 bytes
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses-4"><strong>4. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Filesystem Labeling</strong>: Change or set volume labels for easier identification and management.</li>
+      <li><strong>Reserved Blocks</strong>: Adjust reserved block percentage to control space reserved for root usage.</li>
+      <li><strong>Filesystem Checks</strong>: Configure intervals and mount counts for regular filesystem checks.</li>
+      <li><strong>Journaling</strong>: Add or remove journaling to enhance or reduce filesystem reliability and performance.</li>
+      <li><strong>Inode Management</strong>: Adjust inode size for specific use cases or filesystem requirements.</li>
+      </ul>
+      <h3 id="example-workflow-6"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for using <code>tune2fs</code>:</p>
+      <ol>
+      <li>
+      <p><strong>Check Current Filesystem Settings</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -l /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Change Volume Label</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -L MYDISK /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Adjust Reserved Blocks Percentage</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -m 3 /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Set Maximum Mount Count</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -c 20 /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Add Journal to Filesystem</strong> (if converting from ext2 to ext3):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -j /dev/sda1
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-4"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>tune2fs</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> tune2fs
+      </code></pre>
+      <h2 id="e2fsck">e2fsck</h2>
+      <p><code>e2fsck</code> (Extended 2 File System Check) is a command-line utility used to check and repair ext2, ext3, and ext4 filesystems. It is a more advanced tool for filesystem checking and is generally used in scenarios where more detailed control over the filesystem check process is needed.</p>
+      <h4 id="basic-usage-5"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>e2fsck</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> DEVICE
+      </code></pre>
+      <ul>
+      <li><strong><code>DEVICE</code></strong>: The block device or partition to check (e.g., <code>/dev/sda1</code>).</li>
+      </ul>
+      <h4 id="common-options-4"><strong>2. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-a</code></strong>: Automatically repair the filesystem without prompting (use with caution).</li>
+      <li><strong><code>-f</code></strong>: Force a check, even if the filesystem appears clean.</li>
+      <li><strong><code>-n</code></strong>: No modifications; just check and report errors.</li>
+      <li><strong><code>-y</code></strong>: Assume “yes” to all prompts (automatically repair without asking).</li>
+      <li><strong><code>-c</code></strong>: Check for bad sectors.</li>
+      <li><strong><code>-l</code></strong>: Log file to write the <code>e2fsck</code> output.</li>
+      <li><strong><code>-t</code></strong>: Print timing stats.</li>
+      <li><strong><code>-D</code></strong>: Optimize directories.</li>
+      <li><strong><code>-E</code></strong>: Extended options (e.g., adjusting inode sizes).</li>
+      </ul>
+      <h4 id="detailed-examples-5"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Check Filesystem Without Making Changes</strong></p>
+      <p>To check a filesystem on <code>/dev/sda1</code> without making any changes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -n /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>e2fsck 1.46.5 (30-Dec-2020)
+      /dev/sda1: clean, 12345/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Force a Filesystem Check</strong></p>
+      <p>To force a check and repair errors:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -f /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>e2fsck 1.46.5 (30-Dec-2020)
+      /dev/sda1: recovering journal
+      /dev/sda1: clean, 12345/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Automatically Repair Errors</strong></p>
+      <p>To automatically repair filesystem errors:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -a /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>e2fsck 1.46.5 (30-Dec-2020)
+      /dev/sda1: recovering journal
+      /dev/sda1: repaired, 12345/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Interactive Repair</strong></p>
+      <p>To interactively check and repair the filesystem (you will be prompted to confirm each repair):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>e2fsck 1.46.5 (30-Dec-2020)
+      /dev/sda1: Checking journal
+      /dev/sda1: Pass 1: Checking inode and block bitmaps
+      /dev/sda1: Pass 2: Checking directory structure
+      /dev/sda1: Pass 3: Checking directory entries
+      /dev/sda1: Pass 4: Checking reference counts
+      /dev/sda1: Pass 5: Checking group summary information
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check for Bad Sectors</strong></p>
+      <p>To check for bad sectors:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -c /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>e2fsck 1.46.5 (30-Dec-2020)
+      /dev/sda1: Checking for bad sectors
+      /dev/sda1: 123456/12345678 files, 123456/12345678 blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Log Output to a File</strong></p>
+      <p>To log the <code>e2fsck</code> output to a file:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -f -l /path/to/logfile /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>e2fsck 1.46.5 (30-Dec-2020)
+      /dev/sda1: log file written to /path/to/logfile
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses-5"><strong>4. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Filesystem Maintenance</strong>: Regularly check and repair filesystems to ensure integrity.</li>
+      <li><strong>Data Recovery</strong>: Use <code>e2fsck</code> to repair corrupted filesystems and recover data.</li>
+      <li><strong>Bad Sector Checking</strong>: Identify and manage bad sectors on a disk.</li>
+      <li><strong>Filesystem Optimization</strong>: Optimize directory structures and filesystem settings.</li>
+      </ul>
+      <h3 id="example-workflow-7"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for using <code>e2fsck</code>:</p>
+      <ol>
+      <li>
+      <p><strong>Unmount the Filesystem</strong> (if necessary):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">umount</span> /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -f /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Review and Repair Errors</strong>:</p>
+      <p>Follow the prompts to repair any detected errors.</p>
+      </li>
+      <li>
+      <p><strong>Remount the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-5"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>e2fsck</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> e2fsck
+      </code></pre>
+      <h2 id="xfs-repair">XFS-repair</h2>
+      <p><code>xfs_repair</code> is a utility used to check and repair XFS filesystems. XFS is a high-performance filesystem commonly used in Linux environments. <code>xfs_repair</code> helps in fixing filesystem inconsistencies and corruption.</p>
+      <h4 id="basic-usage-6"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>xfs_repair</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> DEVICE
+      </code></pre>
+      <ul>
+      <li><strong><code>DEVICE</code></strong>: The block device or partition where the XFS filesystem is located (e.g., <code>/dev/sda1</code>).</li>
+      </ul>
+      <h4 id="common-options-5"><strong>2. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-n</code></strong>: No modifications; just check and report errors.</li>
+      <li><strong><code>-d</code></strong>: Perform a full check, including inode checks and data block verification.</li>
+      <li><strong><code>-L</code></strong>: Clear the log and rebuild the filesystem metadata.</li>
+      <li><strong><code>-P</code></strong>: Print the progress of the repair process.</li>
+      <li><strong><code>-v</code></strong>: Verbose output.</li>
+      <li><strong><code>-i</code></strong>: Check the filesystem’s integrity and report issues without repairing.</li>
+      </ul>
+      <h4 id="detailed-examples-6"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Check Filesystem Without Making Changes</strong></p>
+      <p>To check a filesystem on <code>/dev/sda1</code> without making any changes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -n /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>XFS filesystem being repaired
+      No modifications made
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Perform a Full Filesystem Check</strong></p>
+      <p>To perform a complete check and repair the filesystem:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -d /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>XFS file system being repaired
+      Checking filesystem consistency
+      Rebuilding XFS filesystem structures
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Clear the Log and Rebuild Metadata</strong></p>
+      <p>To clear the log and rebuild the filesystem metadata:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -L /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>XFS file system being repaired
+      Clearing log and rebuilding filesystem metadata
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Verbose Output</strong></p>
+      <p>To get detailed output during the repair process:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -v /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>XFS file system being repaired
+      Verbose mode enabled
+      Checking filesystem consistency
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Print Repair Progress</strong></p>
+      <p>To print the progress of the repair process:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -P /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>XFS file system being repaired
+      Progress: 50% completed
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check Filesystem Integrity Only</strong></p>
+      <p>To check the filesystem’s integrity and report issues without repairing:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -i /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>XFS file system being checked
+      Integrity check completed
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses-6"><strong>4. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Filesystem Maintenance</strong>: Regularly use <code>xfs_repair</code> to ensure XFS filesystem integrity.</li>
+      <li><strong>Data Recovery</strong>: Repair corrupted XFS filesystems and recover data.</li>
+      <li><strong>Filesystem Optimization</strong>: Rebuild filesystem metadata and clear logs to resolve issues.</li>
+      </ul>
+      <h3 id="example-workflow-8"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for using <code>xfs_repair</code>:</p>
+      <ol>
+      <li>
+      <p><strong>Unmount the Filesystem</strong> (if necessary):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">umount</span> /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> xfs_repair -d /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Review and Repair Errors</strong>:</p>
+      <p>Follow the prompts and messages to repair any detected errors.</p>
+      </li>
+      <li>
+      <p><strong>Remount the Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-6"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>xfs_repair</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> xfs_repair
+      </code></pre>
+      <h2 id="resize2fs">resize2fs</h2>
+      <h3 id="full-tutorial-on-resize2fs">Full Tutorial on <code>resize2fs</code></h3>
+      <p><code>resize2fs</code> is a command-line utility used to resize ext2, ext3, and ext4 filesystems. It allows you to increase or decrease the size of the filesystem without affecting the data stored on it. This tool is useful for managing disk space and adjusting filesystems to fit the available storage.</p>
+      <h4 id="basic-usage-7"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>resize2fs</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> DEVICE <span class="token punctuation">[</span>SIZE<span class="token punctuation">]</span>
+      </code></pre>
+      <ul>
+      <li><strong><code>DEVICE</code></strong>: The block device or partition where the ext2/ext3/ext4 filesystem is located (e.g., <code>/dev/sda1</code>).</li>
+      <li><strong><code>SIZE</code></strong>: The new size of the filesystem (optional). If omitted, <code>resize2fs</code> will resize the filesystem to fill the available space on the partition.</li>
+      </ul>
+      <h4 id="common-options-6"><strong>2. Common Options</strong></h4>
+      <ul>
+      <li><strong><code>-f</code></strong>: Force resizing even if the filesystem appears to be clean.</li>
+      <li><strong><code>-M</code></strong>: Resize the filesystem to the minimum size required.</li>
+      <li><strong><code>-p</code></strong>: Print progress information during resizing.</li>
+      <li><strong><code>-s</code></strong>: Shrink the filesystem.</li>
+      <li><strong><code>-i</code></strong>: Check and display the filesystem information.</li>
+      </ul>
+      <h4 id="detailed-examples-7"><strong>3. Detailed Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Resize Filesystem to Fill the Partition</strong></p>
+      <p>To resize a filesystem on <code>/dev/sda1</code> to use all available space on the partition:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>resize2fs 1.46.5 (30-Dec-2020)
+      Resizing the filesystem on /dev/sda1 to 10240000 (4k) blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Resize Filesystem to a Specific Size</strong></p>
+      <p>To resize the filesystem on <code>/dev/sda1</code> to 10GB:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs /dev/sda1 10G
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>resize2fs 1.46.5 (30-Dec-2020)
+      Resizing the filesystem on /dev/sda1 to 2621440 (4k) blocks
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Force Filesystem Resize</strong></p>
+      <p>To force resizing of the filesystem, even if it appears clean:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs -f /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>resize2fs 1.46.5 (30-Dec-2020)
+      Forced resize of the filesystem on /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Resize Filesystem to Minimum Size</strong></p>
+      <p>To resize the filesystem to the minimum size required:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs -M /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>resize2fs 1.46.5 (30-Dec-2020)
+      Resizing the filesystem on /dev/sda1 to the minimum size
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Print Progress Information</strong></p>
+      <p>To print progress information during the resizing process:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs -p /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>resize2fs 1.46.5 (30-Dec-2020)
+      Resizing the filesystem on /dev/sda1
+      Progress: 50% completed
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Shrink the Filesystem</strong></p>
+      <p>To shrink the filesystem (make sure to first reduce the size of the partition if shrinking):</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs -s /dev/sda1
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>resize2fs 1.46.5 (30-Dec-2020)
+      Shrinking the filesystem on /dev/sda1
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="practical-uses-7"><strong>4. Practical Uses</strong></h4>
+      <ul>
+      <li><strong>Increase Filesystem Size</strong>: Expand the filesystem to use additional space available on a partition.</li>
+      <li><strong>Decrease Filesystem Size</strong>: Reduce the filesystem size to fit into a smaller partition or to free up space.</li>
+      <li><strong>Filesystem Management</strong>: Adjust filesystems to match changes in partition sizes or disk layout.</li>
+      </ul>
+      <h3 id="example-workflow-9"><strong>Example Workflow</strong></h3>
+      <p>Here’s a typical workflow for resizing a filesystem:</p>
+      <ol>
+      <li>
+      <p><strong>Resize the Partition</strong> (if needed):</p>
+      <p>Use partitioning tools like <code>fdisk</code>, <code>parted</code>, or <code>gparted</code> to adjust the partition size before resizing the filesystem.</p>
+      </li>
+      <li>
+      <p><strong>Resize the Filesystem</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> resize2fs /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Verify the Filesystem Size</strong></p>
+      <p>After resizing, you can check the filesystem size using <code>df</code> or <code>tune2fs</code>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">df</span> -h /dev/sda1
+      </code></pre>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> tune2fs -l /dev/sda1
+      </code></pre>
+      </li>
+      </ol>
+      <h3 id="man-page-7"><strong>Man Page</strong></h3>
+      <p>For more detailed information and options, refer to the <code>resize2fs</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> resize2fs
+      </code></pre>
+      <h2 id="btrfs">btrfs</h2>
+      <p>Btrfs (B-tree filesystem) is a modern filesystem for Linux with advanced features like snapshots, volume management, and built-in RAID. It includes several utilities for managing and maintaining Btrfs filesystems.</p>
+      <h4 id="btrfs-command-overview"><strong>1. <code>btrfs</code> Command Overview</strong></h4>
+      <p>The <code>btrfs</code> command is a versatile tool used for managing Btrfs filesystems. It has various subcommands for different operations.</p>
+      <p><strong>Basic Syntax:</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs <span class="token punctuation">[</span>SUBCOMMAND<span class="token punctuation">]</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>ARGS<span class="token punctuation">]</span>
+      </code></pre>
+      <h4 id="common-subcommands"><strong>2. Common Subcommands</strong></h4>
+      <p>Here’s a guide to the most commonly used <code>btrfs</code> subcommands:</p>
+      <h5 id="a.-btrfs-filesystem"><strong>a. <code>btrfs filesystem</code></strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>btrfs filesystem show</code></strong>: Display information about mounted Btrfs filesystems.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs filesystem show
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>Label: 'myfs'  uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        Total devices 1 FS bytes used 10.00GiB
+        devid    1 size 20.00GiB used 15.00GiB path /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs filesystem df</code></strong>: Show space usage of a Btrfs filesystem.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs filesystem <span class="token function">df</span> /mnt/myfs
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>Data, single: total=10.00GiB, used=5.00GiB
+      Metadata, single: total=1.00GiB, used=500.00MiB
+      System, single: total=32.00MiB, used=16.00MiB
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs filesystem resize</code></strong>: Resize a Btrfs filesystem.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs filesystem resize 20G /mnt/myfs
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>Resize: 20.00GiB
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="b.-btrfs-device"><strong>b. <code>btrfs device</code></strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>btrfs device add</code></strong>: Add a device to a Btrfs filesystem.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs device add /dev/sdb1 /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs device delete</code></strong>: Remove a device from a Btrfs filesystem.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs device delete /dev/sdb1 /mnt/myfs
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="c.-btrfs-balance"><strong>c. <code>btrfs balance</code></strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>btrfs balance start</code></strong>: Start a balance operation to redistribute data across devices.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs balance start /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs balance status</code></strong>: Check the status of a balance operation.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs balance status /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs balance cancel</code></strong>: Cancel a running balance operation.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs balance cancel /mnt/myfs
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="d.-btrfs-subvolume"><strong>d. <code>btrfs subvolume</code></strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>btrfs subvolume list</code></strong>: List all subvolumes in a Btrfs filesystem.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs subvolume list /mnt/myfs
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>ID 256 gen 128 top level 5 path @
+      ID 257 gen 130 top level 5 path @home
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs subvolume snapshot</code></strong>: Create a snapshot of a subvolume.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs subvolume snapshot /mnt/myfs/@ /mnt/myfs/@snapshot
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs subvolume delete</code></strong>: Delete a subvolume.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs subvolume delete /mnt/myfs/@snapshot
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="e.-btrfs-check"><strong>e. <code>btrfs check</code></strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>btrfs check</code></strong>: Check the integrity of a Btrfs filesystem. Use with caution as it can be destructive.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs check /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs check --repair</code></strong>: Attempt to repair a damaged Btrfs filesystem (requires <code>--force</code>).</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs check --repair /dev/sda1
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="f.-btrfs-scrub"><strong>f. <code>btrfs scrub</code></strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>btrfs scrub start</code></strong>: Start a scrub operation to check for and correct data errors.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs scrub start /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs scrub status</code></strong>: Check the status of a scrub operation.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs scrub status /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>btrfs scrub cancel</code></strong>: Cancel a running scrub operation.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs scrub cancel /mnt/myfs
+      </code></pre>
+      </li>
+      </ul>
+      <h4 id="practical-examples"><strong>3. Practical Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Creating a New Btrfs Filesystem</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mkfs.btrfs /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Mounting a Btrfs Filesystem</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Adding a Device to a Btrfs Filesystem</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs device add /dev/sdb1 /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Creating a Snapshot</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs subvolume snapshot /mnt/myfs/@ /mnt/myfs/@snapshot
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Resizing a Filesystem</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs filesystem resize +10G /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Starting a Balance Operation</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs balance start /mnt/myfs
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Checking Filesystem Integrity</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> btrfs check /dev/sda1
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="man-pages-and-documentation"><strong>4. Man Pages and Documentation</strong></h4>
+      <p>For more detailed information on each command and its options, you can refer to the man pages:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> btrfs
+      <span class="token function">man</span> btrfs-device
+      <span class="token function">man</span> btrfs-balance
+      <span class="token function">man</span> btrfs-subvolume
+      <span class="token function">man</span> btrfs-scrub
+      <span class="token function">man</span> btrfs-check
+      </code></pre>
+      <h2 id="smartctl">Smartctl</h2>
+      <h3 id="full-tutorial-on-smartctl">Full Tutorial on <code>smartctl</code></h3>
+      <p><code>smartctl</code> is a command-line utility used to control and monitor the Self-Monitoring, Analysis, and Reporting Technology (SMART) system built into modern hard drives and solid-state drives (SSDs). It provides detailed information about the health and status of drives, allowing for proactive maintenance and troubleshooting.</p>
+      <h4 id="basic-usage-8"><strong>1. Basic Usage</strong></h4>
+      <p>The general syntax for <code>smartctl</code> is:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>DEVICE<span class="token punctuation">]</span>
+      </code></pre>
+      <ul>
+      <li><strong><code>DEVICE</code></strong>: The block device you want to monitor (e.g., <code>/dev/sda</code>).</li>
+      </ul>
+      <h4 id="common-commands-and-options"><strong>2. Common Commands and Options</strong></h4>
+      <h5 id="a.-display-drive-health-status"><strong>a. Display Drive Health Status</strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>-a</code></strong>: Show all SMART information, including health status and attributes.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>smartctl 7.2 2019-12-30 r5022 [x86_64-linux-5.4.0-54-generic] (local build)
+      Copyright (C) 2002-19, Bruce Allen, Christian Franke, www.smartmontools.org
+
+      === START OF INFORMATION SECTION ===
+      Model Family:     Samsung SSD 860
+      Device Model:     Samsung SSD 860 EVO 500GB
+      Serial Number:    S3Z5NB0M321547P
+      Firmware Version: RVT04B6Q
+      User Capacity:    500,107,862,016 bytes [500 GB]
+      Sector Size:      512 bytes logical/physical
+      Rotation Rate:    Solid State Device
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="b.-perform-smart-self-test"><strong>b. Perform SMART Self-Test</strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>-t short</code></strong>: Perform a short self-test (usually takes a few minutes).</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t short /dev/sda
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>Short self-test routine recommended polling every 1 minute.
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>-t long</code></strong>: Perform a long self-test (takes longer, typically an hour or more).</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t long /dev/sda
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>Long self-test routine recommended polling every 1 minute.
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>-t offline</code></strong>: Perform an offline self-test (non-destructive, can be done in the background).</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t offline /dev/sda
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="c.-check-smart-attributes"><strong>c. Check SMART Attributes</strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>-A</code></strong>: Display detailed SMART attribute data.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -A /dev/sda
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>SMART Attribute Data Structure revision number: 1
+      Vendor Specific SMART Attributes with Thresholds:
+      ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+      1 Raw_Read_Error_Rate     0x000f   100   100   006    Pre-fail  Always       -       0
+      5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="d.-enabledisable-smart"><strong>d. Enable/Disable SMART</strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>-s on</code></strong>: Enable SMART monitoring.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -s on /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong><code>-s off</code></strong>: Disable SMART monitoring.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -s off /dev/sda
+      </code></pre>
+      </li>
+      </ul>
+      <h5 id="e.-get-drive-information"><strong>e. Get Drive Information</strong></h5>
+      <ul>
+      <li>
+      <p><strong><code>-i</code></strong>: Display general information about the drive.</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -i /dev/sda
+      </code></pre>
+      <p><strong>Output Example</strong>:</p>
+      <pre><code>smartctl 7.2 2019-12-30 r5022 [x86_64-linux-5.4.0-54-generic] (local build)
+      Model Family:     Samsung SSD 860
+      Device Model:     Samsung SSD 860 EVO 500GB
+      Serial Number:    S3Z5NB0M321547P
+      Firmware Version: RVT04B6Q
+      </code></pre>
+      </li>
+      </ul>
+      <h4 id="practical-examples-1"><strong>3. Practical Examples</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Check Overall SMART Status</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Run a Short Self-Test</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t short /dev/sda
+      </code></pre>
+      <p>Check the results after a few minutes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Run a Long Self-Test</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t long /dev/sda
+      </code></pre>
+      <p>Check the results after the test completes:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Enable SMART Monitoring</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -s on /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Disable SMART Monitoring</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -s off /dev/sda
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="man-page-8"><strong>4. Man Page</strong></h4>
+      <p>For more detailed information and options, refer to the <code>smartctl</code> man page:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">man</span> smartctl
+      </code></pre>
+      <h2 id="remove-bad-sector">Remove Bad Sector</h2>
+      <p>Removing bad sectors from a hard disk isn’t a straightforward process because once a sector is marked as bad, it can’t be physically repaired. However, you can manage bad sectors and prevent data loss by using several tools and techniques. Here’s a guide on how to handle bad sectors:</p>
+      <h3 id="identify-bad-sectors"><strong>1. Identify Bad Sectors</strong></h3>
+      <p>First, you need to identify which sectors are bad. You can use the <code>smartctl</code> utility or <code>badblocks</code> for this purpose.</p>
+      <h4 id="a.-using-smartctl"><strong>a. Using <code>smartctl</code></strong></h4>
+      <ol>
+      <li>
+      <p><strong>Check SMART Attributes</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      </code></pre>
+      <p>Look for attributes like <code>Reallocated_Sector_Ct</code> or <code>Current_Pending_Sector</code>. These indicate bad sectors.</p>
+      </li>
+      <li>
+      <p><strong>Run a SMART Short or Long Test</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t short /dev/sda
+      </code></pre>
+      <p>Or</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -t long /dev/sda
+      </code></pre>
+      <p>Check the results:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      </code></pre>
+      </li>
+      </ol>
+      <h4 id="b.-using-badblocks"><strong>b. Using <code>badblocks</code></strong></h4>
+      <ol>
+      <li>
+      <p><strong>Run <code>badblocks</code> to Check for Bad Sectors</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> badblocks -v /dev/sda
+      </code></pre>
+      <p>This will list all bad sectors found.</p>
+      </li>
+      </ol>
+      <h3 id="mark-bad-sectors"><strong>2. Mark Bad Sectors</strong></h3>
+      <p>After identifying bad sectors, you can use <code>e2fsck</code> (for ext2/ext3/ext4 filesystems) or <code>fsck</code> (for other filesystems) to mark them as unusable.</p>
+      <h4 id="a.-for-ext2ext3ext4-filesystems"><strong>a. For ext2/ext3/ext4 Filesystems</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Run <code>e2fsck</code> to Check and Fix Filesystem</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -cf /dev/sda1
+      </code></pre>
+      <ul>
+      <li><strong><code>-c</code></strong>: Check for bad sectors.</li>
+      <li><strong><code>-f</code></strong>: Force check even if filesystem appears clean.</li>
+      </ul>
+      <p><strong>Note</strong>: Replace <code>/dev/sda1</code> with your partition.</p>
+      </li>
+      </ol>
+      <h4 id="b.-for-other-filesystems"><strong>b. For Other Filesystems</strong></h4>
+      <ol>
+      <li>
+      <p><strong>Run <code>fsck</code> with Bad Sector Checking</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> <span class="token function">fsck</span> -cf /dev/sda1
+      </code></pre>
+      <p>Similar options apply as with <code>e2fsck</code>.</p>
+      </li>
+      </ol>
+      <h3 id="remap-bad-sectors"><strong>3. Remap Bad Sectors</strong></h3>
+      <p>When a bad sector is found, modern hard drives can remap these sectors to spare sectors. This is done automatically by the drive’s firmware, but you should ensure it’s enabled and functioning correctly.</p>
+      <h4 id="a.-using-hdparm"><strong>a. Using <code>hdparm</code></strong></h4>
+      <p>You can use <code>hdparm</code> to check if the drive is using its spare sectors:</p>
+      <ol>
+      <li>
+      <p><strong>Check Drive Status</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> hdparm -I /dev/sda <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'Reallocated Sector Count'</span>
+      </code></pre>
+      <p>This command will show if the drive has reallocated sectors.</p>
+      </li>
+      </ol>
+      <h3 id="backup-and-replace"><strong>4. Backup and Replace</strong></h3>
+      <p>Since bad sectors are often a sign of impending drive failure, it’s crucial to:</p>
+      <ol>
+      <li>
+      <p><strong>Backup Important Data</strong>: Regularly back up your data to avoid loss.</p>
+      </li>
+      <li>
+      <p><strong>Consider Replacing the Drive</strong>: If bad sectors are frequent or the drive is older, consider replacing it with a new one.</p>
+      </li>
+      </ol>
+      <h3 id="monitor-drive-health"><strong>5. Monitor Drive Health</strong></h3>
+      <p>Regularly monitor your drive’s health using tools like <code>smartctl</code> to catch issues early.</p>
+      <h3 id="example-workflow-10"><strong>Example Workflow</strong></h3>
+      <ol>
+      <li>
+      <p><strong>Check for Bad Sectors</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> smartctl -a /dev/sda
+      <span class="token function">sudo</span> badblocks -v /dev/sda
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Fix Filesystem and Mark Bad Sectors</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> e2fsck -cf /dev/sda1
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Check Drive Status</strong>:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> hdparm -I /dev/sda <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'Reallocated Sector Count'</span>
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Backup and Replace Drive if Needed</strong></p>
+      <p>Regularly back up your data and monitor the drive’s health to decide on replacement.</p>
+      </li>
+      </ol>
+      <h2 id="tape">Tape</h2>
+      <p>Tape storage, often used for backups and archival purposes, is a reliable method for storing large amounts of data. Here’s a guide on basic information about tape storage and commonly used commands in Linux to manage tape drives.</p>
+      <h3 id="tape-storage-basics"><strong>1. Tape Storage Basics</strong></h3>
+      <h4 id="a.-what-is-tape-storage"><strong>a. What is Tape Storage?</strong></h4>
+      <ul>
+      <li><strong>Tape Storage</strong>: A data storage method using magnetic tape as the medium. Tapes are sequential access storage devices, meaning data must be read or written in a linear fashion.</li>
+      <li><strong>Use Cases</strong>: Primarily used for backups, long-term storage, and archival due to their cost-effectiveness and high capacity.</li>
+      </ul>
+      <h4 id="b.-types-of-tape-drives"><strong>b. Types of Tape Drives</strong></h4>
+      <ul>
+      <li><strong>Linear Tape-Open (LTO)</strong>: A common type of tape storage that provides high capacity and data transfer rates.</li>
+      <li><strong>Digital Linear Tape (DLT)</strong>: An older format but still in use for some legacy systems.</li>
+      <li><strong>Other Formats</strong>: Includes AIT (Advanced Intelligent Tape) and DAT (Digital Audio Tape).</li>
+      </ul>
+      <h4 id="c.-key-concepts"><strong>c. Key Concepts</strong></h4>
+      <ul>
+      <li><strong>Sequential Access</strong>: Tapes require sequential reading/writing, which means accessing data involves moving through data sequentially.</li>
+      <li><strong>Capacity and Speed</strong>: Tapes offer large storage capacities at lower costs compared to other storage types, though they generally have slower access speeds.</li>
+      </ul>
+      <h3 id="common-tape-commands-in-linux"><strong>2. Common Tape Commands in Linux</strong></h3>
+      <p>Linux provides several utilities to work with tape drives. Below are some of the most commonly used commands:</p>
+      <h4 id="a.-mt-magnetic-tape-command"><strong>a. <code>mt</code> (Magnetic Tape) Command</strong></h4>
+      <p>The <code>mt</code> command is used for controlling tape drives.</p>
+      <p><strong>Basic Syntax:</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash">mt <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>COMMAND<span class="token punctuation">]</span>
+      </code></pre>
+      <p><strong>Common Commands:</strong></p>
+      <ul>
+      <li>
+      <p><strong>Rewind the Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mt -f /dev/st0 rewind
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Forward the Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mt -f /dev/st0 fsf N
+      </code></pre>
+      <p>Where <code>N</code> is the number of files to skip.</p>
+      </li>
+      <li>
+      <p><strong>Backspace (Rewind to Previous File)</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mt -f /dev/st0 bsf N
+      </code></pre>
+      <p>Where <code>N</code> is the number of files to skip backwards.</p>
+      </li>
+      <li>
+      <p><strong>Check the Status of the Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mt -f /dev/st0 status
+      </code></pre>
+      </li>
+      <li>
+      <p><strong>Eject the Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> mt -f /dev/st0 <span class="token function">eject</span>
+      </code></pre>
+      </li>
+      </ul>
+      <h4 id="b.-tar-command"><strong>b. <code>tar</code> Command</strong></h4>
+      <p>The <code>tar</code> command is often used in conjunction with tape drives to create and extract backups.</p>
+      <p><strong>Basic Syntax:</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">tar</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>ARCHIVE<span class="token punctuation">]</span> <span class="token punctuation">[</span>FILES<span class="token punctuation">]</span>
+      </code></pre>
+      <p><strong>Common Commands:</strong></p>
+      <ul>
+      <li>
+      <p><strong>Create a Backup on Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">tar</span> -cvf /dev/st0 /path/to/files
+      </code></pre>
+      <ul>
+      <li><code>-c</code>: Create a new archive</li>
+      <li><code>-v</code>: Verbose output (lists files being archived)</li>
+      <li><code>-f</code>: Specifies the file (in this case, the tape device)</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Extract Files from Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">tar</span> -xvf /dev/st0
+      </code></pre>
+      <ul>
+      <li><code>-x</code>: Extract files from the archive</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>List Files on Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">tar</span> -tvf /dev/st0
+      </code></pre>
+      <ul>
+      <li><code>-t</code>: List contents of the archive</li>
+      </ul>
+      </li>
+      </ul>
+      <h4 id="c.-dd-command"><strong>c. <code>dd</code> Command</strong></h4>
+      <p>The <code>dd</code> command can be used for low-level copying to and from tape devices.</p>
+      <p><strong>Basic Syntax:</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">dd</span> if<span class="token operator">=</span><span class="token punctuation">[</span>SOURCE<span class="token punctuation">]</span> of<span class="token operator">=</span><span class="token punctuation">[</span>DESTINATION<span class="token punctuation">]</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+      </code></pre>
+      <p><strong>Common Commands:</strong></p>
+      <ul>
+      <li>
+      <p><strong>Backup a Filesystem to Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">dd</span> if<span class="token operator">=</span>/dev/sda1 of<span class="token operator">=</span>/dev/st0 bs<span class="token operator">=</span>64K
+      </code></pre>
+      <ul>
+      <li><code>if</code>: Input file (or device)</li>
+      <li><code>of</code>: Output file (or device)</li>
+      <li><code>bs</code>: Block size</li>
+      </ul>
+      </li>
+      <li>
+      <p><strong>Restore from Tape</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">dd</span> if<span class="token operator">=</span>/dev/st0 of<span class="token operator">=</span>/dev/sda1 bs<span class="token operator">=</span>64K
+      </code></pre>
+      </li>
+      </ul>
+      <h4 id="d.-file-command"><strong>d. <code>file</code> Command</strong></h4>
+      <p>The <code>file</code> command can be used to check the type of data on a tape device.</p>
+      <p><strong>Basic Syntax:</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">file</span> <span class="token punctuation">[</span>FILE<span class="token punctuation">]</span>
+      </code></pre>
+      <p><strong>Common Command:</strong></p>
+      <ul>
+      <li>
+      <p><strong>Identify Tape Archive Type</strong></p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">file</span> /dev/st0
+      </code></pre>
+      </li>
+      </ul>
+      <h3 id="managing-tape-drives"><strong>3. Managing Tape Drives</strong></h3>
+      <h4 id="a.-checking-tape-drive-status"><strong>a. Checking Tape Drive Status</strong></h4>
+      <p>Use <code>dmesg</code> to check if the system recognizes the tape drive:</p>
+      <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">dmesg</span> <span class="token operator">|</span> <span class="token function">grep</span> st0
+      </code></pre>
+      <h4 id="b.-configuring-tape-drives"><strong>b. Configuring Tape Drives</strong></h4>
+      <ul>
+      <li><strong>Device Files</strong>: Tape devices are usually located under <code>/dev/</code> (e.g., <code>/dev/st0</code>).</li>
+      <li><strong>Permissions</strong>: Ensure you have the correct permissions to access the tape device. You may need to use <code>sudo</code> or adjust device permissions.</li>
+      </ul>
+      </div>
+</body>
+
+</html>
