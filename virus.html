@@ -176,6 +176,92 @@
     </div>
 
 
+
+    <div class="container">
+        <h2>Install clamAV on msWindows</h2>
+        <p>
+            download the latest stable version of ClamAV from the below link.
+            https://www.clamav.net/downloads  <img src="./static/clamav_downloads.webp" alt="clamav_downloads">
+
+        </p>
+
+        <h3>Install the ClamAV</h3>
+        <p>
+            downloaded the .msi version of the installation package, double-click on it and follow the instructions to install it.
+
+        </p>
+
+        <h3>Configure the ClamAV</h3>
+
+        <p>
+
+            Once you have installed ClamAV, navigate to the installation folder and find for <b>conf_examples </b> folder. You can see the <b>clamd.conf.sample</b> 
+            <br>file and <b>freshclam.conf.sample</b>  config file inside the conf_examples folder.
+            <br> Then copy those two files to the installation directory. (eg: C:\ClamAV)<br/>
+
+            <br/>> Rename <b>clamd.conf.sample</b> to <b>clamd.conf</b>
+            <br/>> Rename <b>freshclam.conf.sample</b> to <b>freshclam.conf</b>
+        
+        <h4>Modify clamd.conf</h4>
+        
+            Open clamd.conf with a text editor.
+            <pre><code>Notepad.exe clamd.conf</code></pre>
+            Comment/Remove the word Example in line number 8. (If you have commented out it, it should look like #Example)
+            
+            <img src="./static/clamav2.webp" alt="example"> <br>
+
+            <pre><code>#LogFile "C:\Program Files\ClamAV\clamd.log"</code></pre> and remove the leading # in it to enable the logging. Also, correct the ClamAV installation path in it.
+        
+            <img src="./static/clamav3.webp" alt="web"> <br>
+
+            <br/> Find for <b>TCPSocket 3310</b>  and make sure it is not commented out.
+            <br/>Also, find for <b>TCPAddr localhost</b>  and make sure it is not commented out.
+            Save the file and exit.
+        
+            <h4>Modify freshclam.conf</h4>
+        
+            Open freshclam.conf with a text editor.
+            Comment/Remove the word Example in line number 8. (If you have commented out it, it should look like #Example)
+
+            <img src="./static/clamav4.webp" alt="example"> <br>
+        
+            Find for <b> #UpdateLogFile </b> <pre><code>"C:\Program Files\ClamAV\freshclam.log"</code></pre>  line and remove the leading # in it to enable the logging. Also, correct the ClamAV installation path in it.
+        
+            <img src="./static/clamav5.webp" alt="freshclam"> <br>
+
+            Find for <b> #DatabaseDirectory</b> <pre><code>"C:\Program Files\ClamAV\database"</code></pre>  line and remove the leading # in it to enable the logging. Also, correct the ClamAV installation path in it.
+        
+            <img src="./static/clamav6.webp" alt="freshclam"> <br>
+
+
+            Save the file and exit.
+
+            <h3>Install ClamAV as a windows service</h3>
+
+            <p>
+                Open the Windows Command Prompt in Administrator Mode and navigate to the installation directory (eg: C:\ClamAV).
+
+                Run the following command to install as a service.
+                <pre><code>clamd.exe --install</code></pre>
+
+            </p>
+
+            <h3>Update the ClamAV database.</h3>
+                <p>
+                    Download Latest Database from <a href="https://database.clamav.net/daily.cvd">clamAV database</a> This Link and add to database Folder
+
+                </p>
+
+
+            <h3>Run</h3>
+
+            <p>Scan D:\ Directory with clamAV</p>
+            <pre><code>"C:\Program Files\ClamAV\clamscan.exe" --remove --infected --recursive --verbose D:\</code></pre>
+
+        </p>
+    </div>
+
+
     <footer style="text-align:center;">
             <div class="footer-links">
                 <a href="index.html">Home</a> |
