@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <!-- basic page needs -->
+    <meta charset="utf-8">
+    <title>KYGnus - Startup Info</title>
+    <meta name="description" content="Learn about KYGnus startups and explore our innovative projects through videos.">
+    <meta name="KYGnus" content="">
+
+    <!-- mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Add some inline CSS for the video adjustments -->
+    <style>
+        /* Make the main content area scrollable */
+        .s-home {
+            position: relative;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .home-content {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .home-content__main {
+            flex: 1;
+        }
+        
+        .info-videos {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .video-wrapper {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .video-wrapper video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto 0;
+            border-radius: 4px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .info-videos {
+                padding: 20px 15px;
+            }
+            
+            .video-wrapper {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- info page -->
+    <main class="s-home s-home--particles">
+        <div id="particles-js" class="home-particles"></div>
+        
+        <div class="gradient-overlay"></div>
+
+        <div class="home-content">
+            <div class="home-logo">
+                <a href="index-particles.html">
+                    <h3>KYGnus</h3>
+                </a>
+            </div>
+
+            <div class="row home-content__main">
+                <div class="col-twelve info-content__text">
+                    <h3>Discover Our Startups</h3>
+                    <div class="info-videos">
+                        <!-- Video 1 -->
+                        <div class="video-wrapper">
+                            <video controls width="100%" poster="./static/old-computers-with-puppy-linux.jpg">
+                                <source src="Videos/Refurbish_KYGnus.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div> <!-- end info-content__text -->
+            </div> <!-- end home-content__main -->
+            <ul class="home-social">
+                <li>
+                    <a href="https://github.com/kooshayeganeh"><i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span></a>
+                </li>
+                <li>
+                    <a href="telegram.me/KYGnus"><i class="fab fa-telegram" aria-hidden="true"></i><span>Telegram</span></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/koosha__yeganeh/"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+                </li>
+                <li>
+                    <a href="https://gitlab.com/KooshaYeganeh"><i class="fab fa-gitlab" aria-hidden="true"></i><span>GitLab</span></a>
+                </li>
+            </ul> <!-- end home-social -->
+
+            <div class="row home-copyright">
+                <span>Copyright KYGnus</span>
+            </div> <!-- end home-copyright -->
+
+            <div class="home-content__line"></div>
+        </div> <!-- end home-content -->
+    </main> <!-- end s-home -->
+
+    <!-- info navigation -->
+    <a class="info-toggle" href="#0">
+        <span class="info-menu-icon"></span>
+    </a>
+
+    <div class="s-info">
+        <div class="row info-wrapper">
+            <div class="col-twelve info-main">
+                <nav class="terminal-menu">
+                    <ul>
+                        <li><a href="Documents.html"><h2 style="color:red;">DOCUMENTS</h2></a></li>
+                        <li><a href="ioc.html"><h2 style="color:red;">IOC</h2></a></li>
+                        <li><a href="downloads.html"><h2 style="color:red;">DOWNLOADS</h2></a></li>
+                        <li><a href="projects.html"><h2 style="color:red;">PROJECTS</h2></a></li>
+                        <li><a href="manifesto.html"><h2 style="color:red;">MANIFESTO</h2></a></li>
+                        <li><a href="info.html"><h2 style="color:red;">INFO</h2></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div> <!-- end info wrapper -->
+    </div> <!-- end s-info -->
+
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Java Script -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/polygons.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
