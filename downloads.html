@@ -1,480 +1,453 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>KYGnus - Downloads</title>
-    <meta name="description" content="KYGnus Security and Software Downloads">
-    <meta name="author" content="Koosha Yeganeh">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>KYGnus - Downloads</title>
+  <meta name="description" content="KYGnus Security and Software Downloads">
+  <meta name="author" content="Koosha Yeganeh">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Favicons -->
+  <link href="./static/assets/img/favicon.png" rel="icon">
+  <link href="./static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Scripts -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="./static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="./static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="./static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
+  <!-- Main CSS File -->
+  <link href="./static/assets/css/main.css" rel="stylesheet">
 
-
-    <style>
-        :root {
-            --primary-color: white;
-            --secondary-color: #004d99;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --card-bg: black;
-            --text-color: #333333;
-            --border-color: #e0e0e0;
-        }
-
-        /* Main Structure */
-        .downloads-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Section Headers */
-        .section-header {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin: 3rem 0 2rem;
-            color: red;
-            font-weight: 600;
-        }
-
-        /* Download Cards */
-        .download-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .download-card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .download-card p {
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Buttons */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
-            background: red;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            font-weight: 500;
-            min-width: 180px;
-        }
-
-        .btn i {
-            margin-right: 8px;
-        }
-
-        .btn:hover {
-            background: var(--secondary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: black;
-        }
-
-        .btn-accent {
-            background: var(--accent-color);
-        }
-
-        .btn-accent:hover {
-            background: #c0392b;
-        }
-
-        /* Code Blocks */
-        pre {
-            background: #f5f5f5;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 15px;
-            overflow-x: auto;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            color: #333;
-            position: relative;
-        }
-
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            background: black;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-            color:white;
-        }
-
-        th {
-            background: black;
-            color: white;
-            font-weight: 500;
-        }
-
-        tr:hover {
-            background: red;
-        }
-
-        /* Home Content Adjustments */
-        .home-content__text h1 {
-            color: var(--primary-color) !important;
-        }
-
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .btn {
-                width: 100%;
-            }
-            
-            .download-card {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+  <style>
+    /* Custom styles for downloads page */
+    .downloads-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 3rem 0;
+      color: white;
+    }
+    
+    .download-card {
+      background-color: rgba(0, 20, 0, 0.7);
+      border: 1px solid #00aa0000;
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .download-card:hover {
+      border-color: #00ff0000;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0);
+      transform: translateY(-5px);
+    }
+    
+    .download-card h3 {
+      color: #ffffff;
+      border-bottom: 1px solid #00aa0000;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    
+    .download-card p {
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    
+    .section-header {
+      color: red;
+      border-bottom: 2px solid red;
+      padding-bottom: 10px;
+      margin: 3rem 0 2rem;
+      font-weight: 600;
+    }
+    
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn i {
+      margin-right: 8px;
+    }
+    
+    .btn:hover {
+      background-color: #cc0000;
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #00ff95;
+      color: #00ff9d;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(0, 255, 0, 0.1);
+    }
+    
+    pre {
+      background-color: #000;
+      border: 1px solid #b1bcb1;
+      color: #aac4aa;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      margin: 20px 0;
+    }
+    
+    code {
+      color: #fafafa;
+      background-color: transparent;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: rgba(0, 20, 0, 0.7);
+    }
+    
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #00aa0000;
+      color: white;
+    }
+    
+    th {
+      background-color: rgba(0, 30, 0, 0.7);
+      color: #f7f7f7;
+    }
+    
+    tr:hover {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .btn {
+        width: 100%;
+      }
+      
+      .download-card {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 
-<body id="top">
-    <!-- Home Section -->
-    <main class="s-home">
-        <div class="home-content">
-            <div class="home-logo">
-                <a href="index.html">
-                    <h3>home</h3>
-                </a>
-            </div>
+<body class="index-page" style="background-image: url('./static/assets/img/c3289c889c206bb17148fe984d7ccbdb.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
 
-            <div class="row home-content__main">
-                <div class="col-eight home-content__text pull-right">
-                    <h3>Welcome to KYGnus</h3>
-                    <p style="color: red;">Access all KYGnus projects and tools in More Info</p>
-                </div>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-                <div class="col-four home-content__counter">
-                    <h1 style="color:red">
-                        <i class="fas fa-download"></i> Downloads
-                    </h1>
-                </div>
-            </div>
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">KYGnus</h1>
+      </a>
 
-            <ul class="home-social">
-                <li>
-                    <a href="https://github.com/kooshayeganeh"><i class="fab fa-github"></i><span>GitHub</span></a>
-                </li>
-                <li>
-                    <a href="telegram.me/KYGnus"><i class="fab fa-telegram"></i><span>Telegram</span></a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/koosha__yeganeh/"><i class="fab fa-instagram"></i><span>Instagram</span></a>
-                </li>
-                <li>
-                    <a href="https://gitlab.com/KooshaYeganeh"><i class="fab fa-gitlab"></i><span>GitLab</span></a>
-                </li>
-            </ul>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Documents.html">Documents</a></li>
+          <li><a href="downloads.html" class="active">Downloads</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="more.html">Summary</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-            <div class="row home-copyright">
-                <span>© KYGnus Security Research 2023</span>
-            </div>
+    </div>
+  </header>
 
-            <div class="home-content__line"></div>
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background" style="background-color: rgba(0,0,0,0.7); padding: 3rem 0;">
+      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1 class="text-center mb-4"><i class="bi bi-download"></i> Downloads</h1>
+        <h3 class="text-center text-danger">KYGnus Security and Software Downloads</h3>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- Downloads Section -->
+    <section class="downloads-section">
+      <div class="container">
+        
+        <!-- Security Section -->
+        <h2 class="section-header">Security Tools</h2>
+        
+        <!-- KYGnus Guard -->
+        <div class="download-card">
+          <h3>KYGnus Guard</h3>
+          <p>Advanced malware detection solution with open-source components for Linux and Windows systems. Provides comprehensive protection against various threats with customizable scanning options and real-time monitoring capabilities.</p>
+          <div class="btn-group">
+            <a href="./Files/KYGnus_Guard.zip" class="btn">
+              <i class="bi bi-download"></i> Windows Download
+            </a>
+            <a href="https://github.com/KooshaYeganeh/KYGnus-Guard-community" class="btn">
+              <i class="bi bi-github"></i> Linux Version
+            </a>
+            <a href="#" class="btn btn-outline">
+              <i class="bi bi-book"></i> Documentation
+            </a>
+          </div>
+          <pre><code>powershell -Command "Invoke-WebRequest -Uri 'https://kooshayeganeh.github.io/Files/KYGnus_Guard.zip' -OutFile 'KYGnus_Guard.zip'"</code></pre>
         </div>
-    </main>
-
-    <!-- Info Toggle -->
-    <a class="info-toggle" href="#0">
-        <span class="info-menu-icon"></span>
-    </a>
-
-    <!-- Downloads Content -->
-    <div class="s-info">
-        <div class="row info-wrapper">
-            <div class="col-twelve info-main">
-                <div class="downloads-container">
-                    
-                    <!-- Security Section -->
-                    <h2 class="section-header">Security Tools</h2>
-                    
-                    <!-- KYGnus Guard -->
-                    <div class="download-card">
-                        <h3>KYGnus Guard</h3>
-                        <p style="color:white;">Advanced malware detection solution with open-source components for Linux and Windows systems. Provides comprehensive protection against various threats with customizable scanning options and real-time monitoring capabilities.</p>
-                        <div class="btn-group">
-                            <a href="./Files/KYGnus_Guard.zip" class="btn btn-accent">
-                                <i class="fas fa-download"></i> Windows Download
-                            </a>
-                            <a href="https://github.com/KooshaYeganeh/KYGnus-Guard-community" class="btn">
-                                <i class="fab fa-github"></i> Linux Version
-                            </a>
-                            <a href="#" class="btn btn-outline">
-                                <i class="fas fa-book"></i> Documentation
-                            </a>
-                        </div>
-                        <pre><code>powershell -Command "Invoke-WebRequest -Uri 'https://kooshayeganeh.github.io/Files/KYGnus_Guard.zip' -OutFile 'KYGnus_Guard.zip'"</code></pre>
-                    </div>
-                    
-                    <!-- Loa - AMD -->
-                    <div class="download-card">
-                        <h3>Loa - AMD (Android Malware Detection)</h3>
-                        <p style="color:white;">Linux on Android solution that brings powerful security scanning tools to mobile devices. Scan your Android device like a Linux system with comprehensive malware detection capabilities.</p>
-                        <div class="btn-group">
-                            <a href="Files/loa.tar.gz" class="btn btn-accent">
-                                <i class="fas fa-download"></i> Download Package
-                            </a>
-                            <a href="Documents/Loa-AMD.pdf" class="btn">
-                                <i class="fas fa-file-pdf"></i> Documentation
-                            </a>
-                            <a href="https://codeload.github.com/MalwareSamples/Android-Malware-Samples/zip/refs/heads/main" class="btn btn-outline">
-                                <i class="fas fa-database"></i> Malware Database
-                            </a>
-                        </div>
-                        <pre><code>wget https://kooshayeganeh.github.io/Files/loa.tar.gz 
+        
+        <!-- Loa - AMD -->
+        <div class="download-card">
+          <h3>Loa - AMD (Android Malware Detection)</h3>
+          <p>Linux on Android solution that brings powerful security scanning tools to mobile devices. Scan your Android device like a Linux system with comprehensive malware detection capabilities.</p>
+          <div class="btn-group">
+            <a href="Files/loa.tar.gz" class="btn">
+              <i class="bi bi-download"></i> Download Package
+            </a>
+            <a href="Documents/Loa-AMD.pdf" class="btn">
+              <i class="bi bi-file-earmark-pdf"></i> Documentation
+            </a>
+            <a href="https://codeload.github.com/MalwareSamples/Android-Malware-Samples/zip/refs/heads/main" class="btn btn-outline">
+              <i class="bi bi-database"></i> Malware Database
+            </a>
+          </div>
+          <pre><code>wget https://kooshayeganeh.github.io/Files/loa.tar.gz 
 tar xvf loa.tar.gz 
 cd loa 
 chmod 755 loa install 
 ./install</code></pre>
-                    </div>
+        </div>
 
-                                        <!-- Tested Devices Table -->
-                    <h2 class="section-header">Loa Tested Devices</h2>
-                    <div class="download-card">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Brand</th>
-                                    <th>Model</th>
-                                    <th>OS Version</th>
-                                    <th>Termux Version</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Xiaomi</td>
-                                    <td>Redmi 12</td>
-                                    <td>Android 13</td>
-                                    <td>1.42.4</td>
-                                    <td><span style="color: var(--primary-color);">✓ Verified</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Samsung</td>
-                                    <td>A04S</td>
-                                    <td>Android 14</td>
-                                    <td>3.0.7</td>
-                                    <td><span style="color: var(--primary-color);">✓ Verified</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Samsung</td>
-                                    <td>A52S</td>
-                                    <td>Android 14</td>
-                                    <td>3.0.7</td>
-                                    <td><span style="color: var(--primary-color);">✓ Verified</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Xiaomi</td>
-                                    <td>Redmi Note 12</td>
-                                    <td>Android 13</td>
-                                    <td>1.42.4</td>
-                                    <td><span style="color: var(--primary-color);">✓ Verified</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- SA Scanner -->
-                    <div class="download-card">
-                        <h3>SA Security Scanner</h3>
-                        <p style="color:white;">Unified security scanning tool that combines multiple security utilities (ClamAV, Maldet, Rkhunter, chkrootkit) into a single command interface for comprehensive system analysis.</p>
-                        <div class="btn-group">
-                            <a href="Files/sa-1.0.0.noarch.rpm" class="btn btn-accent">
-                                <i class="fas fa-download"></i> Download
-                            </a>
-                            <a href="#" class="btn btn-outline">
-                                <i class="fas fa-cog"></i> Configuration Guide
-                            </a>
-                        </div>
-                        <pre><code>sa --scan   # Run complete security scan
+        <!-- Tested Devices Table -->
+        <h2 class="section-header">Loa Tested Devices</h2>
+        <div class="download-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>OS Version</th>
+                <th>Termux Version</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Xiaomi</td>
+                <td>Redmi 12</td>
+                <td>Android 13</td>
+                <td>1.42.4</td>
+                <td><span style="color: #00ff00;">✓ Verified</span></td>
+              </tr>
+              <tr>
+                <td>Samsung</td>
+                <td>A04S</td>
+                <td>Android 14</td>
+                <td>3.0.7</td>
+                <td><span style="color: #00ff00;">✓ Verified</span></td>
+              </tr>
+              <tr>
+                <td>Samsung</td>
+                <td>A52S</td>
+                <td>Android 14</td>
+                <td>3.0.7</td>
+                <td><span style="color: #00ff00;">✓ Verified</span></td>
+              </tr>
+              <tr>
+                <td>Xiaomi</td>
+                <td>Redmi Note 12</td>
+                <td>Android 13</td>
+                <td>1.42.4</td>
+                <td><span style="color: #00ff00;">✓ Verified</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- SA Scanner -->
+        <div class="download-card">
+          <h3>SA Security Scanner</h3>
+          <p>Unified security scanning tool that combines multiple security utilities (ClamAV, Maldet, Rkhunter, chkrootkit) into a single command interface for comprehensive system analysis.</p>
+          <div class="btn-group">
+            <a href="Files/sa-1.0.0.noarch.rpm" class="btn">
+              <i class="bi bi-download"></i> Download
+            </a>
+            <a href="#" class="btn btn-outline">
+              <i class="bi bi-gear"></i> Configuration Guide
+            </a>
+          </div>
+          <pre><code>sa --scan   # Run complete security scan
 sa --update # Update all security databases</code></pre>
-                    </div>
-                    
-                    <!-- RetroFit Section -->
-                    <h2 class="section-header">RetroFit Projects</h2>
-                    
-                    <!-- FreeUTM -->
-                    <div class="download-card">
-                        <h3>RetroFit - FreeUTM</h3>
-                        <p style="color:white;">Transform old hardware into a powerful Unified Threat Management system with firewall, VPN, and intrusion detection capabilities. Customizable for various network environments.</p>
-                        <div class="btn-group">
-                            <a href="./Files/freeutm-1.0.deb" class="btn btn-accent">
-                                <i class="fas fa-download"></i> Download DEB Package
-                            </a>
-                            <a href="./Documents/freeutm.pdf" class="btn">
-                                <i class="fas fa-file-pdf"></i> Installation Guide
-                            </a>
-                        </div>
-                        <pre><code>wget https://kooshayeganeh.github.io/Files/freeutm-1.0.deb
+        </div>
+        
+        <!-- RetroFit Section -->
+        <h2 class="section-header">RetroFit Projects</h2>
+        
+        <!-- FreeUTM -->
+        <div class="download-card">
+          <h3>RetroFit - FreeUTM</h3>
+          <p>Transform old hardware into a powerful Unified Threat Management system with firewall, VPN, and intrusion detection capabilities. Customizable for various network environments.</p>
+          <div class="btn-group">
+            <a href="./Files/freeutm-1.0.deb" class="btn">
+              <i class="bi bi-download"></i> Download DEB Package
+            </a>
+            <a href="./Documents/freeutm.pdf" class="btn">
+              <i class="bi bi-file-earmark-pdf"></i> Installation Guide
+            </a>
+          </div>
+          <pre><code>wget https://kooshayeganeh.github.io/Files/freeutm-1.0.deb
 sudo dpkg -i freeutm-1.0.deb</code></pre>
-                    </div>
-                    
-                    <!-- openNAS -->
-                    <div class="download-card">
-                        <h3>RetroFit - openNAS</h3>
-                        <p style="color:white;">Convert outdated PCs or servers into fully-featured Network Attached Storage systems with enterprise-grade features including ZFS support, automated backups, and remote access.</p>
-                        <div class="btn-group">
-                            <a href="https://gitlab.com/KooshaYeganeh/kygnus_nas" class="btn btn-accent">
-                                <i class="fab fa-gitlab"></i> GitLab Repository
-                            </a>
-                            <a href="./Documents/openNAS.pdf" class="btn">
-                                <i class="fas fa-file-pdf"></i> Deployment Guide
-                            </a>
-                        </div>
-                        <pre><code>git clone https://gitlab.com/KooshaYeganeh/kygnus_nas.git
+        </div>
+        
+        <!-- openNAS -->
+        <div class="download-card">
+          <h3>RetroFit - openNAS</h3>
+          <p>Convert outdated PCs or servers into fully-featured Network Attached Storage systems with enterprise-grade features including ZFS support, automated backups, and remote access.</p>
+          <div class="btn-group">
+            <a href="https://gitlab.com/KooshaYeganeh/kygnus_nas" class="btn">
+              <i class="bi bi-gitlab"></i> GitLab Repository
+            </a>
+            <a href="./Documents/openNAS.pdf" class="btn">
+              <i class="bi bi-file-earmark-pdf"></i> Deployment Guide
+            </a>
+          </div>
+          <pre><code>git clone https://gitlab.com/KooshaYeganeh/kygnus_nas.git
 cd kygnus_nas
 ./setup.sh</code></pre>
-                    </div>
-                    
-                    <!-- Utilities Section -->
-                    <h2 class="section-header">System Utilities</h2>
-                    
-                    <!-- SUSE Package Manager -->
-                    <div class="download-card">
-                        <h3>SUSE Package Manager</h3>
-                        <p style="color:white;">Enhanced package management utility for openSUSE that simplifies software installation, updates, and dependency resolution with an intuitive interface.</p>
-                        <div class="btn-group">
-                            <a href="./Files/suse-0.0.2.noarch.rpm" class="btn btn-accent">
-                                <i class="fas fa-download"></i> Download RPM
-                            </a>
-                            <a href="https://github.com/KooshaYeganeh/suse" class="btn">
-                                <i class="fab fa-github"></i> Source Code
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- TurboEHR -->
-                    <div class="download-card">
-                        <h3>TurboEHR</h3>
-                        <p style="color:white;">Lightweight Electronic Health Record system designed for medical professionals with automatic data organization and minimal system requirements.</p>
-                        <div class="btn-group">
-                            <a href="Files/turboEHR-0.0.1.noarch.rpm" class="btn btn-accent">
-                                <i class="fas fa-download"></i> Download
-                            </a>
-                            <a href="#" class="btn btn-outline">
-                                <i class="fas fa-hospital"></i> Medical Data Guide
-                            </a>
-                        </div>
-                    </div>
-                    
-
-                    
-                </div>
-            </div>
         </div>
-    </div>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div id="loader">
-            <div class="line-scale-pulse-out">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+        
+        <!-- Utilities Section -->
+        <h2 class="section-header">System Utilities</h2>
+        
+        <!-- SUSE Package Manager -->
+        <div class="download-card">
+          <h3>SUSE Package Manager</h3>
+          <p>Enhanced package management utility for openSUSE that simplifies software installation, updates, and dependency resolution with an intuitive interface.</p>
+          <div class="btn-group">
+            <a href="./Files/suse-0.0.2.noarch.rpm" class="btn">
+              <i class="bi bi-download"></i> Download RPM
+            </a>
+            <a href="https://github.com/KooshaYeganeh/suse" class="btn">
+              <i class="bi bi-github"></i> Source Code
+            </a>
+          </div>
         </div>
-    </div>
+        
+        <!-- TurboEHR -->
+        <div class="download-card">
+          <h3>TurboEHR</h3>
+          <p>Lightweight Electronic Health Record system designed for medical professionals with automatic data organization and minimal system requirements.</p>
+          <div class="btn-group">
+            <a href="Files/turboEHR-0.0.1.noarch.rpm" class="btn">
+              <i class="bi bi-download"></i> Download
+            </a>
+            <a href="#" class="btn btn-outline">
+              <i class="bi bi-hospital"></i> Medical Data Guide
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
 
-    <!-- JavaScript -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    
-    <script>
-        // Copy code blocks on click
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('pre code').forEach(code => {
-                code.addEventListener('click', function() {
-                    const range = document.createRange();
-                    range.selectNode(this);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                    document.execCommand('copy');
-                    window.getSelection().removeAllRanges();
-                    
-                    // Show copied notification
-                    const notification = document.createElement('div');
-                    notification.textContent = 'Copied to clipboard!';
-                    notification.style.position = 'absolute';
-                    notification.style.background = 'var(--primary-color)';
-                    notification.style.color = 'white';
-                    notification.style.padding = '5px 10px';
-                    notification.style.borderRadius = '4px';
-                    notification.style.fontSize = '14px';
-                    notification.style.top = '10px';
-                    notification.style.right = '10px';
-                    notification.style.zIndex = '100';
-                    this.parentNode.style.position = 'relative';
-                    this.parentNode.appendChild(notification);
-                    
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 2000);
-                });
-            });
+  </main>
+
+  <footer id="footer" class="footer dark-background" style="background-color: rgba(0,0,0,0.8);">
+    <div class="container">
+      <h3 class="sitename text-center">KYGnus</h3>
+      <p class="text-center">Koosha Yeganeh Gnu Linux Softwares</p>
+      <div class="social-links d-flex justify-content-center mb-4">
+        <a href="https://github.com/kooshayeganeh" class="mx-3"><i class="bi bi-github"></i></a>
+        <a href="https://telegram.me/KYGnus" class="mx-3"><i class="bi bi-telegram"></i></a>
+        <a href="https://www.instagram.com/koosha__yeganeh/" class="mx-3"><i class="bi bi-instagram"></i></a>
+        <a href="https://gitlab.com/KooshaYeganeh" class="mx-3"><i class="bi bi-gitlab"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright text-center">
+          <span>Copyright</span> <strong class="px-1 sitename">KYGnus</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="text-center mt-2">
+          <span>Security Research Division</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="./static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="./static/assets/vendor/aos/aos.js"></script>
+  <script src="./static/assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="./static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="./static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="./static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="./static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="./static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="./static/assets/js/main.js"></script>
+
+  <script>
+    // Copy code blocks on click
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('pre code').forEach(code => {
+        code.addEventListener('click', function() {
+          const range = document.createRange();
+          range.selectNode(this);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+          document.execCommand('copy');
+          window.getSelection().removeAllRanges();
+          
+          // Show copied notification
+          const notification = document.createElement('div');
+          notification.textContent = 'Copied to clipboard!';
+          notification.style.position = 'absolute';
+          notification.style.background = '#00aa00';
+          notification.style.color = 'white';
+          notification.style.padding = '5px 10px';
+          notification.style.borderRadius = '4px';
+          notification.style.fontSize = '14px';
+          notification.style.top = '10px';
+          notification.style.right = '10px';
+          notification.style.zIndex = '100';
+          this.parentNode.style.position = 'relative';
+          this.parentNode.appendChild(notification);
+          
+          setTimeout(() => {
+            notification.remove();
+          }, 2000);
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>

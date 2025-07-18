@@ -1,525 +1,647 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>KYGnus Projects</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>KYGnus - Projects</title>
+  <meta name="description" content="KYGnus Security, Medical and Service Projects">
+  <meta name="author" content="Koosha Yeganeh">
 
-    <!-- script
-    ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+  <!-- Favicons -->
+  <link href="./static/assets/img/favicon.png" rel="icon">
+  <link href="./static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- favicons
-    ================================================== -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="./static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="./static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="./static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-    <style>
-        /* Custom styling for projects */
-        .project-section {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 1200px;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-        }
-        
-        .project-section h2 {
-            color: #ff0033;
-            border-bottom: 2px solid #00aaff;
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        th {
-            background-color: rgba(0, 0, 0, 0.3);
-            color: #00aaff;
-            font-weight: bold;
-        }
-        
-        tr:hover {
-            background-color: rgba(0, 170, 255, 0.05);
-        }
-        
-        a {
-            color: #00aaff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        a:hover {
-            color: #ff0033;
-            text-decoration: underline;
-        }
-        
-        .info-contact {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 1.5rem;
-            border-radius: 5px;
-            margin-top: 2rem;
-        }
-        
-        .info-contact h3 {
-            color: #ff0033;
-            margin-top: 0;
-        }
-        
-        .info-email {
-            color: #00aaff !important;
-        }
-        
-        .project-links {
-            margin-top: 10px;
-        }
-        
-        .project-links a {
-            display: inline-block;
-            margin-right: 10px;
-            padding: 5px 10px;
-            background-color: rgba(0, 170, 255, 0.1);
-            border-radius: 3px;
-        }
-        
-        /* Responsive table */
-        @media (max-width: 768px) {
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
-    </style>
+  <!-- Main CSS File -->
+  <link href="./static/assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* Custom styles for projects page */
+    .projects-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 3rem 0;
+      color: white;
+    }
+    
+    .project-card {
+      background-color: rgba(0, 20, 0, 0.7);
+      border: 1px solid #00aa0000;
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      border-color: #00ff0000;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0);
+      transform: translateY(-5px);
+    }
+    
+    .section-header {
+      color: red;
+      border-bottom: 2px solid red;
+      padding-bottom: 10px;
+      margin: 3rem 0 2rem;
+      font-weight: 600;
+    }
+    
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 15px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .btn i {
+      margin-right: 8px;
+    }
+    
+    .btn:hover {
+      background-color: #cc0000;
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #00ff95;
+      color: #00ff9d;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(0, 255, 0, 0);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: rgba(0, 20, 0, 0);
+    }
+    
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #00aa0000;
+      color: white;
+    }
+    
+    th {
+      background-color: rgba(0, 30, 0, 0.7);
+      color: #f7f7f7;
+    }
+    
+    tr:hover {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+    
+    .project-links {
+      margin-top: 10px;
+    }
+    
+    .info-contact {
+      background-color: rgba(0, 20, 0, 0.434);
+      padding: 20px;
+      border-radius: 4px;
+      margin-top: 30px;
+    }
+    
+    .info-contact h3 {
+      color: red;
+      margin-top: 0;
+    }
+    
+    .info-email {
+      color: #00aaff !important;
+    }
+    
+    @media (max-width: 768px) {
+      .btn {
+        width: 100%;
+      }
+      
+      .project-card {
+        padding: 15px;
+      }
+      
+      th, td {
+        padding: 8px 10px;
+      }
+    }
+  </style>
 </head>
 
-<body>
-    <!-- home -->
-    <main class="s-home s-home--slides">
-        <div class="home-slider">
-            <div class="home-slider-img" style="background-image: url(images/slides/slide-01.jpg);"></div>
-            <div class="home-slider-img" style="background-image: url(images/slides/slider2.png);"></div>
-            <div class="home-slider-img" style="background-image: url(images/slides/slide-03.jpg);"></div>
-        </div>
+<body class="index-page" style="background-image: url('./static/assets/img/c3289c889c206bb17148fe984d7ccbdb.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
 
-        <div class="overlay"></div>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-        <div class="home-content">
-            <div class="home-logo">
-                <a href="index.html">
-                    <h3>Home</h3>
-                </a>
-            </div>
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">KYGnus</h1>
+      </a>
 
-            <div class="row home-content__main">
-                <div class="col-eight home-content__text pull-right">
-                    <h3>Welcome to KYGnus</h3>
-                    <h1>Software Portfolio<br></h1>
-                    <p style="color: #ff0033;">Comprehensive collection of security, medical, and service projects</p>
-                    <div class="home-content__subscribe">
-                    </div>
-                </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Documents.html">Documents</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="more.html">Summary</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-                <div class="col-four home-content__counter">
-                    <h1>PROJECTS</h1>
-                </div>
-            </div>
-            <ul class="home-social">
-                <li>
-                    <a href="https://github.com/KooshaYeganeh"><i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span></a>
-                </li>
-                <li>
-                    <a href="https://gitlab.com/KooshaYeganeh"><i class="fab fa-gitlab" aria-hidden="true"></i><span>GitLab</span></a>
-                </li>
-                <li>
-                    <a href="https://kooshayeganeh.gitbook.io"><i class="fas fa-book" aria-hidden="true"></i><span>GitBook</span></a>
-                </li>
-                <li>
-                    <a href="https://hub.docker.com/u/kooshakooshadv"><i class="fab fa-docker" aria-hidden="true"></i><span>Docker</span></a>
-                </li>
-            </ul>
-
-            <div class="row home-copyright">
-                <span>© COPYRIGHT KOOSHA YEGANEH 2023</span> 
-            </div>
-
-            <div class="home-content__line"></div>
-        </div>
-    </main>
-
-    <a class="info-toggle" href="#0">
-        <span class="info-menu-icon"></span>
-    </a>
-
-    <div class="s-info">
-        <div class="row info-wrapper">
-            <div class="col-seven tab-full info-main" style="width: 100%;">
-                <div class="project-section">
-                    <h2>Security Projects</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Project</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td><strong>Hermes</strong></td>
-                                <td>
-                                    check and manage remote Linux server security easily with all OS Types 
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/Hermes">Github</a>
-                                        <a href="./Files/Hermes.rar">MSwindows10 Runner</a>
-                                    </div>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><strong>KYGnus Guard</strong></td>
-                                <td>
-                                    Linux And MSwindows Malware Detect Software
-                                    <div class="project-links">
-                                        <a href="https://gitlab.com/KooshaYeganeh/kygnus-guard-mswindows">MSwindows</a>
-                                        <a href="https://github.com/KooshaYeganeh/KYGnus-Guard-community">Linux</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>WebApplication Honeypot</strong></td>
-                                <td>Web Application Honeypot with Python and Django</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Linux Honeypot</strong></td>
-                                <td>Linux Honeypot for Small Business</td>
-                            </tr>
-                            <tr>
-                                <td><strong>sa</strong></td>
-                                <td>
-                                    Scan Linux with All Malware Tools in one Command
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/sa">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>AMD</strong></td>
-                                <td>
-                                    Android Malware Detect with ADB
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/AMD">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>ExifRemover</strong></td>
-                                <td>
-                                    Remove Exif Data of Images
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/exif_remover">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Linux Verification</strong></td>
-                                <td>
-                                    Verify Linux Hash
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/exif_remover">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>DLP</strong></td>
-                                <td>
-                                    Rango - Command Line Data Loss Prevention
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/rango">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>permcheck</strong></td>
-                                <td>
-                                    Check Permissions of System
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/perm_check">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>DDOS Detector</strong></td>
-                                <td>
-                                    Check Server to Detect Under DDOS Attack
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/DDOS_Detector">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>AntiDeface</strong></td>
-                                <td>
-                                    Small Script to Check Webserver Deface and Try to Prevent it
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/AntiDeface">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Loa AMD</strong></td>
-                                <td>Scan Your Android Like Linux Device</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Medical Projects -->
-                <div class="project-section">
-                    <h2>Medical Projects</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Project</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>RMS (Research Medical Software)</strong></td>
-                                <td>
-                                    RMS software is a series of health diagnostic software developed in collaboration with interested and caring doctors. This software is serialized and is being developed continuously.
-                                    <div class="project-links">
-                                        <a href="./Documents/Introduction-to-RMS.pdf">Catalogue</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>RMS-cancer</strong></td>
-                                <td>
-                                    🧠 Brain Tumor Detection (Using Deep Learning with MONAI)<br/>
-                                    🎀 Lung Cancer Prediction (Deep Learning Monai)<br/>
-                                    🎀 Kidney Disease Diagnosis (Including Tumor and Stones with Deep Learning Monai)<br/>
-                                    🎀 Breast Cancer Detection with mamography (Deep Learning Monai)<br/>
-                                    🎀 Breast Cancer Detection with Ultrasonography (Deep Learning Monai)<br/>
-                                    🎀 Breast Cancer Detection (Machine Learning with scikit-learn)<br/>
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/rms-cancer">Visit Project</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>RMS-Brain</strong></td>
-                                <td>
-                                    🧠 Brain Tumor Detection with Depplearning (Monai)<br/>
-                                    🧠 Alzheimer Detection with Depplearning (Monai)<br/> 
-                                    🧠 Brain Stroke Detection with Depplearning (Monai)<br/>
-                                    🧠 Parkinson Detection with MachineLearning (Scikit-learn)<br/>
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/rms-brain">Visit Project</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>RMS-EYE</strong></td>
-                                <td>
-                                    👁️ EYE Disease Detection<br/>
-                                    👁️ EYE Cancer Detection<br/>
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/rms-eye">Visit Project</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>RMS-oral</strong></td>
-                                <td>
-                                    🦷 Histopathologic Oral Disease<br/>
-                                    🦷 Oral Cancer Detection with Deep Learning<br/>
-                                    🦷 Oral Cancer Detection with machine Learning<br/>
-                                    🦷 Tooth Decay Detection with Machine Learning<br/>
-                                    🦷 Tooth Decay Detection with scikit-image<br/>
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/RMS-oral">Visit Project</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>TurboEHR</strong></td>
-                                <td>New Style Electronic Health Record. Fast and Minimal</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dicom Scanner</strong></td>
-                                <td>Scan Dicom Files Security</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dicom Optimizer</strong></td>
-                                <td>Optimize Dicom Files</td>
-                            </tr>
-                            <tr>
-                                <td><strong>HoneyMed</strong></td>
-                                <td>Medical Application HoneyPot</td>
-                            </tr>
-                            <tr>
-                                <td><strong>openSUSE medical</strong></td>
-                                <td>
-                                    Change openSUSE Leap OS to Medical OS
-                                    <div class="project-links">
-                                        <a href="./Documents/openSUSE-Medical.pdf">Visit Catalogue</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Service Projects -->
-                <div class="project-section">
-                    <h2>Service Projects</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Project</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>RetroFit - openNAS</strong></td>
-                                <td>
-                                    Convert Your Old System to Functional Linux with High Security Storage System
-                                    <div class="project-links">
-                                        <a href="./Documents/Introduction-to-KYGnus-openNAS-1.pdf">Catalogue</a>
-                                        <a href="./Documents/KYGnus_Nas.pdf">Full Document</a>
-                                        <a href="https://gitlab.com/KooshaYeganeh/kygnus_nas">Project Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>RetroFit - freeUTM</strong></td>
-                                <td>
-                                    Create Your New Generation Firewall - UTM with Old Servers
-                                    <div class="project-links">
-                                        <a href="./Documents/Linux2Firewall.pdf">Proposal and Mini Document</a>
-                                        <a href="https://github.com/KooshaYeganeh/freeutm">Project Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>RetroFit - FreeMedia</strong></td>
-                                <td>
-                                    Create Your Secure and customizable Local Media Server
-                                    <div class="project-links">
-                                        <a href="https://gitlab.com/KooshaYeganeh/FM">Project Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>openDIAG</strong></td>
-                                <td>
-                                    openSOURCE and Free Automotive Diag
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/opendiag">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>KYGnus Map</strong></td>
-                                <td>
-                                    App with Web UI for Easily Working with Maps
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/KYGnus_Map">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dynamometer</strong></td>
-                                <td>
-                                    Automotive Dynamometer
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/KYGnus_Map">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>SUSE Package Manager</strong></td>
-                                <td>
-                                    New Style Package Manager for openSUSE
-                                    <div class="project-links">
-                                        <a href="https://github.com/KooshaYeganeh/suse">Link</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>FreeADS</strong></td>
-                                <td>App with Web UI for Easily Working with Maps</td>
-                            </tr>
-                            <tr>
-                                <td><strong>openSTONE</strong></td>
-                                <td>The First Stone Industry Software in Linux</td>
-                            </tr>
-                            <tr>
-                                <td><strong>SmartARCHIVE</strong></td>
-                                <td>Just Run it and Then Watch Your Files Archive</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Scientific Linux</strong></td>
-                                <td>A Script to Convert Your Linux to Scientific Linux</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Android Kultivator</strong></td>
-                                <td>
-                                    Full Android Manager
-                                    <div class="project-links">
-                                        <a href="./Documents/Android-Kultivator.pdf">Catalogue</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            </div>
-</div>
-
-
-    <div class="info-contact">
-        <h3>Documentation and Resources</h3>
-        <p>
-            <a href="https://github.com/KooshaYeganeh" class="info-email">GitHub</a><br>
-            <a href="https://gitlab.com/KooshaYeganeh" class="info-email">GitLab</a><br>
-            <a href="https://kooshayeganeh.gitbook.io" class="info-email">GitBook</a>
-        </p>
     </div>
+  </header>
 
-    <!-- preloader -->
-    <div id="preloader">
-        <div id="loader">
-            <div class="line-scale-pulse-out">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background" style="background-color: rgba(0,0,0,0.7); padding: 3rem 0;">
+      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1 class="text-center mb-4"><i class="bi bi-folder"></i> Projects</h1>
+        <h3 class="text-center mb-5">KYGnus Security, Medical and Service Projects</h3>
+        <p class="text-center text-danger">Comprehensive collection of our open-source projects and solutions</p>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+      <div class="container">
+        
+        <!-- Security Projects -->
+        <h2 class="section-header">Security Projects</h2>
+        
+        <div class="project-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hermes</strong></td>
+                <td>
+                  Check and manage remote Linux server security easily with all OS Types
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/Hermes" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                    <a href="./Files/Hermes.rar" class="btn">
+                      <i class="bi bi-download"></i> MSwindows Runner
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>KYGnus Guard</strong></td>
+                <td>
+                  Linux And MSwindows Malware Detect Software
+                  <div class="btn-group">
+                    <a href="https://gitlab.com/KooshaYeganeh/kygnus-guard-mswindows" class="btn">
+                      <i class="bi bi-windows"></i> MSwindows
+                    </a>
+                    <a href="https://github.com/KooshaYeganeh/KYGnus-Guard-community" class="btn">
+                      <i class="bi bi-ubuntu"></i> Linux
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>WebApplication Honeypot</strong></td>
+                <td>Web Application Honeypot with Python and Django</td>
+              </tr>
+              <tr>
+                <td><strong>Linux Honeypot</strong></td>
+                <td>Linux Honeypot for Small Business</td>
+              </tr>
+              <tr>
+                <td><strong>sa</strong></td>
+                <td>
+                  Scan Linux with All Malware Tools in one Command
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/sa" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>AMD</strong></td>
+                <td>
+                  Android Malware Detect with ADB
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/AMD" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>ExifRemover</strong></td>
+                <td>
+                  Remove Exif Data of Images
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/exif_remover" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Linux Verification</strong></td>
+                <td>
+                  Verify Linux Hash
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/exif_remover" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>DLP</strong></td>
+                <td>
+                  Rango - Command Line Data Loss Prevention
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/rango" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>permcheck</strong></td>
+                <td>
+                  Check Permissions of System
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/perm_check" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>DDOS Detector</strong></td>
+                <td>
+                  Check Server to Detect Under DDOS Attack
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/DDOS_Detector" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>AntiDeface</strong></td>
+                <td>
+                  Small Script to Check Webserver Deface and Try to Prevent it
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/AntiDeface" class="btn">
+                      <i class="bi bi-github"></i> GitHub
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Loa AMD</strong></td>
+                <td>Scan Your Android Like Linux Device</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-    </div>
 
-    <!-- Java Script -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+        <!-- Medical Projects -->
+        <h2 class="section-header">Medical Projects</h2>
+        
+        <div class="project-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RMS (Research Medical Software)</strong></td>
+                <td>
+                  RMS software is a series of health diagnostic software developed in collaboration with interested and caring doctors. This software is serialized and is being developed continuously.
+                  <div class="btn-group">
+                    <a href="./Documents/Introduction-to-RMS.pdf" class="btn">
+                      <i class="bi bi-file-earmark-pdf"></i> Catalogue
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>RMS-cancer</strong></td>
+                <td>
+                  🧠 Brain Tumor Detection (Using Deep Learning with MONAI)<br/>
+                  🎀 Lung Cancer Prediction (Deep Learning Monai)<br/>
+                  🎀 Kidney Disease Diagnosis (Including Tumor and Stones with Deep Learning Monai)<br/>
+                  🎀 Breast Cancer Detection with mamography (Deep Learning Monai)<br/>
+                  🎀 Breast Cancer Detection with Ultrasonography (Deep Learning Monai)<br/>
+                  🎀 Breast Cancer Detection (Machine Learning with scikit-learn)<br/>
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/rms-cancer" class="btn">
+                      <i class="bi bi-github"></i> Visit Project
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>RMS-Brain</strong></td>
+                <td>
+                  🧠 Brain Tumor Detection with Depplearning (Monai)<br/>
+                  🧠 Alzheimer Detection with Depplearning (Monai)<br/> 
+                  🧠 Brain Stroke Detection with Depplearning (Monai)<br/>
+                  🧠 Parkinson Detection with MachineLearning (Scikit-learn)<br/>
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/rms-brain" class="btn">
+                      <i class="bi bi-github"></i> Visit Project
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>RMS-EYE</strong></td>
+                <td>
+                  👁️ EYE Disease Detection<br/>
+                  👁️ EYE Cancer Detection<br/>
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/rms-eye" class="btn">
+                      <i class="bi bi-github"></i> Visit Project
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>RMS-oral</strong></td>
+                <td>
+                  🦷 Histopathologic Oral Disease<br/>
+                  🦷 Oral Cancer Detection with Deep Learning<br/>
+                  🦷 Oral Cancer Detection with machine Learning<br/>
+                  🦷 Tooth Decay Detection with Machine Learning<br/>
+                  🦷 Tooth Decay Detection with scikit-image<br/>
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/RMS-oral" class="btn">
+                      <i class="bi bi-github"></i> Visit Project
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>TurboEHR</strong></td>
+                <td>New Style Electronic Health Record. Fast and Minimal</td>
+              </tr>
+              <tr>
+                <td><strong>Dicom Scanner</strong></td>
+                <td>Scan Dicom Files Security</td>
+              </tr>
+              <tr>
+                <td><strong>Dicom Optimizer</strong></td>
+                <td>Optimize Dicom Files</td>
+              </tr>
+              <tr>
+                <td><strong>HoneyMed</strong></td>
+                <td>Medical Application HoneyPot</td>
+              </tr>
+              <tr>
+                <td><strong>openSUSE medical</strong></td>
+                <td>
+                  Change openSUSE Leap OS to Medical OS
+                  <div class="btn-group">
+                    <a href="./Documents/openSUSE-Medical.pdf" class="btn">
+                      <i class="bi bi-file-earmark-pdf"></i> Visit Catalogue
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Service Projects -->
+        <h2 class="section-header">Service Projects</h2>
+        
+        <div class="project-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RetroFit - openNAS</strong></td>
+                <td>
+                  Convert Your Old System to Functional Linux with High Security Storage System
+                  <div class="btn-group">
+                    <a href="./Documents/Introduction-to-KYGnus-openNAS-1.pdf" class="btn">
+                      <i class="bi bi-file-earmark-pdf"></i> Catalogue
+                    </a>
+                    <a href="./Documents/KYGnus_Nas.pdf" class="btn">
+                      <i class="bi bi-file-earmark-pdf"></i> Full Document
+                    </a>
+                    <a href="https://gitlab.com/KooshaYeganeh/kygnus_nas" class="btn">
+                      <i class="bi bi-gitlab"></i> Project Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>RetroFit - freeUTM</strong></td>
+                <td>
+                  Create Your New Generation Firewall - UTM with Old Servers
+                  <div class="btn-group">
+                    <a href="./Documents/Linux2Firewall.pdf" class="btn">
+                      <i class="bi bi-file-earmark-pdf"></i> Proposal
+                    </a>
+                    <a href="https://github.com/KooshaYeganeh/freeutm" class="btn">
+                      <i class="bi bi-github"></i> Project Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>RetroFit - FreeMedia</strong></td>
+                <td>
+                  Create Your Secure and customizable Local Media Server
+                  <div class="btn-group">
+                    <a href="https://gitlab.com/KooshaYeganeh/FM" class="btn">
+                      <i class="bi bi-gitlab"></i> Project Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>openDIAG</strong></td>
+                <td>
+                  openSOURCE and Free Automotive Diag
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/opendiag" class="btn">
+                      <i class="bi bi-github"></i> Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>KYGnus Map</strong></td>
+                <td>
+                  App with Web UI for Easily Working with Maps
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/KYGnus_Map" class="btn">
+                      <i class="bi bi-github"></i> Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Dynamometer</strong></td>
+                <td>
+                  Automotive Dynamometer
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/KYGnus_Map" class="btn">
+                      <i class="bi bi-github"></i> Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>SUSE Package Manager</strong></td>
+                <td>
+                  New Style Package Manager for openSUSE
+                  <div class="btn-group">
+                    <a href="https://github.com/KooshaYeganeh/suse" class="btn">
+                      <i class="bi bi-github"></i> Link
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>FreeADS</strong></td>
+                <td>App with Web UI for Easily Working with Maps</td>
+              </tr>
+              <tr>
+                <td><strong>openSTONE</strong></td>
+                <td>The First Stone Industry Software in Linux</td>
+              </tr>
+              <tr>
+                <td><strong>SmartARCHIVE</strong></td>
+                <td>Just Run it and Then Watch Your Files Archive</td>
+              </tr>
+              <tr>
+                <td><strong>Scientific Linux</strong></td>
+                <td>A Script to Convert Your Linux to Scientific Linux</td>
+              </tr>
+              <tr>
+                <td><strong>Android Kultivator</strong></td>
+                <td>
+                  Full Android Manager
+                  <div class="btn-group">
+                    <a href="./Documents/Android-Kultivator.pdf" class="btn">
+                      <i class="bi bi-file-earmark-pdf"></i> Catalogue
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Documentation Section -->
+        <div class="info-contact">
+          <h3>Documentation and Resources</h3>
+          <div class="btn-group">
+            <a href="https://github.com/KooshaYeganeh" class="btn">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+            <a href="https://gitlab.com/KooshaYeganeh" class="btn">
+              <i class="bi bi-gitlab"></i> GitLab
+            </a>
+            <a href="https://kooshayeganeh.gitbook.io" class="btn">
+              <i class="bi bi-book"></i> GitBook
+            </a>
+            <a href="https://hub.docker.com/u/kooshakooshadv" class="btn">
+              <i class="bi bi-docker"></i> Docker
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background" style="background-color: rgba(0,0,0,0.8);">
+    <div class="container">
+      <h3 class="sitename text-center">KYGnus</h3>
+      <p class="text-center">Koosha Yeganeh Gnu Linux Softwares</p>
+      <div class="social-links d-flex justify-content-center mb-4">
+        <a href="https://github.com/kooshayeganeh" class="mx-3"><i class="bi bi-github"></i></a>
+        <a href="https://telegram.me/KYGnus" class="mx-3"><i class="bi bi-telegram"></i></a>
+        <a href="https://www.instagram.com/koosha__yeganeh/" class="mx-3"><i class="bi bi-instagram"></i></a>
+        <a href="https://gitlab.com/KooshaYeganeh" class="mx-3"><i class="bi bi-gitlab"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright text-center">
+          <span>Copyright</span> <strong class="px-1 sitename">KYGnus</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="text-center mt-2">
+          <span>Security Research Division</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="./static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="./static/assets/vendor/aos/aos.js"></script>
+  <script src="./static/assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="./static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="./static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="./static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="./static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="./static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="./static/assets/js/main.js"></script>
 </body>
 </html>

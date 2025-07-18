@@ -1,208 +1,346 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Maltrail Documentation</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-      background-color: #0b0b0b;
-      color: #b8b3b2 ;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        h1, h2, h3, h4 {
-            color: red;
-            margin-top: 24px;
-            margin-bottom: 16px;
-        }
-        
-        h1 {
-            font-size: 2em;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 0.3em;
-        }
-        
-        h2 {
-            font-size: 1.5em;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 0.3em;
-        }
-        
-        h3 {
-            font-size: 1.25em;
-        }
-        
-        code, pre {
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            background-color: #f6f8fa;
-            border-radius: 3px;
-            padding: 0.2em 0.4em;
-            font-size: 85%;
-            color:black;
-        }
-        
-        pre {
-            padding: 16px;
-            overflow: auto;
-            line-height: 1.45;
-            border-radius: 3px;
-            border: 1px solid #dfe2e5;
-        }
-        
-        pre code {
-            padding: 0;
-            background-color: transparent;
-            border-radius: 0;
-        }
-        
-        a {
-            color: cyan;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        ul, ol {
-            padding-left: 2em;
-        }
-        
-        li {
-            margin-bottom: 0.5em;
-        }
-        
-        hr {
-            height: 0.25em;
-            padding: 0;
-            margin: 24px 0;
-            background-color: #e1e4e8;
-            border: 0;
-        }
-        
-        .highlight {
-            background-color: #f8f8f8;
-            border-radius: 4px;
-            margin-bottom: 16px;
-        }
-        
-        .note {
-            background-color: #e7f5ff;
-            border-left: 4px solid #4dabf7;
-            padding: 12px;
-            margin: 16px 0;
-            border-radius: 3px;
-            color:black;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>KYGnus - Maltrail Documentation</title>
+  <meta name="description" content="Maltrail malicious traffic detection system documentation">
+  <meta name="author" content="Koosha Yeganeh">
+
+  <!-- Favicons -->
+  <link href="./static/assets/img/favicon.png" rel="icon">
+  <link href="./static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="./static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="./static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="./static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="./static/assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* Custom styles for documentation page */
+    .docs-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 3rem 0;
+      color: white;
+    }
+    
+    .docs-container {
+      background-color: rgba(0, 20, 0, 0.7);
+      border: 1px solid #00aa0000;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      line-height: 1.8;
+    }
+    
+    .docs-container:hover {
+      border-color: #00ff0000;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0);
+    }
+    
+    .section-header {
+      color: red;
+      border-bottom: 2px solid red;
+      padding-bottom: 10px;
+      margin: 3rem 0 2rem;
+      font-weight: 600;
+    }
+    
+    h1, h2, h3, h4 {
+      color: #ffffff;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      border-bottom: 1px solid #00aa0000;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      border-bottom: 1px solid #00aa0000;
+      padding-bottom: 0.4rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+    }
+    
+    h4 {
+      font-size: 1.2rem;
+    }
+    
+    code, pre {
+      font-family: 'Courier New', monospace;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      color: #aac4aa;
+    }
+    
+    pre {
+      padding: 15px;
+      overflow: auto;
+      line-height: 1.45;
+      border: 1px solid #00aa0000;
+      margin: 1rem 0;
+    }
+    
+    pre code {
+      padding: 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    
+    a {
+      color: #00aaff;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: #ff0033;
+      text-decoration: underline;
+    }
+    
+    ul, ol {
+      padding-left: 2em;
+      margin: 1rem 0;
+    }
+    
+    li {
+      margin-bottom: 0.5em;
+      position: relative;
+    }
+    
+    li:before {
+      content: ">";
+      position: absolute;
+      left: -1em;
+      color: #ff0033;
+    }
+    
+    .note {
+      background-color: rgba(255, 0, 0, 0.1);
+      border-left: 4px solid #ff0033;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    
+    @media (max-width: 768px) {
+      .docs-container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
-<body>
 
-<h1>Maltrail Documentation</h1>
+<body class="index-page" style="background-image: url('./static/assets/img/c3289c889c206bb17148fe984d7ccbdb.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
 
-<p><a href="https://github.com/stamparm/maltrail">Maltrail</a> is an open-source malicious traffic detection system developed by Marin Kaluža. Designed for network administrators and security analysts, it helps detect and analyze network anomalies, including suspicious or malicious traffic patterns.</p>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-<h2>Key Features</h2>
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">KYGnus</h1>
+      </a>
 
-<ul>
-    <li><strong>Threat Intelligence Sources</strong>: Utilizes various threat intelligence feeds from public blacklists and custom rules</li>
-    <li><strong>Traffic Monitoring</strong>: Real-time monitoring of network traffic</li>
-    <li><strong>Behavioral Analysis</strong>: Tracks suspicious behaviors like IP scanning, DDoS attacks</li>
-    <li><strong>Web-Based Interface</strong>: Intuitive dashboard for alerts and visualization</li>
-    <li><strong>Anomaly Detection</strong>: Detects unknown threats using heuristic methods</li>
-</ul>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Documents.html">Documents</a></li>
+          <li><a href="ioc.html">IOC</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+          <li><a href="more.html">Summary</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-<h2>Components</h2>
+    </div>
+  </header>
 
-<h3>1. sensor.py</h3>
+  <main class="main">
 
-<p>The network traffic monitor and analyzer component:</p>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background" style="background-color: rgba(0,0,0,0.7); padding: 3rem 0;">
+      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1 class="text-center mb-4"><i class="bi bi-file-earmark-text"></i> Maltrail Documentation</h1>
+        <h3 class="text-center mb-5">Malicious Traffic Detection System</h3>
+        <p class="text-center text-danger">Open-source network security monitoring tool</p>
+      </div>
+    </section><!-- /Hero Section -->
 
-<ul>
-    <li>Captures and analyzes network packets</li>
-    <li>Uses multiple data sources to check for IOCs</li>
-    <li>Logs detected threats in JSON format</li>
-    <li>Regularly updates malicious indicators from feeds</li>
-</ul>
+    <!-- Documentation Section -->
+    <section class="docs-section">
+      <div class="container">
+        <div class="docs-container">
+          <p><a href="https://github.com/stamparm/maltrail">Maltrail</a> is an open-source malicious traffic detection system developed by Marin Kaluža. Designed for network administrators and security analysts, it helps detect and analyze network anomalies, including suspicious or malicious traffic patterns.</p>
 
-<h4>Running sensor.py</h4>
-<pre><code>sudo python3 sensor.py</code></pre>
+          <h2 class="section-header">Key Features</h2>
 
-<h3>2. server.py</h3>
+          <ul>
+              <li><strong>Threat Intelligence Sources</strong>: Utilizes various threat intelligence feeds from public blacklists and custom rules</li>
+              <li><strong>Traffic Monitoring</strong>: Real-time monitoring of network traffic</li>
+              <li><strong>Behavioral Analysis</strong>: Tracks suspicious behaviors like IP scanning, DDoS attacks</li>
+              <li><strong>Web-Based Interface</strong>: Intuitive dashboard for alerts and visualization</li>
+              <li><strong>Anomaly Detection</strong>: Detects unknown threats using heuristic methods</li>
+          </ul>
 
-<p>The web interface and log management component:</p>
+          <h2 class="section-header">Components</h2>
 
-<ul>
-    <li>Provides web dashboard at <code>http://&lt;server_ip&gt;:8338</code></li>
-    <li>Aggregates and displays logs from sensors</li>
-    <li>Includes user authentication</li>
-    <li>Filters and sorts alerts by severity</li>
-</ul>
+          <h3>1. sensor.py</h3>
 
-<h4>Running server.py</h4>
-<pre><code>sudo python3 server.py</code></pre>
+          <p>The network traffic monitor and analyzer component:</p>
 
-<h2>Configuration</h2>
+          <ul>
+              <li>Captures and analyzes network packets</li>
+              <li>Uses multiple data sources to check for IOCs</li>
+              <li>Logs detected threats in JSON format</li>
+              <li>Regularly updates malicious indicators from feeds</li>
+          </ul>
 
-<h3>[Server] Section</h3>
+          <h4>Running sensor.py</h4>
+          <pre><code>sudo python3 sensor.py</code></pre>
 
-<p>Configures the reporting server and web interface:</p>
+          <h3>2. server.py</h3>
 
-<ul>
-    <li><code>HTTP_ADDRESS</code>: Listening IP (0.0.0.0 for all interfaces)</li>
-    <li><code>HTTP_PORT</code>: Web interface port (default: 8338)</li>
-    <li><code>USERS</code>: Defines user accounts (admin/non-admin)</li>
-    <li><code>ENABLE_MASK_CUSTOM</code>: Hides custom trail names for non-admins</li>
-    <li><code>IP_ALIASES</code>: Assigns names to IPs for readability</li>
-</ul>
+          <p>The web interface and log management component:</p>
 
-<h3>[Sensor] Section</h3>
+          <ul>
+              <li>Provides web dashboard at <code>http://&lt;server_ip&gt;:8338</code></li>
+              <li>Aggregates and displays logs from sensors</li>
+              <li>Includes user authentication</li>
+              <li>Filters and sorts alerts by severity</li>
+          </ul>
 
-<p>Configures traffic monitoring and detection:</p>
+          <h4>Running server.py</h4>
+          <pre><code>sudo python3 server.py</code></pre>
 
-<ul>
-    <li><code>PROCESS_COUNT</code>: Number of analysis processes</li>
-    <li><code>MONITOR_INTERFACE</code>: Network interface to monitor</li>
-    <li><code>CAPTURE_FILTER</code>: BPF filter for traffic capture</li>
-    <li><code>USE_HEURISTICS</code>: Enables behavior-based detection</li>
-    <li><code>USER_WHITELIST</code>: Path to whitelist file</li>
-</ul>
+          <h2 class="section-header">Configuration</h2>
 
-<h3>[All] Section</h3>
+          <h3>[Server] Section</h3>
 
-<p>Global configurations:</p>
+          <p>Configures the reporting server and web interface:</p>
 
-<ul>
-    <li><code>LOG_DIR</code>: Directory for log storage</li>
-    <li><code>PROXY_ADDRESS</code>: Proxy for external connections</li>
-    <li><code>TRAILS_FILE</code>: Path for trail storage</li>
-</ul>
+          <ul>
+              <li><code>HTTP_ADDRESS</code>: Listening IP (0.0.0.0 for all interfaces)</li>
+              <li><code>HTTP_PORT</code>: Web interface port (default: 8338)</li>
+              <li><code>USERS</code>: Defines user accounts (admin/non-admin)</li>
+              <li><code>ENABLE_MASK_CUSTOM</code>: Hides custom trail names for non-admins</li>
+              <li><code>IP_ALIASES</code>: Assigns names to IPs for readability</li>
+          </ul>
 
-<h2>Display Options</h2>
+          <h3>[Sensor] Section</h3>
 
-<h3>Show Only Malicious IPs</h3>
+          <p>Configures traffic monitoring and detection:</p>
 
-<ol>
-    <li>Set <code>ENABLE_MASK_CUSTOM true</code></li>
-    <li>Configure appropriate <code>CAPTURE_FILTER</code></li>
-    <li>Use <code>BLACKLIST</code> rules to refine detection</li>
-</ol>
+          <ul>
+              <li><code>PROCESS_COUNT</code>: Number of analysis processes</li>
+              <li><code>MONITOR_INTERFACE</code>: Network interface to monitor</li>
+              <li><code>CAPTURE_FILTER</code>: BPF filter for traffic capture</li>
+              <li><code>USE_HEURISTICS</code>: Enables behavior-based detection</li>
+              <li><code>USER_WHITELIST</code>: Path to whitelist file</li>
+          </ul>
 
-<h3>Show All IPs</h3>
+          <h3>[All] Section</h3>
 
-<ol>
-    <li>Use broad capture filter: <code>CAPTURE_FILTER ip or ip6</code></li>
-    <li>Disable specific feeds in <code>DISABLED_FEEDS</code></li>
-    <li>Set admin UIDs to see all IPs</li>
-</ol>
+          <p>Global configurations:</p>
 
-<div class="note">
-    <strong>Note:</strong> The default username/password for the web interface is <code style="color:red;">admin:admin</code> - change this in production!
-</div>
+          <ul>
+              <li><code>LOG_DIR</code>: Directory for log storage</li>
+              <li><code>PROXY_ADDRESS</code>: Proxy for external connections</li>
+              <li><code>TRAILS_FILE</code>: Path for trail storage</li>
+          </ul>
 
+          <h2 class="section-header">Display Options</h2>
+
+          <h3>Show Only Malicious IPs</h3>
+
+          <ol>
+              <li>Set <code>ENABLE_MASK_CUSTOM true</code></li>
+              <li>Configure appropriate <code>CAPTURE_FILTER</code></li>
+              <li>Use <code>BLACKLIST</code> rules to refine detection</li>
+          </ol>
+
+          <h3>Show All IPs</h3>
+
+          <ol>
+              <li>Use broad capture filter: <code>CAPTURE_FILTER ip or ip6</code></li>
+              <li>Disable specific feeds in <code>DISABLED_FEEDS</code></li>
+              <li>Set admin UIDs to see all IPs</li>
+          </ol>
+
+          <div class="note">
+              <strong>Note:</strong> The default username/password for the web interface is <code>admin:admin</code> - change this in production!
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background" style="background-color: rgba(0,0,0,0.8);">
+    <div class="container">
+      <h3 class="sitename text-center">KYGnus</h3>
+      <p class="text-center">Koosha Yeganeh Gnu Linux Softwares</p>
+      <div class="social-links d-flex justify-content-center mb-4">
+        <a href="https://github.com/kooshayeganeh" class="mx-3"><i class="bi bi-github"></i></a>
+        <a href="https://telegram.me/KYGnus" class="mx-3"><i class="bi bi-telegram"></i></a>
+        <a href="https://www.instagram.com/koosha__yeganeh/" class="mx-3"><i class="bi bi-instagram"></i></a>
+        <a href="https://gitlab.com/KooshaYeganeh" class="mx-3"><i class="bi bi-gitlab"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright text-center">
+          <span>Copyright</span> <strong class="px-1 sitename">KYGnus</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="text-center mt-2">
+          <span>Security Research Division</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="./static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="./static/assets/vendor/aos/aos.js"></script>
+  <script src="./static/assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="./static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="./static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="./static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="./static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="./static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="./static/assets/js/main.js"></script>
 </body>
 </html>
