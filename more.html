@@ -1,178 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KYGnus - Summary</title>
   <meta name="description" content="KYGnus Projects Summary and Initiatives">
   <meta name="author" content="Koosha Yeganeh">
 
-  <!-- Favicons -->
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="./static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="./static/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="./static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="./static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="./static/assets/css/main.css" rel="stylesheet">
-
   <style>
-    /* Custom styles for summary page */
-    .summary-section {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 3rem 0;
-      color: white;
+    /* Kernel.org inspired styling - Consistent with other pages */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --link-color: #ab0d0d;
+      --link-hover: #0a0570;
+      --border-color: #e5e5e5;
+      --header-bg: #f8f8f8;
+      --accent-color: #777777;
+      --card-bg: #fafafa;
+      --card-border: #e0e0e0;
+      --emphasis-color: #d32f2f;
+      --section-bg: #f5f5f5;
     }
     
-    .project-card {
-      background-color: rgba(0, 20, 0, 0.7);
-      border: 1px solid #00aa0000;
-      padding: 25px;
-      margin-bottom: 30px;
-      transition: all 0.3s ease;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     
-    .project-card:hover {
-      border-color: #00ff0000;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0);
-      transform: translateY(-5px);
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
     }
     
-    .project-title {
-      color: #ffffff;
-      border-bottom: 1px solid #00aa0000;
-      padding-bottom: 10px;
-      margin-top: 0;
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 0;
     }
     
-    .project-meta {
-      color: #ff0033;
-      font-size: 0.9rem;
-      display: block;
-      margin-top: 5px;
+    header {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
     }
     
-    .project-desc {
-      margin-top: 15px;
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
     
-    .project-desc p, .project-desc ul {
-      margin-bottom: 10px;
-      line-height: 1.8;
+    .site-title {
+      margin: 0;
     }
     
-    .project-desc li {
-      margin-bottom: 5px;
-      position: relative;
-      padding-left: 20px;
+    .site-title h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--text-color);
+      letter-spacing: -0.5px;
     }
     
-    .project-desc li:before {
-      content: ">";
-      position: absolute;
-      left: 0;
-      color: #ff0033;
-      font-weight: bold;
+    nav {
+      margin-top: 0.5rem;
+    }
+    
+    nav a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      padding: 0.5rem 0.8rem;
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+    }
+    
+    nav a:hover, nav a:focus {
+      color: var(--link-hover);
+      background-color: rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-color);
+    }
+    
+    .active {
+      color: var(--emphasis-color);
+      border: 1px solid var(--emphasis-color);
+    }
+    
+    .hero {
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .hero h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+    }
+    
+    .hero p {
+      color: var(--emphasis-color);
+      font-weight: 500;
     }
     
     .section-header {
-      color: red;
-      border-bottom: 2px solid red;
-      padding-bottom: 10px;
-      margin: 3rem 0 2rem;
-      font-weight: 600;
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin: 2.5rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+    
+    .project-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+    
+    .project-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .project-meta {
+      color: var(--emphasis-color);
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    
+    .project-desc {
+      line-height: 1.7;
+    }
+    
+    .project-desc p {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    
+    .project-desc ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 1rem 0;
+    }
+    
+    .project-desc li {
+      margin-bottom: 0.7rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .project-desc li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--emphasis-color);
+      font-weight: bold;
     }
     
     .startups-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 30px;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
     
     .startup-card {
       flex: 1;
-      min-width: 300px;
-      background-color: rgba(0, 30, 0, 0.7);
-      padding: 20px;
-      border: 1px solid #00aa0000;
+      min-width: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1.5rem;
+      transition: all 0.2s ease;
+    }
+    
+    .startup-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     
     .startup-title {
-      color: #ffffff;
-      border-bottom: 1px solid #00aa0000;
-      padding-bottom: 10px;
-      margin-top: 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
     }
     
+    .startup-desc ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    
+    .startup-desc li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    
+    .startup-desc li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--emphasis-color);
+      font-weight: bold;
+    }
+    
+    footer {
+      border-top: 1px solid var(--border-color);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--accent-color);
+    }
+    
+    .social-links {
+      margin: 1rem 0;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .social-links a:hover {
+      text-decoration: underline;
+      color: var(--link-hover);
+    }
+    
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .startups-container {
+      .header-content {
         flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      nav {
+        margin-top: 1rem;
+      }
+      
+      nav a {
+        margin: 0.2rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero h3 {
+        font-size: 1.1rem;
       }
       
       .project-card, .startup-card {
-        padding: 15px;
+        padding: 1.4rem;
+      }
+      
+      .startups-container {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        font-size: 15px;
+      }
+      
+      .site-title h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav a {
+        display: block;
+        margin: 0.3rem 0;
+      }
+      
+      .project-desc li, .startup-desc li {
+        padding-left: 1rem;
       }
     }
   </style>
 </head>
 
-<body class="index-page" style="background-image: url('./static/assets/img/c3289c889c206bb17148fe984d7ccbdb.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">KYGnus</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="Documents.html">Documents</a></li>
-          <li><a href="ioc.html">IOC</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="manifesto.html">Manifesto</a></li>
-          <li><a href="more.html" class="active">Summary</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background" style="background-color: rgba(0,0,0,0.7); padding: 3rem 0;">
-      <div class="container" data-aos="zoom-out" data-aos-delay="100">
-        <h1 class="text-center mb-4"><i class="bi bi-info-circle"></i> Summary</h1>
-        <h3 class="text-center mb-5">KYGnus Projects and Initiatives Overview</h3>
-        <p class="text-center text-danger">Key projects and development focus areas</p>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <div class="site-title">
+          <h1>KYGnus</h1>
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="Documents.html">Documents</a>
+          <a href="downloads.html">Downloads</a>
+          <a href="projects.html">Projects</a>
+          <a href="manifesto.html">Manifesto</a>
+          <a href="more.html" class="active">Summary</a>
+        </nav>
       </div>
-    </section><!-- /Hero Section -->
+    </header>
 
-    <!-- Summary Section -->
-    <section class="summary-section">
-      <div class="container">
-        
+    <main>
+      <section class="hero">
+        <h1>Summary</h1>
+        <h3>KYGnus Projects and Initiatives Overview</h3>
+        <p>Key projects and development focus areas</p>
+      </section>
+
+      <section>
         <h2 class="section-header">KYGnus Projects</h2>
         
         <div class="project-card">
-          <h3 class="project-title">
-            KYGnus
-            <span class="project-meta">FOUNDER & DEVELOPER | PRESENT</span>
-          </h3>
+          <h3 class="project-title">KYGnus</h3>
+          <span class="project-meta">FOUNDER & DEVELOPER | PRESENT</span>
           <div class="project-desc">
             <p>> DEVELOPING FREE SOFTWARE FOR GNU/LINUX</p>
             <p>> DEVELOPING SECURITY TOOLS (BLUETEAM)</p>
@@ -226,53 +404,19 @@
             </div>
           </div>
         </div>
-        
-        
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>KYGnus</strong> — Koosha Yeganeh Gnu Linux Softwares</p>
+      <div class="social-links">
+        <a href="https://github.com/kooshayeganeh">GitHub</a>
+        <a href="https://telegram.me/KYGnus">Telegram</a>
+        <a href="https://www.instagram.com/koosha__yeganeh/">Instagram</a>
+        <a href="https://gitlab.com/KooshaYeganeh">GitLab</a>
       </div>
-    </section>
-
-  </main>
-
-  <footer id="footer" class="footer dark-background" style="background-color: rgba(0,0,0,0.8);">
-    <div class="container">
-      <h3 class="sitename text-center">KYGnus</h3>
-      <p class="text-center">Koosha Yeganeh Gnu Linux Softwares</p>
-      <div class="social-links d-flex justify-content-center mb-4">
-        <a href="https://github.com/kooshayeganeh" class="mx-3"><i class="bi bi-github"></i></a>
-        <a href="https://telegram.me/KYGnus" class="mx-3"><i class="bi bi-telegram"></i></a>
-        <a href="https://www.instagram.com/koosha__yeganeh/" class="mx-3"><i class="bi bi-instagram"></i></a>
-        <a href="https://gitlab.com/KooshaYeganeh" class="mx-3"><i class="bi bi-gitlab"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright text-center">
-          <span>Copyright</span> <strong class="px-1 sitename">KYGnus</strong> <span>All Rights Reserved</span>
-        </div>
-        <div class="text-center mt-2">
-          <span>Security Research Division</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="./static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="./static/assets/vendor/php-email-form/validate.js"></script>
-  <script src="./static/assets/vendor/aos/aos.js"></script>
-  <script src="./static/assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="./static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="./static/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="./static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="./static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="./static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="./static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="./static/assets/js/main.js"></script>
+      <p>&copy; KYGnus — Security Research Division</p>
+    </footer>
+  </div>
 </body>
 </html>
