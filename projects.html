@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>KYGnus - Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KYGnus Security, Medical and Service Projects">
+  <title>KYGnus - Projects & Summary</title>
+  <meta name="description" content="KYGnus Security, Medical and Service Projects - Summary and Initiatives">
   <meta name="author" content="Koosha Yeganeh">
 
   <style>
-    /* Kernel.org inspired styling - Consistent with index.html */
+    /* Kernel.org inspired styling - Consistent with other pages */
     :root {
       --bg-color: #ffffff;
       --text-color: #333333;
@@ -19,6 +19,7 @@
       --accent-color: #777777;
       --card-bg: #fafafa;
       --card-border: #e0e0e0;
+      --emphasis-color: #d32f2f;
       --section-bg: #f5f5f5;
     }
     
@@ -99,25 +100,52 @@
       border: 1px solid var(--border-color);
     }
     
-    main h2 {
-      font-size: 1.8rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
+    .active {
+      color: var(--emphasis-color);
+      border: 1px solid var(--emphasis-color);
+    }
+    
+    .hero {
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem 0;
       border-bottom: 1px solid var(--border-color);
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
       color: var(--text-color);
     }
     
-    .projects-section {
-      margin: 2rem 0;
+    .hero h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+    }
+    
+    .hero p {
+      color: var(--emphasis-color);
+      font-weight: 500;
+    }
+    
+    .section-header {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin: 2.5rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
     }
     
     .project-card {
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 5px;
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
       transition: all 0.2s ease;
     }
     
@@ -126,19 +154,134 @@
       transform: translateY(-2px);
     }
     
-    .project-card h3 {
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .project-meta {
+      color: var(--emphasis-color);
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    
+    .project-desc {
+      line-height: 1.7;
+    }
+    
+    .project-desc p {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    
+    .project-desc ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 1rem 0;
+    }
+    
+    .project-desc li {
+      margin-bottom: 0.7rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .project-desc li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--emphasis-color);
+      font-weight: bold;
+    }
+    
+    .startups-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .startup-card {
+      flex: 1;
+      min-width: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1.5rem;
+      transition: all 0.2s ease;
+    }
+    
+    .startup-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .startup-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+    
+    .startup-desc ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    
+    .startup-desc li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    
+    .startup-desc li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--emphasis-color);
+      font-weight: bold;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .project-item {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1.2rem;
+      transition: all 0.2s ease;
+    }
+    
+    .project-item:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .project-item h3 {
       font-size: 1.4rem;
       font-weight: 500;
       margin-bottom: 0.8rem;
-      color: #000000; /* Green color for project titles */
+      color: #000000;
     }
     
-    .project-card p {
+    .project-item p {
       margin-bottom: 0.8rem;
       line-height: 1.5;
     }
     
-    .project-card a {
+    .project-item a {
       display: inline-block;
       color: var(--link-color);
       text-decoration: none;
@@ -151,7 +294,7 @@
       transition: all 0.2s ease;
     }
     
-    .project-card a:hover {
+    .project-item a:hover {
       color: var(--link-hover);
       background-color: rgba(0, 0, 0, 0.03);
       text-decoration: none;
@@ -211,6 +354,23 @@
       color: var(--accent-color);
     }
     
+    .social-links {
+      margin: 1rem 0;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .social-links a:hover {
+      text-decoration: underline;
+      color: var(--link-hover);
+    }
+    
     footer a {
       color: var(--link-color);
       text-decoration: none;
@@ -238,6 +398,23 @@
         padding: 0.4rem 0.6rem;
       }
       
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero h3 {
+        font-size: 1.1rem;
+      }
+      
+      .project-card, .startup-card, .project-item {
+        padding: 1.4rem;
+      }
+      
+      .startups-container, .projects-grid {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+      }
+      
       .docs-section {
         padding: 1.2rem;
       }
@@ -257,25 +434,26 @@
         margin: 0.3rem 0;
       }
       
-      .project-card {
-        padding: 1rem;
+      .project-desc li, .startup-desc li {
+        padding-left: 1rem;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
       <div class="header-content">
         <div class="site-title">
-          <h1>KYGnus Projects</h1>
+          <h1>KYGnus</h1>
           <p>Security • Medical • Services</p>
         </div>
         <nav>
           <a href="index.html">Home</a>
           <a href="Documents.html">Documents</a>
           <a href="downloads.html">Downloads</a>
-          <a href="projects.html">Projects</a>
+          <a href="projects.html" class="active">Projects</a>
           <a href="manifesto.html">Manifesto</a>
           <a href="more.html">Summary</a>
         </nav>
@@ -283,53 +461,69 @@
     </header>
 
     <main>
-      <section class="projects-section">
-        <h2>Active Projects</h2>
-        
-        <div class="project-card">
-          <h3>Health Diagnosis Assistant</h3>
-          <p>Open-source medical diagnostics with AI/ML.</p>
-          <a href="#">Project Details</a>
-          <a href="#">GitHub Repository</a>
-        </div>
-
-        <div class="project-card">
-          <h3>KYGnus Security Toolkit</h3>
-          <p>Linux and Android malware analysis.</p>
-          <a href="#">Project Details</a>
-          <a href="#">GitHub Repository</a>
-        </div>
-
-        <div class="project-card">
-          <h3>FreeMedia</h3>
-          <p>Self-hosted media platform.</p>
-          <a href="#">Project Details</a>
-          <a href="#">GitHub Repository</a>
-        </div>
-
-        <div class="project-card">
-          <h3>FreeADS</h3>
-          <p>Customizable decentralized ad system.</p>
-          <a href="#">Project Details</a>
-          <a href="#">GitHub Repository</a>
-        </div>
+      <section class="hero">
+        <h1>KYGnus Projects & Summary</h1>
+        <h3>Security, Medical and Service Projects Overview</h3>
+        <p>Key projects and development focus areas</p>
       </section>
 
-      <section class="docs-section">
-        <h2>Documentation</h2>
-        <p>All project documentation is available in plain text and HTML format:</p>
-        <ul class="docs-list">
-          <li><a href="/docs/install.html">Installation Guides</a></li>
-          <li><a href="/docs/api.html">API Documentation</a></li>
-          <li><a href="/docs/faq.html">FAQ</a></li>
-        </ul>
+      <section>
+        
+        <h2 class="section-header">Startup Initiatives</h2>
+        
+        <div class="startups-container">
+          <div class="startup-card">
+            <h4 class="startup-title">E-WASTE PREVENTION</h4>
+            <div class="startup-desc">
+              <ul>
+                <li>CONVERTING OLD COMPUTERS TO NAS STORAGE</li>
+                <li>UTM (UNIFIED THREAT MANAGEMENT) SOLUTIONS</li>
+                <li>MEDIA SERVER CONVERSIONS</li>
+                <li>LOAD BALANCER IMPLEMENTATIONS</li>
+                <li>BACKUP SERVER SOLUTIONS</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="startup-card">
+            <h4 class="startup-title">MEDICAL SOLUTIONS</h4>
+            <div class="startup-desc">
+              <ul>
+                <li>RMS-CANCER DIAGNOSTIC SYSTEM</li>
+                <li>RMS-BRAIN DISEASE ANALYSIS</li>
+                <li>RMS-ORAL HEALTH MONITORING</li>
+                <li>RMS-EYE DISEASE DETECTION</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="startup-card">
+            <h4 class="startup-title">STORAGE SERVICES</h4>
+            <div class="startup-desc">
+              <ul>
+                <li>DISK & FILE SYSTEM MAINTENANCE</li>
+                <li>ADVANCED DATA RECOVERY</li>
+                <li>MALICIOUS FILE DETECTION</li>
+                <li>SERVER DISK HEALTH MONITORING</li>
+                <li>IOC ANALYSIS GENERATION</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer>
       <p><strong>KYGnus</strong> — Koosha Yeganeh Gnu Linux Softwares</p>
+      <div class="social-links">
+        <a href="https://github.com/kooshayeganeh">GitHub</a>
+        <a href="https://telegram.me/KYGnus">Telegram</a>
+        <a href="https://www.instagram.com/koosha__yeganeh/">Instagram</a>
+        <a href="https://gitlab.com/KooshaYeganeh">GitLab</a>
+      </div>
       <p>&copy; 2025 Koosha Yeganeh – KYGnus Project</p>
       <p><a href="mailto:kooshakooshadv@gmail.com">kooshakooshadv@gmail.com</a></p>
+      <p>&copy; KYGnus — Security Research Division</p>
     </footer>
   </div>
 </body>
