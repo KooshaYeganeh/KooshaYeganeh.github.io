@@ -1,0 +1,1842 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V programing</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="v-programing">V programing</h1>
+<p><strong>KYGnus ( Koosha Yeganeh Gnu Linux Softwares )</strong></p>
+<ul>
+<li>
+<p><a href="https://gitlab.com/KooshaYeganeh/vlang#introduction">Introduction</a></p>
+<ul>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#features-of-v-programming">Feature of V Programing</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#easy-cross-complitation">Easy cross-complitation</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#v-to-javascript">V to Javascript</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#profiling">profiling</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#v-as-a-framework">V as Framework</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#built-in-web-server">Build in WebServer</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#native-cross-platform-gui-library">Native cross Platform Liberary</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#vinix-an-os-kernel-written-in-v">Vinix - an os Kernel Written in V</a></li>
+<li><a href="https://gitlab.com/KooshaYeganeh/vlang#install-v-with-dependencies">Install V with Dependencies</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://gitlab.com/KooshaYeganeh/vlang#variables">variables</a></p>
+</li>
+<li>
+<p><a href="">Modules</a></p>
+</li>
+<li>
+<p><a href="https://gitlab.com/KooshaYeganeh/vlang#resources">Resources</a></p>
+</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>• V is a statically typed and compiled programming language<br>
+• Simple and maintainable syntax <br>
+• Backward compatibility, stability, and easy to upgrade to future versions4 Introduction to V Programming <br>
+• Features of V programming <br>
+• V as a framework <br>
+• Operating systems V supports </p>
+<p>main repository of V programing</p>
+<p><a href="https://github.com/vlang/v">Main Repository of Vlang</a></p>
+<p>V has an active community of developers and contributors. The community is highly<br>
+active and responsive to issues raised on GitHub. You can participate in discussions at<br>
+<strong><a href="https://github.com/vlang/v/discussions">https://github.com/vlang/v/discussions</a></strong> and the team is also available on<br>
+<strong>Discord: <a href="https://discord.gg/vlang">https://discord.gg/vlang</a></strong></p>
+<h3 id="features-of-v-programming">Features of V programming</h3>
+<p>1 - Performance<br>
+2 - Speed<br>
+3 - No null values<br>
+4 - No global variables<br>
+5 - No undefined values<br>
+6 - Error handling<br>
+7 - Powerful concurrency</p>
+<p>V has a very powerful concurrency framework. It is essential for an application running<br>
+on a high-end computing device to be able to utilize its resources, such as its CPU cores,<br>
+efficiently. Through V’s built-in concurrency model, using the go keyword, you can spawn<br>
+functions to run concurrently on other threads, different from the thread where the main<br>
+program runs. The functions that run concurrently are called coroutines.<br>
+8 - Easy cross-compilation <br>
+V allows you to generate cross-platform binaries with its cross-platform compilation<br>
+capabilities. With this feature, from a *nix OS, you can generate your application’s<br>
+executable that targets <em>nix OS</em> variants, as well as Windows or macOS. From a <em>nix OS</em>,<br>
+let’s say Ubuntu, create a file named hello.v and add the following code to it:</p>
+<h3 id="easy-cross-complitation">Easy cross-complitation</h3>
+<pre><code>module main
+fn main() {
+    os := $if windows { 'Windows' } $else { 'Unix' }
+    println('Hello, $os user!')
+}
+</code></pre>
+<p>The $ symbol in the preceding code tells the compiler to evaluate the following if<br>
+condition right away during compile time. Also, windows is a built-in term that’s used to identify the OS type.<br>
+Run the preceding code using the v run hello.v command. You will see Hello, Unix user! as the output.<br>
+From the <em>nix OS</em>, you can run the following command to create a cross-compiled executable targeting the Windows OS.<br>
+Before you start generating a cross-compiled binary for the hello.v program, you need<br>
+to install <strong>mingw-64</strong>, which is required to generate an executable targeting the Windows<br>
+OS. To install <strong>mingw-64</strong>, run the following command:</p>
+<p><strong>Debian Base systems</strong></p>
+<pre><code>sudo apt install -y mingw-w6410
+</code></pre>
+<p>Introduction to V Programming Alternatively, you can try</p>
+<pre><code>sudo apt install -y mingw-w64
+</code></pre>
+<p>distributions or</p>
+<p><strong>Arch Base</strong></p>
+<pre><code>sudo pacman -S mingw-w64-gcc 
+</code></pre>
+<p><strong>RedHat Base Like Fedora</strong></p>
+<pre><code>sudo yum install mingw32-gcc-c++
+</code></pre>
+<p>Once mingw-64 has been installed, run the following command from the Ubuntu OS to<br>
+generate the executables that can run on the Windows OS, as follows:</p>
+<pre><code>v -os windows hello.v
+</code></pre>
+<p>The preceding command will generate an executable named hello.exe. Now, transfer<br>
+the .exe file to the Windows OS. Running the executable from Command Prompt will output Hello, Windows user!.<br>
+You can also cross-compile to generate <em>nix</em> binaries from a Windows OS. All you need<br>
+to do is install Clang for Windows, as described at <strong><a href="https://clang.llvm.org/get_started.html">https://clang.llvm.org/get_started.html</a></strong>,<br>
+and run the following command, which generates the <em>nix</em> binary:</p>
+<pre><code>v -os linux hello.v
+</code></pre>
+<p>Similarly, to generate an executable for macOS, run the following command:</p>
+<pre><code>v -os macos hello.v
+</code></pre>
+<h3 id="v-to-javascript">v to javascript</h3>
+<p>In addition to C as a primary backend, V also has JavaScript and WASM backends. V<br>
+programs can be translated into JavaScript. To translate the hello.v into JavaScript, you<br>
+can run the following command:</p>
+<pre><code>v -o hello.js hello.v
+</code></pre>
+<p>It is as simple as the preceding command. The outcome will produce a JavaScript file<br>
+named hello.js that reflects the functionality written in the hello.v program.</p>
+<h3 id="profiling">Profiling</h3>
+<p>V has a built-in profiling tool that you can use to analyze how your program is behaving<br>
+or how many times a function gets called on average by a function per call. You might<br>
+need this information to debug and optimize the application code. To run the profiler<br>
+against the V program, let’s say hello.v, run the following command:</p>
+<pre><code>v -profile profile.txt hello.v
+</code></pre>
+<p>Note : <em>Notice the usage of the -profile argument, followed by the text file.</em> Running the<br>
+preceding command generates a binary for the hello.v program. Running the binary<br>
+generates profile.txt with a detailed list of all the function calls with three columns.<br>
+Each of the columns in the text file represents the number of calls, average time per call,<br>
+and total time per call.</p>
+<h3 id="v-as-a-framework">V as a framework</h3>
+<p>With the suite of packages V comes with, it can be considered equivalent to a framework.<br>
+A framework generally comprises all the features of full-blown programming, along<br>
+with the ability to smoothly plug and play the external packages. Using V, you can write<br>
+enterprise-grade software, even though it is still in development.</p>
+<h3 id="built-in-web-server">Built-in web server</h3>
+<p>The vweb web server is a built-in library. Though it is in an alpha state at the time of<br>
+writing this book, it offers various features in its current state, including the following:<br>
+• Built-in routing.<br>
+• Handling parameters.<br>
+• Templating engine.<br>
+• Very fast performance, like C on the web.<br>
+• Building the project using vweb generates a single binary, thus simplifying<br>
+deployments.</p>
+<h3 id="native-cross-platform-gui-library">Native cross-platform GUI library</h3>
+<p>V has a cross-platform ui library. Using this library, you can leverage the power of building<br>
+cross-platform GUI applications. The ui library can be found at the official GitHub<br>
+repository at <strong><a href="https://github.com/vlang/ui">https://github.com/vlang/ui</a></strong>, which is licensed under GPL 3.0.<br>
+V has a ui module that uses native GUI toolkits: WinAPI/GDI+ on Windows and Cocoa<br>
+on macOS. On Linux, custom drawing is used.</p>
+<h4 id="install-basic-tools">Install Basic Tools</h4>
+<p><strong>Arch:</strong></p>
+<pre><code>sudo pacman -S libxi libxcursor mesa
+</code></pre>
+<p><strong>Debian/Ubuntu:</strong></p>
+<pre><code>sudo apt install libxi-dev libxcursor-dev mesa-common-dev
+</code></pre>
+<p><strong>Fedora:</strong></p>
+<pre><code>sudo dnf install libXi-devel libXcursor-devel mesa-libGL-devel
+</code></pre>
+<p><strong>Install ui</strong></p>
+<pre><code>v up
+v install ui
+</code></pre>
+<p><strong>Basic app</strong></p>
+<pre><code>vi basic.v
+</code></pre>
+<pre><code>import ui
+
+struct App {
+mut:
+	window     &amp;ui.Window = unsafe { nil }
+	first_name string
+	last_name  string
+}
+
+fn main() {
+	mut app := &amp;App{}
+	app.window = ui.window(
+		width: 600
+		height: 400
+		title: 'V UI Demo'
+		children: [
+			ui.row(
+				margin: ui.Margin{10, 10, 10, 10}
+				children: [
+					ui.column(
+						width: 200
+						spacing: 13
+						children: [
+							ui.textbox(
+								max_len: 20
+								width: 200
+								placeholder: 'First name'
+								text: &amp;app.first_name
+							),
+							ui.textbox(
+								max_len: 50
+								width: 200
+								placeholder: 'Last name'
+								text: &amp;app.last_name
+							),
+						]
+					),
+				]
+			),
+		]
+	)
+	ui.run(app.window)
+}
+</code></pre>
+<pre><code>v run basic.v
+</code></pre>
+<h3 id="vinix-–-an-os-kernel-written-in-v">Vinix – an OS kernel written in V</h3>
+<p>inix is an effort to write a modern, fast, and useful OS using V. Vinix is purposefully<br>
+built to facilitate writing low-level software.<br>
+The Vinix OS is licensed under GPL 2.0, and you can find its entire source code on its<br>
+official GitHub repository at <strong><a href="https://github.com/vlang/vinix">https://github.com/vlang/vinix</a></strong>. You can always<br>
+download the latest version of the Vinix OS in the form of ISO from the official link:<br>
+<strong><a href="https://builds.vinix-os.org/repos/files/vinix/latest/vinix.iso">https://builds.vinix-os.org/repos/files/vinix/latest/vinix.iso</a>.</strong><br>
+Vinix aims to have the following features:<br>
+• Make a usable OS that can run on emulators, virtual machines, and physical hardware<br>
+• Target modern 64-bit architectures, CPU features, and multi-core computing<br>
+• Maintain good source-level compatibility with Linux, which helps with porting programs between Vinix and Linux<br>
+• Explore V’s capabilities in bare-metal programming<br>
+• Improve the compiler in response to the uncommon needs of bare-metal programming</p>
+<h3 id="install-v-with-dependencies">Install V with Dependencies</h3>
+<p>Download the V-installer file and run your Linux operating system. This file will automatically install the V language and everything you need to work with it.</p>
+<pre><code>./V-installer
+</code></pre>
+<h2 id="variables">Variables</h2>
+<pre><code>x := 10
+</code></pre>
+<pre><code>mut x :=10
+</code></pre>
+<h3 id="the-variable-naming-convention">The variable naming convention</h3>
+<p>• A variable name can only start with the lowercase alphabet.<br>
+• A variable name cannot contain the uppercase alphabet.<br>
+• Special characters are not allowed except for underscores.<br>
+• Variable names can end with numbers and underscores.<br>
+• Lengthy variable names can have words separated with _ to enhance readability<br>
+and consistency across the code. This type of variable naming convention is often<br>
+referred to as snake_case.</p>
+<h3 id="variable-assignment">Variable assignment</h3>
+<p><strong>• := is a colon followed by an equals sign and is used to declare a variable in V.</strong><br>
+<strong>• = is an equals sign used to reassign a value to the already declared mutable<br>
+variables only.</strong></p>
+<pre><code>a, b, c := 3, 4, 5
+</code></pre>
+<pre><code>mut i, mut j := 'Hi', 'Hello'
+</code></pre>
+<h3 id="mutable-variables">Mutable variables</h3>
+<p><em>mut &lt;variable_name&gt; := &lt;initializing_value&gt;</em><br>
+The syntax to update the mutable variable is as follows:<br>
+<em>&lt;variable_name&gt; = &lt;updated_value&gt;</em></p>
+<pre><code>mut i := 10
+</code></pre>
+<pre><code>i = 100
+</code></pre>
+<h3 id="immutable-variables">Immutable variables</h3>
+<p><em>&lt;variable_name&gt; := &lt;initializing_value&gt;</em></p>
+<pre><code>msg := 'Hello'
+</code></pre>
+<p><strong>Note : Any variable that is declared but unused will lead to a warning or error depending on the<br>
+mode in which you run the program</strong></p>
+<h3 id="the-limitations-of-variables-in-v">The limitations of variables in V</h3>
+<p>• Global variables are not allowed in V.<br>
+• The redeclaration or redefinition of variables is not allowed in V.<br>
+• Variable shadowing is not allowed in V</p>
+<p><strong>V only allows you to define variables within functions and scripts-</strong></p>
+<pre><code>module main
+fn os() {
+    msg := 'GnuLinux is Best'
+    println(msg)
+    }
+
+fn programing() {
+    msg := 'Vlang is Best'
+    println(msg)
+}
+
+fn main() {
+    os)
+    programing()
+}
+
+</code></pre>
+<h3 id="working-with-constants-in-v">Working with constants in V</h3>
+<p>• The name of a constant can only start with the lowercase alphabet.<br>
+• The name of a constant cannot contain the uppercase alphabet.<br>
+• Special characters are not allowed except underscores.<br>
+• The name of a constant can end with numbers and underscores.<br>
+• Lengthy constant names can have words separated with _ to enhance readability<br>
+and consistency across code. This type of naming convention is often referred toas snake_case.</p>
+<h4 id="defining-constants">Defining constants</h4>
+<p><em>const &lt;constant_name&gt; = &lt;constant_value&gt;</em></p>
+<pre><code>const username = "koosha"
+const password = "123123"
+</code></pre>
+<p>or</p>
+<pre><code>const {
+
+    username = "koosha"
+    password = "123123"
+
+}
+</code></pre>
+<pre><code>const koosha = programing{
+        
+        python:90
+        bash:90
+        v:30
+
+}
+</code></pre>
+<p><strong>Notice that we have defined a constant named greet inside the function that doesn’t<br>
+compile. Therefore, the preceding code will fail with a message that says error: const<br>
+can only be defined at the top level (outside of functions).</strong></p>
+<h4 id="constants-must-be-identified-with-their-module-prefix">Constants must be identified with their module prefix</h4>
+<pre><code>module mod1
+
+
+const greet_count = 5
+pub fn do_work() {
+    println(mod1.greet_count)
+}
+</code></pre>
+<h2 id="primitive-data-types">Primitive Data Types</h2>
+<p>how to determine the type of<br>
+any variable using the built-in typeof() function as follows:</p>
+<pre><code>typeof(variable).name
+</code></pre>
+<h3 id="the-boolean-data-type">The Boolean data type</h3>
+<pre><code>completed := true
+</code></pre>
+<h3 id="logical-operators">Logical operators</h3>
+<p>&amp;&amp; &gt; Logical AND<br>
+|| &gt; Logical OR<br>
+! &gt; Logical NOT</p>
+<h3 id="numeric-data-types">Numeric data types</h3>
+<pre><code>x := 1
+typeof(x).name // int
+</code></pre>
+<pre><code>i := 1_000
+j := 1000
+println(i == j) // true
+</code></pre>
+<pre><code>module main
+fn demo() {
+    h1 := 0x64
+    b1 := 0b1100100
+    o1 := 0o144
+    // hexadecimal starts with 0x
+    // binary starts with 0b
+    // Octal starts with 0o
+
+    println('Value of var h1 with hexadecimal value : $h1')
+    println('Data type of var h1 with hexadecimal
+    
+    value : ${typeof(h1).name}')
+    
+    println('Value of var b1 with binary value : $b1')
+    println('Data type of var b1 with binary value : ${typeof(b1).name}')
+    println('Value of var o1 with octal value : $o1')
+    println('Data type of var o1 with octal value : ${typeof(o1).name}')
+}
+
+fn main() {
+    demo()
+}
+
+
+</code></pre>
+<h3 id="signed-and-unsigned-integers">Signed and unsigned integers</h3>
+<p>To start with, we have integer types i8, i16, int (32-bit integer), and i64, and unsigned<br>
+integer types byte (which is referred to as u8), u16, u32, and u64.<br>
+Signed integers support both positive and negative ranges of values, typically to represent<br>
+whole numbers. Unsigned integers don’t represent any sign and are non-negative<br>
+numbers. The following table indicates the range of all the integer types:</p>
+<p>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                Min&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                 Max<br><br>
+<strong>i8</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              -128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                127<br></p>
+<p><strong>i16</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             -32768&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              32767<br></p>
+<p><strong>i32</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             -2147483648&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         2147483647 <br></p>
+<p><strong>i64</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             i64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                 9223372036854775807<br></p>
+<p><strong>byte(u8)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   255<br></p>
+<p><strong>u16</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   65535<br></p>
+<p><strong>u32</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   4294967295<br></p>
+<p><strong>u64</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   18446744073709551615<br></p>
+<blockquote>
+<p>In the preceding table, notice that the minimum value for i64 is represented as<br>
+i64(-9223372036854775807 – 1) because the C compilers parse literal values without<br>
+sign and 9223372036854775808 overflows the maximum value possible for i64, which<br>
+is 9223372036854775807. Ideally, there is no bigger type beyond i64 that holds a value<br>
+greater than 9223372036854775807. Hence, we represent the minimum value as the result<br>
+of an evaluation of subtracting 1 from -9223372036854775807.</p>
+</blockquote>
+<h3 id="bitwise-operators">Bitwise operators</h3>
+<img src="./static/bitwise_operator.jpg" width="650" height="400">
+<h2 id="the-string-data-type">The string data type</h2>
+<p><em>&lt;VARIABLE_NAME&gt; := ‘<text>’</text></em></p>
+<pre><code>h := 'hello'
+println(h) // hello
+println(h.len) // 5
+typeof(h).name // string
+</code></pre>
+<h3 id="a-string-is-a-read-only-array-of-bytes">A string is a read-only array of bytes</h3>
+<pre><code>username := "koosha"
+
+</code></pre>
+<pre><code>println(typeof(username[0]).name) // byte
+println(username[0]) 
+</code></pre>
+<p><strong>Strings are immutable by default</strong></p>
+<h3 id="declaring-mutable-strings">Declaring mutable strings</h3>
+<pre><code>mut msg := 'Hello Bro!'
+</code></pre>
+<pre><code>msg = 'Hope you are doing good.'
+println(msg)
+</code></pre>
+<h3 id="declaring-mutable-strings-1">Declaring mutable strings</h3>
+<pre><code>mut msg := 'Hello Koosha!'
+</code></pre>
+<pre><code>msg += 'VLang Developer'
+println(msg) // Hello koosha VLang Developer
+</code></pre>
+<h3 id="concatenating-strings">Concatenating strings</h3>
+<pre><code>a := 'con'
+b := 'cat'
+println(a + b) // concat
+</code></pre>
+<pre><code>i := 1
+j :='man army'
+println('$i $j')
+</code></pre>
+<h3 id="extracting-a-substring-from-a-string-literal">Extracting a substring from a string literal</h3>
+<pre><code>a :='KYGnus'
+b := a.substr(0,3)
+println(b) // KYG
+</code></pre>
+<h3 id="splitting-a-string">Splitting a string</h3>
+<pre><code>sp :='The tiny tiger tied the tie tighter to its tail'
+res := sp.split(' ') // split by space as delimiter
+
+println(typeof(res).name) // []string
+println(res) // // ['The', 'tiny', 'tiger', 'tied', 'the',
+//'tie', 'tighter', 'to', 'its', 'tail']
+</code></pre>
+<h3 id="counting-the-occurrences-of-a-substring-in-a-string">Counting the occurrences of a substring in a string</h3>
+<pre><code>sp := 'The tiny tiger tied the tie tighter to its tail'
+println(sp.count('t')) // 10
+println(sp.count('T')) // 1
+println(sp.count('tie')) // 2
+println(sp.count('-')) // 0
+
+</code></pre>
+<h3 id="checking-for-the-existence-of-a-string-using-contains">Checking for the existence of a string using contains</h3>
+<pre><code>module main
+
+
+fn main() {
+    hs := 'monday'
+    if hs.contains('mon') {
+        println('$hs contains mon')
+    } else {
+        println('$hs does not contains mon')
+    }
+}
+</code></pre>
+<h2 id="arrays-and-maps">Arrays and Maps</h2>
+<h3 id="declaring-and-initializing-arrays">Declaring and initializing arrays</h3>
+<pre><code>mut friends := [ 'Mahdi_Bahadori', 'Hamed_Fard', 'Farhad_Mehryari' , 'sahand_Alipoor' , 'Amin_Pirmohamadi' ]
+</code></pre>
+<h3 id="declaring-an-empty-array">Declaring an empty array</h3>
+<p><em>mut &lt;VAR_NAME&gt; := []DATA_TYPE{}</em></p>
+<pre><code>mut users := []string{}
+println(useers) //prints empty array: []
+</code></pre>
+<p>Now, we will append a value to the mutable array of animals strings:</p>
+<pre><code>users &lt;&lt; 'Koosha'
+users &lt;&lt; 'Farhad'
+println(users) // ['Koosha', 'Farhad']
+</code></pre>
+<h3 id="declaring-array-with-the-len-property">Declaring array with the len property</h3>
+<pre><code>mut i := []int{len:3}
+println(i)
+</code></pre>
+<p>output : [0, 0, 0]</p>
+<h3 id="declaring-an-array-with-default-initial-values-using-init">Declaring an array with default initial values using init</h3>
+<pre><code>mut user := []string{len: 3, init: 'koosha'}
+mut pass := []int{len: 3, init: 1}
+println(user)
+println(pass)
+</code></pre>
+<h3 id="declaring-an-array-with-an-initial-capacity-using-the-cap-property">Declaring an array with an initial capacity using the cap property</h3>
+<pre><code>mut k := []int{cap: 2}
+println(k)
+</code></pre>
+<h3 id="working-with-the-len-and-cap-array-properties">Working with the len and cap array properties</h3>
+<pre><code>mut legendary_men := ['Ken Thompson', 'Richard Stallman', 'Linus Torvalds' , 'Dennis Ritchie' , 'Steve Wozniak' , 'Amir Emad Mirmirani-jadi']
+println(legendary_men)
+println(legendary_men.len) // Length of sports array
+println(legendary_men.cap) // Capacity of sports array
+</code></pre>
+<h4 id="delete">Delete</h4>
+<pre><code>legendary_men.delete(2)
+</code></pre>
+<h4 id="add">Add</h4>
+<pre><code>legendary_men &lt;&lt; [ 'Bram Moolenaar' , 'Guido Van Rossum' ]
+println(legendary_men)
+println(legendary_men.len)
+</code></pre>
+<h3 id="accessing-array-elements-using-the-index">Accessing array elements using the index</h3>
+<pre><code>s := legenadry_men[1]
+println(s) // Ken Thompson
+</code></pre>
+<h3 id="accessing-array-elements-using-slices">Accessing array elements using slices</h3>
+<p><em>ARRAY_VAR[STARTING_INDEX … ENDING_POSITION]</em></p>
+<pre><code>println(legenadry_men[1..3]) // prints ['Ken Thompson', 'Linus Torvalds']
+</code></pre>
+<p>n the preceding code, we slice the sports array to print the elements starting from<br>
+index 1 to position 3. Notice the terms I have used here; the first number in the [1…3]<br>
+range is 1, which indicates the index, and the other number, 3, indicates the position.</p>
+<h3 id="operators-used-with-arrays">Operators used with arrays</h3>
+<h4 id="the-in-operator">The in operator</h4>
+<p>1 -</p>
+<pre><code>odd := [1, 3, 5, 7]
+println(3 in odd) // prints: true
+println(8 !in odd) // prints: true
+</code></pre>
+<p>2-</p>
+<pre><code>mut legendary_men := ['Ken Thompson', 'Richard Stallman', 'Linus Torvalds' , 'Dennis Ritchie' , 'Steve Wozniak' , 'Amir Emad Mirmirani-jadi']
+println('Ken Thompson' in legendary_men)
+println('Ken Thompson' !in legendary_men)
+</code></pre>
+<h4 id="defining-a-fixed-size-array">Defining a fixed-size array</h4>
+<pre><code>mut fix := [4]int{}
+println(fix) // [0, 0, 0, 0]
+</code></pre>
+<h4 id="updating-the-elements-of-a-fixed-size-array">Updating the elements of a fixed-size array</h4>
+<pre><code>fix[1] = 33
+println(fix) //[0, 33, 0, 0]
+</code></pre>
+<h4 id="slicing-a-fixed-size-array-results-in-an-ordinary-array">Slicing a fixed-size array results in an ordinary array</h4>
+<pre><code>s := fix[1..]
+println(s) // [33, 0, 0]
+</code></pre>
+<h3 id="performing-various-operations-on-an-array">Performing various operations on an array</h3>
+<h4 id="cloning-an-array">Cloning an array</h4>
+<pre><code>myarr := [1,2,3,4],5,6
+mut arr := myarr.clone() // copies the array myarr to arr
+println(arr)
+</code></pre>
+<p>In the preceding code, we can observe that the r immutable array is cloned to an<br>
+u mutable array.<br>
+The direct assignment of an array to a new variable will throw an error. For example,<br>
+let’s consider what happens when we try to run the following code:</p>
+<pre><code>s := myarr // This will throw error.
+</code></pre>
+<p>The program will throw an error with the message that says error: use array2 :=<br>
+array1.clone() instead of array2 := array1 (or use unsafe).<br>
+Another way to copy an array, as suggested in the previous error message, is to copy an<br>
+array to a new variable using unsafe:</p>
+<pre><code>s := unsafe { myarr }
+println(s)
+</code></pre>
+<h4 id="sorting-the-elements-of-an-integer-array">Sorting the elements of an integer array</h4>
+<pre><code>mut i := [ 3, 2, 8, 1]
+i.sort() // ascending order
+println(i)
+i.sort(a &gt; b) //descending order
+println(i)
+</code></pre>
+<pre><code>mut os := ['Linux', 'BSD', 'Mac', 'Windows']
+os.sort() // ascending order
+println(os)
+os.sort(a&gt;b) // reverse order
+println(os)
+</code></pre>
+<h4 id="filtering-arrays">Filtering arrays</h4>
+<pre><code>f := [1, 2, 3, 4, 5, 6, 7, 8, 9]
+multiples_of_3 := f.filter(it % 3 == 0)
+println(multiples_of_3) // [3, 6, 9]
+</code></pre>
+<pre><code>fruits := ['apple', 'mango', 'water melon', 'musk melon']
+fruits_starting_m := fruits.filter(fn (f string) bool {
+                        return f.starts_with('m')
+                    })
+println(fruits_starting_m)
+</code></pre>
+<h4 id="applying-mapping-onto-array-elements">Applying mapping onto array elements</h4>
+<pre><code>visitor := ['Tom', 'Ram', 'Rao']
+res := visitor.map('Mr. $it')
+println(res)
+</code></pre>
+<h3 id="the-explicit-initialization-of-a-map">The explicit initialization of a map</h3>
+<p><em>mut MAP_NAME := map[KEY_TYPE]VALUE_TYPE{}</em></p>
+<p><em>MAP_NAME[KEY_1] = VALUE_1<br>
+MAP_NAME[KEY_2] = VALUE_2<br>
+.<br>
+.<br>
+MAP_NAME[KEY_N] = VALUE_N</em></p>
+<pre><code>mut users := map[string]int{}
+</code></pre>
+<p>or</p>
+<pre><code>mut users := map[string]string{}
+</code></pre>
+<pre><code>users['Linux'] = "Koosha"
+</code></pre>
+<pre><code>users['Linux'] = 123123
+</code></pre>
+<h3 id="the-short-syntax-initialization-of-a-map">The short syntax initialization of a map</h3>
+<pre><code>mut MAP_NAME := {
+KEY_1: VALUE_1
+KEY_2: VALUE_2
+.
+.
+KEY_N: VALUE_N
+}
+
+</code></pre>
+<pre><code>mut users := {
+    'Linux' : 'koosha'
+    'MSwindows' : 'Mahdi Bahadori - AminPrimohamadi - Masood Tavakoli'
+    'macOS' : 'Farhad Mehryari'
+    }
+    println(users)
+</code></pre>
+<h4 id="the-count-of-key-value-pairs-in-a-map">The count of key-value pairs in a map</h4>
+<pre><code>cnt := users.len
+println('len of users Defined is Map is $cnt')
+</code></pre>
+<h4 id="retrieving-a-value-given-the-key-of-a-map">Retrieving a value given the key of a map</h4>
+<pre><code>println(users['Linux']) // 'koosha'
+</code></pre>
+<h4 id="updating-the-value-of-the-key-in-a-map">Updating the value of the key in a map</h4>
+<pre><code>users['Linux'] = 'Koosha - Farhad Mehryari'
+println(users)
+</code></pre>
+<h4 id="deleting-a-key-value-pair-from-a-map">Deleting a key-value pair from a map</h4>
+<pre><code>users.delete('macOS')
+</code></pre>
+<h2 id="conditionals-and-iterative-statements">Conditionals and Iterative Statements</h2>
+<pre><code>if CONDITION_1 {
+    // CONDITION_1 evaluated to true
+    } else if CONDITION_2 {
+    // CONDITION_2 evaluated to true
+    } else {
+    // None of the Conditions evaluated to true
+}
+</code></pre>
+<pre><code>
+fn check_os(os string){
+
+    if os == "Fedora"{
+        println("Fedora From RedHat")
+    }else if os == "Ubuntu"{
+        println("Ubuntu from canonical")
+    }else if os == "openSUSE"{
+        println("openSUSE from SUSE company")
+    }else{
+        println("can not Detect os company")
+}
+
+}
+
+fn main(){
+
+    check_os("Fedora")
+}
+</code></pre>
+<h3 id="the-if-conditions-with-a-goto-statement">The if conditions with a goto statement</h3>
+<p>V allows you to label code and refer to the execution control using the goto keyword. The<br>
+goto statement needs to be specified with a label that indicates the control to navigate to<br>
+the label when the execution flow encounters a goto statement. A label is defined with<br>
+general text followed by a : colon symbol.</p>
+<blockquote>
+<p>Note<br>
+A goto statement must be wrapped inside an unsafe block. This is because<br>
+goto allows the program execution flow to move past variable initialization<br>
+or return to code that accesses memory that has already been freed. As the<br>
+goto statement requires an unsafe block, it should be avoided to prevent<br>
+the risk of violating memory safety.</p>
+</blockquote>
+<p><em>sample_label:<br>
+println(‘this will be called when goto is invoked’)<br>
+unsafe {<br>
+goto sample_label<br>
+}</em></p>
+<pre><code>module main
+
+import os
+
+fn main() {
+        main_linux:
+        inp := os.input('Enter Linux Name : ')
+        if inp != 'MSwindows' {
+                linux := inp.str()
+
+                if linux == 'Fedora' || linux == 'Ubuntu' {
+                        println('os is Linux and Ubuntu or Fedora')
+                } else if linux == 'openSUSE' {
+                        println('OS is Server Linux From Germany : openSUSE Leap')
+                } else {
+                        println('Can not Detect OS')
+                }
+        } else {
+                unsafe {
+                        goto main_linux
+                }
+        }
+}
+
+</code></pre>
+<h3 id="match">match</h3>
+<pre><code>
+fn get_user(username string) {
+        match username {
+                'Koosha_Yeganeh' {
+                        println('V and python Developer')
+                }
+                'Farhad_Mehryari' {
+                        println('Nodejs and TypeScript Developer')
+                }
+                'Peyman_Ramazani' {
+                        println('Delphi Developer')
+                }
+                'Masood_Tavakoli' {
+                        println('asp.net Developer')
+                }
+                else {
+                        println('The entered username is not in my developer friends group')
+                }
+        }
+}
+
+fn main() {
+        get_user('Koosha_Yeganeh')
+}
+
+</code></pre>
+<h4 id="using-match-with-enum-types">Using match with enum types</h4>
+<pre><code>
+
+enum Dist {
+        fedora
+        ubuntu
+        rocky
+        debian
+}
+
+fn get_os(os Dist) string {
+        return match os {
+                .fedora {
+                        'Best Desktop Linux For Enterprise Users'
+                }
+                .ubuntu {
+                        'Best Linux for Starting'
+                }
+                .rocky {
+                        'Best rpm Linux For Servers'
+                }
+                .debian {
+                        'best deb Linux for Servers'
+                }
+        }
+}
+
+fn main() {
+        fedora := get_os(Dist.fedora)
+        println(fedora)
+
+        ubuntu := get_os(Dist.ubuntu)
+        println(ubuntu)
+}
+
+
+
+</code></pre>
+<h4 id="pattern-matching-using-match">Pattern matching using match</h4>
+<pre><code>
+
+fn main() {
+    age := 18
+    res := match age {
+    0...18 { 'Person with age $age classified as a Child' }
+    19...120 { 'Person with age $age classified as an Adult' }
+    else { '$age must be in the range 0 to 120' }
+    }
+    println(res)
+}
+
+
+</code></pre>
+<h3 id="iterative-statements">Iterative statements</h3>
+<p><em>for INDEX_VAR, VALUE_VAR in COLLECTION {<br>
+// access each element’s index and its value<br>
+}</em></p>
+<pre><code>
+fn main() {
+	os := {
+		'RedHat': 'Fedora'
+		'Debian': 'Ubuntu'
+        'SUSE' : 'openSUSE Leap'
+	}
+
+	for operation, distro in os {
+		println('os is ${operation} and distribution is ${distro}')
+	}
+
+	linux := ['Fedora', 'Ubuntu', 'openSUSE']
+	for idx, ele in linux {
+		println('${idx} - ${ele}')
+	}
+}
+
+
+</code></pre>
+<blockquote>
+<p>In the preceding code, the for loop iterates over an array named linux with the values of a string data type<br>
+The idx variable will always be<br>
+of the integer data type and signifies the index of each element, starting from 0, and increments by 1 for every iteration. The ele variable holds the value of the element for that iteration</p>
+</blockquote>
+<h4 id="a-for-loop-without-an-index-on-the-array">A for loop without an index on the array</h4>
+<pre><code>module main
+
+fn main() {
+    col := [1, 2, 3, 4, 5, 6, 7]
+    for val in col {
+    if val % 2 == 0 {
+    println('$val is Even')
+    } else {
+    println('$val is Odd')
+    }
+    }
+}
+</code></pre>
+<h4 id="a-traditional-c-style-for-loop">A traditional C-style for loop</h4>
+<pre><code>
+module main
+fn main() {
+    sample := [3, 4, 23, 12, 4, 1, 45, 12, 42, 17, 92,
+    38]
+    for i := 0; i &lt; sample.len; i += 3 {
+    println(sample[i])
+    }
+}
+</code></pre>
+<h4 id="a-for-loop-on-a-range">A for loop on a range</h4>
+<pre><code>
+fn main() {
+    for val in 0 .. 4 {
+    println(val)
+    }
+}
+
+
+</code></pre>
+<h4 id="a-bare-for-loop-or-an-infinite-for-loop">A bare for loop or an infinite for loop</h4>
+<pre><code>
+fn main() {
+    mut count := 1
+    for {
+        println('Hi $count times')
+        count += 1
+    }
+}
+
+</code></pre>
+<h4 id="using-break-in-a-for-loop">Using break in a for loop</h4>
+<pre><code>fn main() {
+    mut count := 0
+    input := os.input('Enter number of times to Greet:')
+    limit := input.int()
+    for {
+    if count &gt;= limit {
+            break
+        }
+        println('Hi')
+        count += 1
+        }
+        println('Greeted Hi $count times')
+    }
+
+</code></pre>
+<h4 id="using-continue-in-a-for-loop">Using continue in a for loop</h4>
+<pre><code>fn main() {
+    for i in 0 .. 10 {
+    if i % 2 == 0 { // skips printing number
+    // that is a multiple of 2
+        continue
+    }
+    println(i)
+}
+</code></pre>
+<h3 id="anonymous-functions">Anonymous functions</h3>
+<pre><code>
+module main
+fn main() {
+    greet := fn (name string) {
+        println('Hello, $name')
+    }
+    greet('Jadi')
+    greet('Hasan Azimi')
+}
+
+</code></pre>
+<h4 id="higher-order-functions-that-accept-other-functions-as-input-arguments">Higher-order functions that accept other functions as input arguments</h4>
+<pre><code>fn hello_back()string{
+    return "Hello New User"
+
+}
+
+</code></pre>
+<pre><code>
+import os
+
+fn say_hello() string {
+	username := os.input('Enter username : ')
+	password := os.input('Enter Password : ')
+
+	if username == 'koosha' &amp;&amp; password == '102030' {
+		return 'You are Logined'
+	} else {
+		return 'Login ERROR'
+	}
+}
+
+fn main() {
+	ut name := say_hello()
+
+	println(name)
+}
+
+</code></pre>
+<pre><code>fn adder(i int, j int) int {
+    return i + j
+}
+fn subtractor(i int, j int) int {
+    return i - j
+}
+fn multiplier(i int, j int) int {
+    return i * j
+}
+
+
+
+fn main(){
+
+    mut result := subtractor(2023,1991)
+    println("Linux Born at : ${result}")
+
+</code></pre>
+<pre><code>fn get_os(name string) string {
+         return 'Hello ${name}'
+}
+
+fn main() {
+
+    res := get_os('koosha')
+    println(res)
+
+
+}
+</code></pre>
+<h4 id="functions-can-take-zero-or-more-input-arguments">Functions can take zero or more input arguments</h4>
+<pre><code>
+fn add(a int, b int) int {
+    return a + b
+    }
+
+res := add(2, 4)
+println(res) 
+
+</code></pre>
+<pre><code>
+fn greet_and_message_length(name string) (string, int) {
+    mut greeting := 'Hello , ' + name + '!'
+    return greeting, greeting.len
+}
+
+i, j := greet_and_message_length('Fedora')
+
+println(i)
+println(j)
+
+</code></pre>
+<pre><code>fn get_input_len(username string, password string) int {
+        data := username + password
+        return data.len
+}
+
+fn main() {
+        length := get_input_len('koosha', '102030')
+        println(length)
+}
+
+</code></pre>
+<h4 id="ignoring-return-values-from-functions">Ignoring return values from functions</h4>
+<pre><code>i, _ := greet_and_message_length('Fedora')
+</code></pre>
+<h3 id="functions-can-call-other-accessible-functions">Functions can call other accessible functions</h3>
+<pre><code>fn greet(p string) string {
+    return 'Hello, $p!'
+}
+fn welcome(p string) string {
+    msg := 'Nice to meet you!'
+    mut g := greet(p)
+    g = g + ' $msg'
+    return g
+}
+
+fn main(){
+    res := welcome('Visitor')
+    println(res)
+
+}
+
+</code></pre>
+<h4 id="functions-allow-only-arrays-interfaces-mapspointers-and-structs-as-mutable-arguments">Functions allow only arrays, interfaces, maps,pointers, and structs as mutable arguments</h4>
+<pre><code>
+fn increment_array_items(arr []int, inc int) []int {
+    mut tmp := arr.clone()
+    for mut i in tmp {
+        i += inc
+    }
+        return tmp
+}
+a := [5, 6]
+res := increment_array_items(a, 100)
+
+
+println('a: $a')
+println('res: $res')
+
+</code></pre>
+<h4 id="function-declarations-in-script-mode-should-come-before-all-script-statements">Function declarations in script mode should come before all script statements</h4>
+<pre><code>#!/usr/local/bin/v run
+cnt := 2
+for i in 0 .. cnt {
+    log('iteration $i')
+}
+
+
+fn log(msg string) {
+    println(msg)
+}
+
+
+</code></pre>
+<h4 id="functions-do-not-allow-access-to-module-variables-or-global-variables">Functions do not allow access to module variables or global variables</h4>
+<blockquote>
+<p>functions in V are pure by default. This means that functions can only process the arguments they are passed with and return the processed output. The functions cannot access variables that are defined outside of the function body.<br>
+However, V enables us to declare global variables. When it comes to the implementation of low-level applications such as programming OS kernels or system drivers, you might need to have the variables accessed globally. In such situations, you can declare variables as global and run the V program with the -enable-globals argument.<br>
+Now, we will examine how to declare global variables and run V programming using the -enable-globals flag. The code that we are going to work on will be structured in the following directory hierarchy:</p>
+</blockquote>
+<p><strong>The syntax to create a global variable in V is as follows:</strong></p>
+<pre><code>
+__global(
+    &lt;variable_name&gt; &lt;data_type&gt;
+)
+
+
+</code></pre>
+<pre><code>// file: mymod/mymod.v
+
+module mymod
+
+
+__global (
+    msg string
+)
+
+</code></pre>
+<blockquote>
+<p>In the mymod.v file, we defined a msg global variable of the string data type. Fromthe command-line Terminal, navigate to the parent directory where we have main.v located. To run main.v, you need to provide -enable-globals as an argument to V, as follows:</p>
+</blockquote>
+<pre><code>v -enable-globals run main.v
+</code></pre>
+<blockquote>
+<p>You will see the following output:</p>
+</blockquote>
+<pre><code>global variable demo
+</code></pre>
+<h4 id="functions-are-private-by-default-and-can-be-exposed-to-other-modules-using-the-pub-access-modifier-keyword">Functions are private by default and can be exposed to other modules using the pub access modifier keyword</h4>
+<blockquote>
+<p>By default, all of the functions declared in V are private and are only accessible within the default scope that they are defined in. To expose the methods to the outside world, they are decorated with the pub keyword, which denotes public access.</p>
+</blockquote>
+<p><img src="./static/v_tree_Function.png" alt="v_tree_Function"></p>
+<pre><code>// file: mod/mod.v
+
+module mod
+
+fn get_name() string {
+    return 'Hello to Koosha Yeganeh'
+}
+
+pub fn get_username() string {
+     return 'username of Fedora is KYGnus'
+}
+
+pub fn get_test() string {
+    hello := get_name()
+    return 'username : ' + hello + 'user and pass is Test'
+}
+</code></pre>
+<pre><code>import mod
+
+test := mod.get_test()
+
+g := mod.get_username()
+
+println(g)
+println(test)
+
+</code></pre>
+<h4 id="functions-allow-you-to-defer-the-execution-flow-using-the-defer-block">Functions allow you to defer the execution flow using the defer block</h4>
+<pre><code>module main
+
+fn void_func_defer() {
+    println('Hello')
+defer {
+    println('Hi from defer block')
+}
+println('How are you?')
+    // the defer block will be executed when the
+    // execution control reaches here
+}
+fn main() {
+    void_func_defer()
+}
+</code></pre>
+<p>Result :</p>
+<p><strong>Hello</strong><br>
+<strong>How are you?</strong><br>
+<strong>Hi from Defer Block</strong></p>
+<h3 id="struct">struct</h3>
+<blockquote>
+<p>Structs in V allow you to define composite objects. They facilitate you to create complex data structures, allowing its fields to have different data types. The fields of the struct can be primitive data types, enums, or could be another struct.</p>
+</blockquote>
+<pre><code>struct Linux_Users {
+	username string
+	password int
+	id       string
+	os_hash  int
+}
+
+fn main() {
+	fedora := Linux_Users{
+		username: 'koosha'
+		password: 123123
+		id: 'main_user'
+		os_hash: 159753123654
+	}
+
+	println('username is ${fedora.username} and password is : ${fedora.password}')
+}
+
+
+</code></pre>
+<h4 id="heap-structs">heap structs</h4>
+<blockquote>
+<p>When a struct is initialized, its memory is allocated on the stack by default. V allows you to initialize a struct and allocates its memory on the heap, provided that you specify &amp; before the struct name during initialization, as shown here:</p>
+</blockquote>
+<p><a href="https://www.educative.io/blog/stack-vs-heap">Stack vs Heap: What’s the difference?</a><br>
+<a href="https://www.geeksforgeeks.org/stack-vs-heap-memory-allocation/">Stack vs Heap Memory Allocation</a></p>
+<pre><code>n1 := &amp;Linux_users{'Farhad', 1 , 'Unix Main User' , 123456}
+</code></pre>
+<blockquote>
+<p>Heap structs are particularly useful when dealing with structs that carry large amounts of data. Therefore, opting for heap structs can reduce explicit memory allocations</p>
+</blockquote>
+<h4 id="updating-the-fields-of-a-struct">Updating the fields of a struct</h4>
+<pre><code>struct Users {
+mut:
+	username string
+	password int
+	id       int
+}
+
+mut fedora := Users{
+	username: 'Koosha'
+	password: 123123
+	id: 100
+}
+
+println(fedora.username)
+fedora.username = 'kooshakooshadv'
+println(fedora.username)
+
+
+
+</code></pre>
+<p>• The variable to which the struct is declared must be mutable.<br>
+• You must specify the struct name to the right-hand side of the = operator followed<br>
+by the struct fields that you wish to update. The values must be enclosed in curly<br>
+braces ({}).<br>
+• The field names must be specified as literals and only then can they be assigned<br>
+values separated by a : sign.<br>
+• The unspecified fields in the update statements are assigned zero by default.</p>
+<h4 id="grouping-fields-in-a-struct-using-access-modifiers">Grouping fields in a struct using access modifiers</h4>
+<blockquote>
+<p>A struct allows the filtering of its fields at various access levels. With the help of the keywords pub, for public access of fields, and mut, to indicate mutable fields, you can control the way the fields of a struct can be accessed.The various access control levels that could be applied to the fields of a struct are tabulated here:</p>
+</blockquote>
+<p><img src="./static/struct.jpg" alt="struct"></p>
+<pre><code>pub struct Note {
+    pub:
+    id int
+pub mut:
+    message string
+    status bool
+}
+
+</code></pre>
+<blockquote>
+<p>We have marked the Note struct as <strong>pub</strong>. We also marked the id field as public by declaring it under the pub group. The fields under the pub group are public and are read-only outside the module. Also, the message and status fields are marked with the pub and mut access modifiers. Defining struct fields under the pub mut group indicates that the struct fields are accessible and mutable within and outside the module<br>
+where Note is defined.</p>
+</blockquote>
+<pre><code>pub struct Note {
+pub:
+	id int
+pub mut:
+	message string
+}
+
+mut name := Note{
+	id: 123
+	message: 'Hello New User'
+}
+
+println(name.id)
+</code></pre>
+<pre><code>struct Users {
+pub mut:
+	username string
+	password int
+mut:
+	text string
+	id   int
+}
+
+n := Users{
+	username: 'Fedora'
+	password: 789
+	text: 'Fedora Workstation From RedHat'
+	id: 555
+}
+
+println(n.username)
+
+</code></pre>
+<h4 id="defining-required-fields-in-a-struct">Defining required fields in a struct</h4>
+<pre><code>pub struct Note {
+pub:
+    id
+    int
+pub mut:
+    message string [required]
+    status bool
+}
+</code></pre>
+<pre><code>struct Users {
+pub mut:
+	username string [required]
+	password int
+mut:
+	text string
+	id   int
+}
+
+n := Users{
+	username: 'Fedora'
+	password: 789
+	text: 'Fedora Workstation From RedHat'
+	id: 555
+}
+
+println(n.username)
+
+</code></pre>
+<h4 id="defining-struct-fields-with-default-values">Defining struct fields with default values</h4>
+<pre><code>import time
+pub struct Note {
+pub:
+    id
+    int
+    created time.Time = time.now()
+pub mut:
+    message string [required]
+    status bool
+    due
+    time.Time = time.now().add_days(1)
+}
+</code></pre>
+<h4 id="defining-methods-for-a-struct">Defining methods for a struct</h4>
+<pre><code>fn (r RECEIVER_TYPE) METHOD_NAME(OPTIONAL_INPUT_ARGUMENTS)
+RETURN_TYPE {
+    METHOD BODY
+}
+</code></pre>
+<h2 id="modules">Modules</h2>
+<h3 id="the-syntax-to-define-a-module">The syntax to define a module</h3>
+<p><strong>module &lt;module_name&gt;</strong></p>
+<h3 id="the-syntax-to-import-a-module">The syntax to import a module</h3>
+<p><strong>import &lt;module_name&gt;</strong></p>
+<h3 id="working-with-modules">Working with modules</h3>
+<p>• The directory name must match the module name.<br>
+• Imported modules must be consumed in the code.<br>
+• Multiple V files in the module must define the same module.<br>
+• Both private and public members of a module can be accessed from anywhere within the module.<br>
+• Only public members of the module are accessible outside of the module.<br>
+• Cyclic imports are not allowed.<br>
+• Define init functions to execute one-time module-level initializer functionality.</p>
+<h4 id="creating-a-module">Creating a Module</h4>
+<blockquote>
+<p>We will create a module in our modulebasics project.<br>
+<strong>1- The first principle to note when creating a module is that the Directory name must match the module name. Failing to have a similar name for the directory and module will lead to an error with a message that says builder error: bad module definition.Let’s create a module named mod1 by running the following command from the Terminal:</strong></p>
+</blockquote>
+<pre><code>v new app
+</code></pre>
+<pre><code>mkdir login
+</code></pre>
+<p><img src="./static/login_module.png" alt="module_login"></p>
+<pre><code>module login
+
+import os
+
+pub fn login() string {
+	username := os.input('Enter username : ')
+	password := os.input('Enter Password : ')
+	if username == 'Koosha' &amp;&amp; password == 'K102030k' {
+		return 'Logined'
+	} else {
+		return 'Login ERROR'
+	}
+}
+</code></pre>
+<pre><code>cat src/main.v
+</code></pre>
+<pre><code>module main
+import login
+
+fn main() {
+    login_name := login.login()
+    println(login_name)
+}
+</code></pre>
+<pre><code>v run .
+</code></pre>
+<h4 id="working-with-multiple-files-in-a-module">Working with multiple files in a module</h4>
+<blockquote>
+<p>If there are multiple files in a module, then all of the files must define the same module definition. Failing to define the same module for all the files within a module will lead to an error that is similar to builder error: <em>bad module definition.</em></p>
+</blockquote>
+<h4 id="the-init-function-for-a-module">The init function for a module</h4>
+<blockquote>
+<p>Modules in V allow you to define a function named init that is automatically executed when you import the module where it is defined. The init functions of a module act as an initializer of certain functionality, such as establishing database connections or initializing C libraries or module-specific settings,if any. To define the initializer function, you must meet the following conditions:</p>
+</blockquote>
+<p>• <strong>The init function must only be defined once inside the module.</strong><br>
+• <strong>The init function must not be marked as public.</strong><br>
+• <strong>The init function must not accept any input arguments.</strong><br>
+• <strong>The init function must not have a return type.</strong></p>
+<pre><code>module main
+
+import os
+
+
+pub fn dist()string{
+    
+    os_name := "Fedora"
+    println(os_name)
+}
+
+fn init(){
+
+    println("Hello from init Function")   
+ 
+
+}
+
+</code></pre>
+<h4 id="accessing-the-constants-of-a-module">Accessing the constants of a module</h4>
+<pre><code>
+// file : mod1/file1.v
+module mod1
+pub const vmsg = 'Hello From V Lang'
+
+</code></pre>
+<pre><code>
+// file: modulebasics.v
+
+module main
+import mod1
+
+fn main() {
+    println(mod1.vmsg)
+}
+
+
+</code></pre>
+<h3 id="advanced-concepts-in-v-programming">Advanced Concepts in V Programming</h3>
+<h4 id="introducing-concurrency">Introducing concurrency</h4>
+<p>Concurrency means running tasks concurrently. While this might seem like a very<br>
+abstract definition, let’s consider the following real-world example. You wake up in the<br>
+morning of winter, and you need hot water to bathe. You can only bathe when the water<br>
+is hot enough. However, you have other morning chores to finish off while the water gets<br>
+hot. So, you turn on the water heater and then, let’s say, you brush your teeth for some<br>
+time while the water heater indicates the water is hot. Then, you switch off the water<br>
+heater, enjoy a hot shower, and get ready for the day</p>
+<h4 id="getting-started-with-concurrency">Getting started with concurrency</h4>
+<p><strong>Understanding the time module</strong></p>
+<pre><code>import time
+</code></pre>
+<p>The time module in V has a vast number of functionalities, including telling the current<br>
+time on the system using the time.now() expression. If we are just interested in the<br>
+hours, minutes, and seconds part of the time at the time of execution, you can write the<br>
+corresponding expression as</p>
+<pre><code>time.now().hhmmss()
+</code></pre>
+<p><strong>sleep</strong></p>
+<pre><code>import time
+time.sleep(0.5 * time.second)
+</code></pre>
+<p><strong>stopwatch</strong></p>
+<pre><code>sw.elapsed().nanoseconds()
+</code></pre>
+<p>In the aforementioned syntax, the sw variable holds the instance of initiation of the<br>
+stopwatch using time.new_stopwatch(). The duration of time that’s elapsed<br>
+is in nanoseconds, which is of the i64 type. You can have the elapsed time in<br>
+other units instead of calling nanoseconds(), such as microseconds() and<br>
+milliseconds(), which return the i64 values of the time that’s elapsed. Alternatively,<br>
+the seconds(), minutes(), and hours() methods return f64 values.<br>
+This feature is handy for measuring the time that’s elapsed while running a set of<br>
+instructions. For example, the following code demonstrates the time elapsed from<br>
+the moment the program starts until it finishes printing the value of the i variable for</p>
+<pre><code>module main
+import time
+
+fn main() {
+    sw := time.new_stopwatch()
+    for i in 1 .. 5 {
+        println('$i')
+}
+println('Total time took to finish:
+    $sw.elapsed().seconds() seconds')
+}
+</code></pre>
+<h5 id="the-go-keyword-syntax">The go keyword syntax</h5>
+<p><strong>go FUNCTION_NAME_1(OPTIONAL_ARGUMENTS)</strong><br>
+<strong>h := go FUNCTION_NAME_1(OPTIONAL_ARGUMENTS)</strong><br>
+<strong>h.wait()</strong></p>
+<pre><code>h := go FUNCTION_NAME_1(OPTIONAL_ARGUMENTS)
+h.wait()
+
+</code></pre>
+<h4 id="channels-–-an-advanced-concurrency-pattern">Channels – An Advanced Concurrency Pattern</h4>
+<blockquote>
+<p>The term channel indicates a medium or a path that allows you to transfer information or data from one end to the other. In the context of concurrency, channels allow us to share data by establishing a communication channel between the concurrent tasks. These concurrent tasks are often termed coroutines, which share the data by communicating through the channels. Channels are advanced concurrency patterns in V that solve the problem of explicitly handling data synchronization techniques among coroutines. We can communicate between the coroutines with the help of shared objects. In V, these can be structs, arrays, or maps. But the problem with this approach is that you need to take explicit care of concurrency synchronization techniques such as protecting the shared objects using locks such as the read-only rlock or the read/write lock to prevent data races, as we learned in the Sharing data between the main thread and concurrent tasks section of Chapter 10, Concurrency.<br>
+Channels in V can be compared to queues. Generally, a queue allows things or elements to pass through it in one direction. The first one to enter the queue is the first one to exit the queue. So, the values that are sent to the channel are accessed in a First In First Out (FIFO) manner.</p>
+</blockquote>
+<h5 id="syntax-to-define-a-channel">Syntax to define a channel</h5>
+<p><strong>CHANNEL_VARIABLE := chan DATA_TYPE{OPTIONAL_CAPACITY: CAPACITY_<br>
+VALUE}</strong></p>
+<blockquote>
+<p>In this syntax, the channel variable will be of the chan DATA_TYPE. OPTIONAL_CAPACITY type. This is a syntactical representation of the cap property that accepts an integer value. The cap property is available on a channel variable that represents the capacity of the values the channel could hold. The type could be any type, such as a primitive type, or it could be a struct, a map, or an array.<br>
+Having understood the basic syntax, we will learn about unbuffered channels and buffered channels in the following subsections.</p>
+</blockquote>
+<h5 id="unbuffered-channel">Unbuffered channel</h5>
+<blockquote>
+<p>A channel defined without capacity is referred to as an unbuffered channel. An unbuffered channel has a capacity of 0 by default. The following code shows how to define an unbuffered channel. This channel accepts integer values that are pushed onto it:</p>
+</blockquote>
+<pre><code>uc := chan int{}
+println(uc.cap) // 0
+println(typeof(uc).name) // chan int
+</code></pre>
+<h4 id="buffered-channel">Buffered channel</h4>
+<blockquote>
+<p>Unlike unbuffered channels, a buffered channel is defined with a non-zero capacity, with its cap property assigned with an integer value. The following code shows how to define a buffered channel:</p>
+</blockquote>
+<pre><code>bc := chan string{cap: 2}
+println(bc.cap)
+println(typeof(bc).name)
+
+</code></pre>
+<h4 id="channel-operations">Channel operations</h4>
+<h5 id="arrow-operator--">Arrow operator &lt;-</h5>
+<blockquote>
+<p>The direction of the arrow operator, &lt;-, indicates that the values always enter the channel from the right and exit the channel to the left.</p>
+</blockquote>
+<h5 id="syntax-to-push-data-into-a-channel">Syntax to push data into a channel</h5>
+<p><strong>ch := chan VALUE_TYPE {OPTIONAL_CAPACITY: CAPACITY_VALUE}</strong><br>
+<strong>ch &lt;- VALUE_TO_PUSH</strong></p>
+<pre><code>
+ch := chan int{cap: 1}
+ch &lt;- 51
+println(ch)
+
+</code></pre>
+<blockquote>
+<p>Place the preceding code in a file and run it using the v run filename.v command.<br>
+You should see that the console halts and doesn’t show any output. This means that the program entered the blocked state as soon as it encountered the push operation; that is, ch &lt;- 51. We will understand why using push operations on an unbuffered channel<br>
+blocks the program’s execution in more detail in the Working with unbuffered channels section of this chapter.</p>
+</blockquote>
+<h4 id="popping-the-data-out-of-the-channel">Popping the data out of the channel</h4>
+<pre><code>ch := chan int{cap: 1}
+ch &lt;- 51
+println('channel after push: $ch.str()')
+println('popping value out of the channel and storing it in immutable variable x')
+x := &lt;-ch
+println('value of x: $x')
+println('channel after pop: $ch.str()')
+
+</code></pre>
+<h4 id="channel-properties">Channel properties</h4>
+<p>You can obtain information about a channel variable by accessing the properties<br>
+it exposes. The properties of the channel include len, cap, and closed. These properties provide the following information about a channel at the time of accessing them:<br>
+- [] cap is an integer property that indicates the capacity of the channel. This is 0 for the unbuffered channel. In the case of a buffer           ed channel, the cap property indicates the maximum number of values a channel can hold.<br>
+- [] len is an integer property that indicates the actual number of values that the channel holds at the time of accessing this property.           At any given point in time, the len value can only be less than or equal to the cap property.<br>
+- [] closed is a Boolean property, and when its value is true, it indicates that the channel is closed. If a channel is not closed, the v           alue of the closed property will be false.</p>
+<p><strong>Understanding channel properties using examples</strong></p>
+<pre><code>b := chan string{cap: 2}
+b &lt;- 'hello'
+println('capacity: $b.cap')
+println('length: $b.len')
+println('closed: $b.closed')
+
+
+</code></pre>
+<h4 id="channel-methods">channel Methods</h4>
+<blockquote>
+<p>V exposes some public methods to control a channel’s behavior. These methods include the following:<br>
+• try_push()<br>
+• try_pop()<br>
+• close()</p>
+</blockquote>
+<blockquote>
+<p>Except for the close() method, the try_push() and try_pop() methods have a return value, which is a built-in enum type called ChanState. The ChanState enum has three enum values:</p>
+</blockquote>
+<p>• not_ready<br>
+• closed<br>
+• success</p>
+<blockquote>
+<p>Performing try_push() or try_pop() on a channel can return one of the three aforementioned states. In this section, we will learn how to work with the try_push() Function with buffered and unbuffered channels and then we cover how to work with the try_pop() and close() methods.</p>
+</blockquote>
+<p><strong>Using try_push() on unbuffered channels</strong></p>
+<blockquote>
+<p>try_push() gracefully pushes data into the channel and returns the status in the form of an enum value from ChanState. The try_push() method accepts values of the type that the channel accepts. For an unbuffered channel, the try_push() operation returns a .not_ready value of ChanState enum, when there is no coroutine ready to pop a value out of the channel. To demonstrate this, consider the following code:</p>
+</blockquote>
+<pre><code>v := 'hi'
+ch := chan string{} // unbuffered channel
+res := ch.try_push(v)
+println(res) // not_ready
+
+
+</code></pre>
+<p><strong>Using try_push() on buffered channels</strong></p>
+<pre><code>x := 'hello'
+ch := chan string{cap: 2}
+for {
+    status := ch.try_push(x)
+    if status == .success {
+        println('Channel length: $ch.len')
+    } else {
+        println('channel status: $status')
+        break
+    }
+}
+
+
+</code></pre>
+<h4 id="working-with-unbuffered-channels">Working with unbuffered channels</h4>
+<pre><code>
+module main
+fn main() {
+    ch := chan int{}
+    defer {
+    ch.close()
+    }
+ch &lt;- 3
+x := &lt;-ch
+    println(x)
+    println('End main')
+}
+</code></pre>
+<h3 id="os">os</h3>
+<h4 id="base">base</h4>
+<pre><code>os.base("/home/koosha/Desktop/File.exe")
+</code></pre>
+<p>Result: File.exe</p>
+<h4 id="chdir">chdir</h4>
+<pre><code>os.chdir("/home/koosha/Desktop")!
+</code></pre>
+<h4 id="getwd">getwd</h4>
+<pre><code>os.getwd()
+</code></pre>
+<h4 id="cp">cp</h4>
+<pre><code>os.cp("test.v" , "/home/koosha/Desktop")!
+</code></pre>
+<h4 id="cp_all">cp_all</h4>
+<blockquote>
+<p>cp_all will recursively copy src to dst,optionally overwriting files or dirs in dst</p>
+</blockquote>
+<pre><code>os.cp_all("/home/koosha/Desktop" , "/run/media/koosha/SSD/Desktop")!
+</code></pre>
+<h4 id="create">create</h4>
+<blockquote>
+<p>create creates or opens a file at a specified location and returns a write-only File object.</p>
+</blockquote>
+<pre><code>os.create("/tmp/V/testFilecreate.v")!
+</code></pre>
+<h4 id="execute">execute</h4>
+<blockquote>
+<p>execute starts the specified command, waits for it to complete, and returns its output.</p>
+</blockquote>
+<pre><code>os.execute("ls")
+</code></pre>
+<h4 id="execute_or_exit">execute_or_exit</h4>
+<pre><code>os.execute_or_exit("ls")
+</code></pre>
+<h4 id="exists">exists</h4>
+<pre><code>os.exists("/home/koosha/Desktop")
+</code></pre>
+<h4 id="get_line">get_line</h4>
+<pre><code>os.get_line()
+</code></pre>
+<h4 id="input">input</h4>
+<pre><code>os.input("Enter UserName : ")
+</code></pre>
+<h4 id="input_password">input_password</h4>
+<pre><code>os.input_password("password : ")
+</code></pre>
+<pre><code>import os
+
+fn main(){
+    username := os.input("username : ")
+    password := os.input_password("password : ")!
+    if username == "koosha" &amp;&amp; password == "159753"{
+        println("Logined")
+    }else{
+        println("Login ERROR")
+    }
+}
+
+</code></pre>
+<h4 id="getuid-and-getpid">getuid and getpid</h4>
+<pre><code>os.getpid()
+</code></pre>
+<pre><code>os.geteuid()
+</code></pre>
+<h4 id="is_dir-and-is_dir_empty">is_dir and is_dir_empty</h4>
+<pre><code>os.id_dir("/home/koosha/Desktop")
+</code></pre>
+<pre><code>os.id_dir_empty("/home/koosha/Desktop")
+</code></pre>
+<h4 id="mkdir">mkdir</h4>
+<p><strong>fn mkdir(path string, params MkdirParams) !</strong></p>
+<pre><code>os.mkdir("/tmp/test")!
+</code></pre>
+<h4 id="mv">mv</h4>
+<pre><code>os.mv("/home/koosha/Desktop/File1.v" , "/home/koosha/Documents")!
+</code></pre>
+<h4 id="open">open</h4>
+<pre><code>os.open("/tmp/test.txt")!
+</code></pre>
+<h4 id="open_append">open_append</h4>
+<blockquote>
+<p>open_append tries to open a file from a given path.<br>
+If successful, it and returns a File for appending.</p>
+</blockquote>
+<pre><code>os.open_append("/home/koosha/Downloads/Test.txt")!
+</code></pre>
+<h4 id="read_file">read_file</h4>
+<pre><code>os.readfile("test.txt")!
+</code></pre>
+<h4 id="read_bytes">read_bytes</h4>
+<pre><code>os.read_bytes("test.txt")
+</code></pre>
+<h4 id="rename-and-rename_dir">rename and rename_dir</h4>
+<pre><code>os.rename("test.txt" , "test.v")!
+</code></pre>
+<pre><code>os.rename_dir("desktop" , "Desktop")!
+</code></pre>
+<h4 id="rm-and-rmdir-and-rmdir_all">rm and rmdir and rmdir_all</h4>
+<pre><code>os.rm("test.txt")
+</code></pre>
+<pre><code>os.rmdir("/tmp/Test")!
+</code></pre>
+<pre><code>os.rmdir_all("/Documents")!
+</code></pre>
+<h4 id="system">system</h4>
+<p><strong>system works like exec, but only returns a return code.</strong></p>
+<pre><code>os.system("ls *.txt")
+</code></pre>
+<h4 id="uname">uname</h4>
+<pre><code>os.uname()
+</code></pre>
+<h4 id="wait">wait</h4>
+<pre><code>os.wait()
+</code></pre>
+<h4 id="walk_ext">walk_ext</h4>
+<blockquote>
+<p>walk_ext returns a recursive list of all files in path ending with ext.</p>
+</blockquote>
+<pre><code>os.walk_ext("/home/koosha/Documents" , "md")
+</code></pre>
+<h4 id="write_file">write_file</h4>
+<pre><code>os.write_file("VLang.txt" , "write_file writes text data to the file in path.\nIf path exists, the contents of path will be overwritten with the contents of text.")
+</code></pre>
+<h3 id="mysql">MYSQL</h3>
+<pre><code>
+mport db.mysql
+
+// Create connection
+mut connection := mysql.Connection{
+    username: 'root'
+    dbname: 'mysql'
+}
+// Connect to server
+connection.connect()?
+// Change the default database
+connection.select_db('db_users')?
+// Do a query
+get_users_query_result := connection.query('SELECT * FROM users')?
+// Get the result as maps
+for user in get_users_query_result.maps() {
+    // Access the name of user
+    println(user['name'])
+}
+// Free the query result
+get_users_query_result.free()
+// Close the connection if needed
+connection.close()
+
+</code></pre>
+<pre><code>fn connect(config Config) !DB
+
+</code></pre>
+<pre><code>fn debug(debug string)
+</code></pre>
+<h3 id="optimize-python-app-with-vlang">optimize python app with VLang</h3>
+<blockquote>
+<p>To optimize a Python script using Vlang, you would need to rewrite the performance-critical parts of your code in Vlang. V is a statically typed, compiled language that’s designed for performance, and it can be integrated with Python code where necessary. Here’s a general approach to optimize a Python script with Vlang:</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>Identify Performance Bottlenecks:</li>
+</ol>
+<ul>
+<li>Use profiling tools (e.g., cProfile) to identify which parts of your Python code are consuming the most time.</li>
+<li>Focus on the most time-consuming functions or loops, as optimizing these will provide the most significant performance improvements.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>Rewrite Critical Code in Vlang:</li>
+</ol>
+<ul>
+<li>Install the Vlang compiler (<a href="https://vlang.io/">https://vlang.io/</a>).</li>
+<li>Rewrite the identified performance-critical functions or loops in Vlang. Vlang’s static typing and efficient memory management can lead to faster execution.</li>
+</ul>
+</blockquote>
+<ul>
+<li>Export the Vlang code as a shared library (e.g., a dynamic-link library on Windows or a shared object on Linux).</li>
+</ul>
+<blockquote>
+<ol start="3">
+<li>Create Python Bindings:</li>
+</ol>
+<ul>
+<li>To call the Vlang code from Python, you’ll need to create Python bindings. You can use libraries like CFFI or ctypes to create these bindings.</li>
+<li>Load the Vlang shared library in Python and create Python wrappers for the Vlang functions.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>Test and Benchmark:</li>
+</ol>
+<ul>
+<li>Before deploying the optimized code, test it extensively to ensure correctness and measure its performance improvements. You can use Python’s timeit module or external benchmarking tools.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>Integration:</li>
+</ol>
+<ul>
+<li>Replace the original Python functions with your optimized Vlang functions where appropriate.</li>
+<li>Ensure that you handle data exchange between Python and Vlang correctly using the Python bindings you created.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>Profiling and Fine-Tuning:</li>
+</ol>
+<ul>
+<li>Profile the entire application again to ensure that your optimizations have improved the performance as expected.</li>
+<li>Fine-tune the Vlang code as needed to further enhance performance.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start="7">
+<li>Error Handling:</li>
+</ol>
+<ul>
+<li>Be sure to handle errors and exceptions correctly when calling Vlang code from Python to maintain application stability.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Here’s a simple example of using Vlang with Python:</p>
+</blockquote>
+<p>Vlang code (example.v):</p>
+<pre><code>v
+module example
+
+fn add(a int, b int) int {
+    return a + b
+}
+</code></pre>
+<blockquote>
+<p>Python code:</p>
+</blockquote>
+<pre><code>python
+import ctypes
+
+# Load the Vlang shared library
+example = ctypes.CDLL('./example.so')
+
+# Call the Vlang function from Python
+result = example.add(5, 3)
+print(result)  # Should print 8
+</code></pre>
+<blockquote>
+<p>Remember that optimizing code with Vlang requires careful consideration and may not be necessary for all Python projects. It’s most effective for performance-critical parts of your application, and you should always measure and test your optimizations to ensure they provide the expected benefits.</p>
+</blockquote>
+<p>Module List : <a href="https://vpm.url4e.com/">https://vpm.url4e.com/</a></p>
+<h2 id="resources">Resources</h2>
+<blockquote>
+<p>Getting Started with V Programming from Navule Pavan Kumar Rao<br>
+<a href="https://github.com/vlang/v">https://github.com/vlang/v</a><br>
+<a href="https://vpm.url4e.com/">https://vpm.url4e.com/</a></p>
+</blockquote>
+</div>
+</body>
+
+</html>

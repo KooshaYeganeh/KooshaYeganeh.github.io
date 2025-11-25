@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYGnus - Manifesto</title>
+  <meta name="description" content="KYGnus Manifesto and Principles">
+  <meta name="author" content="Koosha Yeganeh">
+
+  <style>
+    /* Kernel.org inspired styling - Consistent with index.html */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --link-color: #ab0d0d;
+      --link-hover: #0a0570;
+      --border-color: #e5e5e5;
+      --header-bg: #f8f8f8;
+      --accent-color: #777777;
+      --card-bg: #fafafa;
+      --card-border: #e0e0e0;
+      --emphasis-color: #d32f2f;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    
+    header {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .site-title {
+      margin: 0;
+    }
+    
+    .site-title h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--text-color);
+      letter-spacing: -0.5px;
+    }
+    
+    nav {
+      margin-top: 0.5rem;
+    }
+    
+    nav a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      padding: 0.5rem 0.8rem;
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+    }
+    
+    nav a:hover, nav a:focus {
+      color: var(--link-hover);
+      background-color: rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-color);
+    }
+    
+    .active {
+      color: var(--emphasis-color);
+      border: 1px solid var(--emphasis-color);
+    }
+    
+    .hero {
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .hero h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+    }
+    
+    .hero p {
+      color: var(--emphasis-color);
+      font-weight: 500;
+    }
+    
+    .manifesto-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+    
+    .manifesto-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .manifesto-card p {
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+    
+    .manifesto-point {
+      margin-bottom: 1.5rem;
+      padding-left: 1.8rem;
+      position: relative;
+      line-height: 1.7;
+    }
+    
+    .manifesto-point:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--emphasis-color);
+      font-weight: bold;
+    }
+    
+    .manifesto-card h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+    
+    .manifesto-declaration {
+      text-align: center;
+      margin: 3rem 0;
+      padding: 2rem;
+      background-color: rgba(211, 47, 47, 0.05);
+      border: 1px solid var(--emphasis-color);
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    
+    footer {
+      border-top: 1px solid var(--border-color);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--accent-color);
+    }
+    
+    .social-links {
+      margin: 1rem 0;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .social-links a:hover {
+      text-decoration: underline;
+      color: var(--link-hover);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      nav {
+        margin-top: 1rem;
+      }
+      
+      nav a {
+        margin: 0.2rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero h3 {
+        font-size: 1.1rem;
+      }
+      
+      .manifesto-card {
+        padding: 1.4rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        font-size: 15px;
+      }
+      
+      .site-title h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav a {
+        display: block;
+        margin: 0.3rem 0;
+      }
+      
+      .manifesto-point {
+        padding-left: 1.4rem;
+      }
+      
+      .manifesto-declaration {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <div class="site-title">
+          <h1>KYGnus</h1>
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="Documents.html">Documents</a>
+          <a href="downloads.html">Downloads</a>
+          <a href="projects.html">Projects</a>
+          <a href="manifesto.html" class="active">Manifesto</a>
+          <a href="more.html">Summary</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Manifesto</h1>
+        <h3>KYGnus Principles and Development Philosophy</h3>
+        <p>The guiding principles behind all KYGnus projects and software</p>
+      </section>
+
+      <section>
+        <div class="manifesto-card">
+          <p>The reason for writing this statement is to tell the truths that happened during software development or working with people who were less active in this field. Besides the statement, this is a pain for those who were on this path or have the same pain as me.</p>
+          
+          <div class="manifesto-point">
+            I had 2 reasons for writing the software: The first one was to solve the needs that I had. For example, I thought that something is very difficult, but by writing the software it will be very easy. I didn't know whether I would need to sell this software in the future or not, but I continued to develop the software every day with interest (on the side, I worked more than 10 hours a day), but in the end, when the software was finished, my problem was solved. I had done and at the same time maybe the problem of those who had the same problem as mine would be solved.
+          </div>
+          
+          <div class="manifesto-point">
+            The second reason for the development of some software was the need of the people around me or the employer, which was always boring despite the fact that neither the employer knew exactly what he wanted, nor was I satisfied with the time I had spent on a project. The program would end and there was always waiting for support and... (They asked questions that were really stupid and complained when they didn't hear an answer about the stupid question they asked)
+          </div>
+        </div>
+        
+        <div class="manifesto-card">
+          <div class="manifesto-point">
+            I don't want to raise the issue here that having an employer or working is bad for others, but it depends on the environment in which you work, culture, etc.
+          </div>
+          
+          <div class="manifesto-point">
+            I want to have a recommendation for those who start this path: Have one or more personal projects for yourself and be sure that these projects will help you more than what you are working on.
+          </div>
+          
+          <div class="manifesto-point">
+            Always help and respect the society in which you work and try to help this society and spread the thoughts of people like Stallman and Jadi Mirmirani, etc. so that we have a good society with healthy thoughts.
+          </div>
+        </div>
+        
+        <div class="manifesto-card">
+          <h3>Software Development Principles</h3>
+          
+          <div class="manifesto-point">
+            No organization or private company can claim to buy software and receive support from anyone other than me. Every software is completely developed by me and sold and supported by me. At the same time, no company has the right to sell and support my software unless I officially mention that company in this manifesto.
+          </div>
+          
+          <div class="manifesto-point">
+            Many software (almost 90%) are shipped in Linux and written for Linux. The main goal is to develop Linux users and the philosophy behind Linux. This goal will not change in the future.
+          </div>
+          
+          <div class="manifesto-point">
+            Anyone who wants can provide software on Windows or personal Mac operating system, but must refer to this manifesto.
+          </div>
+          
+          <div class="manifesto-point">
+            Those who prevent the development of free and open source software, why do they request the customization of open source software for themselves. Customization of the software at the level of organizations and offices should be done with my rent. You can email me for this.
+          </div>
+        </div>
+        
+        <div class="manifesto-card">
+          <h3>Medical Software Commitment</h3>
+          
+          <div class="manifesto-point">
+            Every software that I have developed in the field of medicine has been and will be open-source. Treatment is everyone's right and no one should be deprived of proper treatment conditions. Maybe some people are interested in business in this field, but I have never been in this line of thinking and I will never be.
+          </div>
+        </div>
+        
+        <div class="manifesto-card">
+          <h3>Security Philosophy</h3>
+          
+          <div class="manifesto-point">
+            Unfortunately, security in IT is a work related to the government or organizations and countries. I am not affiliated and I will try not to be affiliated and to develop and spread my information in this area as much as possible.
+          </div>
+        </div>
+        
+        <div class="manifesto-declaration">
+          ** All those who use my software or my source codes must mention this statement in a part of their services or software. **
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>KYGnus</strong> — Koosha Yeganeh Gnu Linux Softwares</p>
+      <div class="social-links">
+        <a href="https://github.com/kooshayeganeh">GitHub</a>
+        <a href="https://telegram.me/KYGnus">Telegram</a>
+        <a href="https://www.instagram.com/koosha__yeganeh/">Instagram</a>
+        <a href="https://gitlab.com/KooshaYeganeh">GitLab</a>
+      </div>
+      <p>&copy; KYGnus — Security Research Division</p>
+    </footer>
+  </div>
+</body>
+</html>
